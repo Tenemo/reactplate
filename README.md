@@ -1,2 +1,3 @@
 # reactplate
-React, Redux, Jest, Enzyme opinionated boilerplate
+
+TypeScript + Babel + ESLint | React + Redux + Jest | Opinionated boilerplate

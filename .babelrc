@@ -1,0 +1,9 @@
+{
+    "presets": ["env", "react", "typescript"],
+    "plugins": [
+        "prettier",
+        "proposal-class-properties",
+        "proposal-optional-chaining"
+    ],
+    "ignore": ["node_modules"]
+}
