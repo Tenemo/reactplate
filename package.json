@@ -5,7 +5,17 @@
     "license": "UNLICENSED",
     "description": "TypeScript + Babel + ESLint | React + Redux + Jest | Opinionated boilerplate",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "cross-env NODE_ENV=development run-p open:src test:watch",
+        "prebuild": "npm run lint && npm test && npm run cleanDist",
+        "build": "cross-env NODE_ENV=production babel-node config/build",
+        "cleanDist": "rimraf ./dist && mkdir dist",
+        "open:dist": "babel-node config/distServer",
+        "open:src": "babel-node config/srcServer",
+        "lint": "eslint src config --ext js,jsx,ts,tsx && stylelint **/*.scss",
+        "test": "cross-env NODE_ENV=test jest",
+        "test:coverage": "npm run test -- --coverage",
+        "test:watch": "npm run test -- --watch",
+        "docs": "documentation build src/** -f html -o docs"
     },
     "repository": {
         "type": "git",
@@ -30,10 +40,13 @@
     },
     "devDependencies": {
         "@babel/core": "^7.2.2",
+        "@babel/node": "^7.2.2",
         "@babel/plugin-proposal-class-properties": "^7.3.0",
         "@babel/plugin-proposal-optional-chaining": "^7.2.0",
         "@babel/preset-env": "^7.3.1",
+        "@babel/preset-react": "^7.0.0",
         "@babel/preset-typescript": "^7.1.0",
+        "@types/acorn": "^4.0.4",
         "@types/autoprefixer": "^9.1.1",
         "@types/axios": "^0.14.0",
         "@types/chalk": "^2.2.0",
@@ -46,21 +59,31 @@
         "@types/html-webpack-plugin": "^3.2.0",
         "@types/jest": "^23.3.13",
         "@types/jest-cli": "^23.6.0",
+        "@types/jsdom": "^12.2.1",
+        "@types/node-sass": "^3.10.32",
         "@types/prettier": "^1.15.2",
         "@types/react": "^16.8.1",
         "@types/react-dom": "^16.0.11",
+        "@types/react-hot-loader": "^4.1.0",
         "@types/react-redux": "^7.0.1",
         "@types/react-router-dom": "^4.3.1",
         "@types/redux": "^3.6.0",
+        "@types/redux-devtools-extension": "^2.13.2",
+        "@types/redux-logger": "^3.0.6",
         "@types/redux-thunk": "^2.1.0",
         "@types/reselect": "^2.2.0",
+        "@types/rimraf": "^2.0.2",
+        "@types/stylelint": "^9.4.1",
         "@types/typescript": "^2.0.0",
         "@types/webpack": "^4.4.24",
+        "@types/webpack-bundle-analyzer": "^2.13.0",
         "@typescript-eslint/eslint-plugin": "^1.2.0",
         "@typescript-eslint/parser": "^1.2.0",
+        "acorn": "^6.0.6",
         "autoprefixer": "^9.4.7",
         "awesome-typescript-loader": "^5.2.1",
         "babel-eslint": "^10.0.1",
+        "babel-jest": "^24.0.0",
         "babel-loader": "^8.0.5",
         "chalk": "^2.4.2",
         "cross-env": "^5.2.0",
@@ -84,14 +107,51 @@
         "husky": "^1.3.1",
         "jest": "^24.0.0",
         "jest-cli": "^24.0.0",
+        "jsdom": "^13.2.0",
+        "node-sass": "^4.11.0",
         "npm-run-all": "^4.1.5",
         "postcss-flexbugs-fixes": "^4.1.0",
+        "postcss-loader": "^3.0.0",
         "prettier": "^1.16.4",
+        "react-hot-loader": "^4.6.5",
+        "redux-devtools-extension": "^2.13.8",
+        "redux-logger": "^3.0.6",
+        "regenerator-runtime": "^0.13.1",
+        "rimraf": "^2.6.3",
+        "sass-loader": "^7.1.0",
+        "style-loader": "^0.23.1",
+        "stylelint": "^9.10.1",
+        "stylelint-config-recommended": "^2.1.0",
         "typescript": "^3.3.1",
-        "webpack": "^4.29.0"
+        "url-loader": "^1.1.2",
+        "webpack": "^4.29.0",
+        "webpack-bundle-analyzer": "^3.0.3",
+        "webpack-cli": "^3.2.1"
     },
     "browserslist": [
         "> .5%",
         "IE 11"
-    ]
+    ],
+    "jest": {
+        "collectCoverageFrom": [
+            "src/**/*{js,jsx,ts,tsx}"
+        ],
+        "coveragePathIgnorePatterns": [
+            "src/index.tsx"
+        ],
+        "setupTestFrameworkScriptFile": "<rootDir>/config/enzymeSetup.js",
+        "moduleNameMapper": {
+            "\\.(jpg|jpeg|png|gif|ico|woff|woff2|svg|ttf|eot)$": "<rootDir>/config/assetsTransformer.js",
+            "^.+\\.(css|scss)$": "<rootDir>/config/assetsTransformer.js"
+        },
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer"
+        ],
+        "testEnvironment": "jsdom"
+    },
+    "husky": {
+        "hooks": {
+            "pre-push": "npm run lint && npm test"
+        }
+    }
 }

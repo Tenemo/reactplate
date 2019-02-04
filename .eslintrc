@@ -25,6 +25,6 @@
     "plugins": ["@typescript-eslint", "react", "prettier", "jsx-a11y", "jsdoc", "jest"],
     "rules": {
         "@typescript-eslint/rule-name": "error",
-        "prettier/prettier": "warning"
+        "prettier/prettier": 1
     }
 }
