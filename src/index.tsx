@@ -1,4 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 
-ReactDOM.render(<div>reactplate</div>, document.getElementById('app'));
+import Root from './Root';
+
+render(<Root />, document.getElementById('app'));

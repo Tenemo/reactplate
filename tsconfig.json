@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
-        "baseUrl": "./src",
-        "outDir": "dist",
+        "baseUrl": "src",
         "target": "es5",
         "module": "esnext",
         "moduleResolution": "node",
