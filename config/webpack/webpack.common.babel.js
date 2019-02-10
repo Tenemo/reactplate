@@ -1,6 +1,9 @@
 import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import postcssFlexbugsFixes from 'postcss-flexbugs-fixes';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+
+import packageJSON from '../../package.json';
 
 export default options => ({
     mode: options.mode || 'production',
@@ -10,13 +13,18 @@ export default options => ({
     target: 'web',
     optimization: options.optimization || {},
     performance: options.performance || {},
-    plugins: options.plugins.contact([
+    plugins: options.plugins.concat([
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
                 PORT: JSON.stringify(process.env.PORT),
                 ANALYZE: JSON.stringify(process.env.ANALYZE),
             },
+        }),
+        new HtmlWebpackPlugin({
+            title: packageJSON.name,
+            template: 'src/index.html',
+            inject: 'true',
         }),
     ]),
     resolve: {
@@ -25,7 +33,7 @@ export default options => ({
     module: {
         rules: [
             {
-                text: /\.(t|j)sx?$/,
+                test: /\.(t|j)sx?$/,
                 exclude: [/node_modules/],
                 use: 'babel-loader',
             },
