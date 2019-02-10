@@ -1,4 +1,4 @@
-import initialState from 'store/intialState';
+import initialState from 'store/initialState';
 
 function actionTypeIsRequestEnd(type) {
     return (
@@ -13,7 +13,8 @@ function actionTypeIsRequest(type) {
 export default function ajaxStatusReducer(state = initialState.requestsInProgress, action) {
     if (actionTypeIsRequest(action.type)) {
         return state + 1;
-    } else if (actionTypeIsRequestEnd(action.type)) {
+    }
+    if (actionTypeIsRequestEnd(action.type)) {
         return state - 1;
     }
     return state;

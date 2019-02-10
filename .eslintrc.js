@@ -1,7 +1,3 @@
-const fs = require('fs');
-
-const prettierOptions = JSON.parse(fs.readFileSync('./.prettierrc', 'utf8'));
-
 module.exports = {
     extends: [
         'eslint:recommended',
@@ -37,8 +33,11 @@ module.exports = {
         render: true,
         mount: true,
     },
-    plugins: ['@typescript-eslint', 'react', 'prettier', 'jsx-a11y', 'jsdoc', 'jest'],
+    plugins: ['import', '@typescript-eslint', 'react', 'prettier', 'jsx-a11y', 'jsdoc', 'jest'],
     settings: {
+        'import/resolver': {
+            typescript: {},
+        },
         react: {
             version: 'detect',
         },
@@ -52,11 +51,21 @@ module.exports = {
         },
     ],
     rules: {
-        'prettier/prettier': [1, prettierOptions],
+        'prettier/prettier': [
+            1,
+            {
+                printWidth: 100,
+                tabWidth: 4,
+                useTabs: false,
+                semi: true,
+                singleQuote: true,
+                trailingComma: 'all',
+            },
+        ],
 
         'no-unused-vars': 1,
 
-        // redundant with no-unused-vars https://github.com/typescript-eslint/typescript-eslint/issues/122
+        // redundant with no-unused-vars on https://github.com/typescript-eslint/typescript-eslint/issues/122
         '@typescript-eslint/no-unused-vars': 0,
 
         'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],

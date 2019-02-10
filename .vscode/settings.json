@@ -4,9 +4,6 @@
     "scss.validate": false,
     "eslint.autoFixOnSave": false,
     "editor.formatOnSave": true,
-    "[javascript]": {
-        "editor.formatOnSave": true
-    },
     "prettier.stylelintIntegration": true,
     "prettier.eslintIntegration": true,
     "files.insertFinalNewline": true,

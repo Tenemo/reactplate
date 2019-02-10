@@ -6,7 +6,7 @@ Opinionated boilerplate for a fully configured quick start.
 -   Jest + Enzyme testing
 -   Hot reload with HMR and react-hot-loader
 -   TypeScript support, parsed by Babel with @babel/preset-typescript
--   ESLint with typescript-eslint, without TSLint
+-   ESLint with @typescript-eslint, without TSLint
 
 ## TODO:
 
