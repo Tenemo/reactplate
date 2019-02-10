@@ -7,7 +7,13 @@ import packageJSON from '../../package.json';
 
 export default commonConfig({
     mode: 'development',
-    entry: ['@babel/polyfill', 'eventsource-polyfill', path.join(process.cwd(), 'src/index')],
+    entry: [
+        '@babel/polyfill',
+        'react',
+        'react-dom',
+        'eventsource-polyfill',
+        path.join(process.cwd(), 'src/index'),
+    ],
     output: {
         filename: '[name].js',
         publicPath: '/',
