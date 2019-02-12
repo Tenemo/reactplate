@@ -1,6 +1,6 @@
 export default {
     app: {
-        theme: 'light', // light, dark
+        theme: 'light',
     },
     requestsInProgress: 0,
 };

@@ -13,8 +13,8 @@ export default commonConfig({
         path.join(process.cwd(), 'src/index'),
     ],
     output: {
-        filename: '[name].js',
-        publicPath: '/',
+        filename: '[name].[hash].js',
+        path: path.resolve(process.cwd(), 'dist'),
     },
     devtool: 'eval-source-map',
     optimization: {
@@ -24,5 +24,5 @@ export default commonConfig({
     performance: {
         hints: false,
     },
-    plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin()],
+    plugins: [new webpack.HotModuleReplacementPlugin()],
 });

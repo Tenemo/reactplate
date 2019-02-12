@@ -15,7 +15,10 @@ export class App extends Component {
     render() {
         return (
             <ThemeProvider theme={theme}>
-                <div>Reactplate</div>
+                <React.Fragment>
+                    <div>Reactplate</div>
+                    <p>Reactplate</p>
+                </React.Fragment>
             </ThemeProvider>
         );
     }
