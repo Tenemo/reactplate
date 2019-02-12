@@ -22,11 +22,11 @@ function configureStoreDev(initialState) {
         initialState,
         composeEnhancers(applyMiddleware(...middleware)),
     );
-    if (module.hot) {
-        module.hot.accept('../reducers', () => {
-            store.replaceReducer(makeRootReducer(history));
-        });
-    }
+    // if (module.hot) {
+    //     module.hot.accept('../reducers', () => {
+    //         store.replaceReducer(makeRootReducer(history));
+    //     });
+    // }
     return store;
 }
 function configureStoreProd(initialState) {

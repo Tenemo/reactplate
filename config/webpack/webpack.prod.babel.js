@@ -1,7 +1,7 @@
 import path from 'path';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-import commonConfig from './webpack.common';
+import commonConfig from './webpack.common.babel';
 import packageJSON from '../../package.json';
 
 export default commonConfig({

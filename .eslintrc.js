@@ -33,7 +33,16 @@ module.exports = {
         render: true,
         mount: true,
     },
-    plugins: ['import', '@typescript-eslint', 'react', 'prettier', 'jsx-a11y', 'jsdoc', 'jest'],
+    plugins: [
+        'import',
+        '@typescript-eslint',
+        'react',
+        'prettier',
+        'jsx-a11y',
+        'jsdoc',
+        'jest',
+        'react-hooks',
+    ],
     settings: {
         'import/resolver': {
             typescript: {},
@@ -71,5 +80,7 @@ module.exports = {
         'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],
 
         'import/no-extraneous-dependencies': [2, { devDependencies: true }],
+
+        'react-hooks/rules-of-hooks': 'error',
     },
 };

@@ -6,6 +6,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import packageJSON from '../../package.json';
 
 export default options => ({
+    devServer: options.devServer || {},
     mode: options.mode || 'production',
     entry: options.entry,
     output: options.output,
@@ -29,6 +30,7 @@ export default options => ({
     ]),
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.scss'],
+        ...options.resolve,
     },
     module: {
         rules: [

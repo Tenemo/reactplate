@@ -2,12 +2,17 @@
     "css.validate": false,
     "less.validate": false,
     "scss.validate": false,
-    "eslint.autoFixOnSave": false,
+    "eslint.autoFixOnSave": true,
     "editor.formatOnSave": true,
     "prettier.stylelintIntegration": true,
     "prettier.eslintIntegration": true,
     "files.insertFinalNewline": true,
     "files.eol": "\n",
     "typescript.tsdk": "node_modules\\typescript\\lib",
-    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ]
 }
