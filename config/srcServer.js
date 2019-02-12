@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 
-import config from './webpack/webpack.dev.babel';
+import config from './webpack/webpack.dev';
 import { chalkProcessing } from './chalkConfig';
 
 const PORT = process.env.PORT || 9000;

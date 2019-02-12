@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import path from 'path';
 
-import commonConfig from './webpack.common.babel';
+import commonConfig from './webpack.common';
 
 export default commonConfig({
     mode: 'development',

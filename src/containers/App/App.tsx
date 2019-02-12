@@ -15,7 +15,7 @@ export class App extends Component {
     render() {
         return (
             <ThemeProvider theme={theme}>
-                <div>Reactplassste</div>
+                <div>Reactplate</div>
             </ThemeProvider>
         );
     }

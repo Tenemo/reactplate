@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import webpack from 'webpack';
-import config from './webpack/webpack.prod.babel';
+import config from './webpack/webpack.prod';
 import { chalkError, chalkSuccess, chalkWarning, chalkProcessing } from './chalkConfig';
 
 console.log(chalkProcessing('Generating production bundle...'));
