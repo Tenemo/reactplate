@@ -16,6 +16,7 @@ Opinionated boilerplate for a fully configured quick start.
 -   check coverage
 -   manifest.json with colors themes and stuff
 -   favicon generated through webpack
+-   ErrorBoundary
 
 ## Ideas:
 

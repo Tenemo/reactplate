@@ -1,4 +1,4 @@
-import initialState from 'store/initialState';
+import initialState from 'store/intialState';
 
 function actionTypeIsRequestEnd(type) {
     return (

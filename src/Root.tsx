@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
 import configureStore, { history } from 'store/configureStore';
-import App from 'containers/App/App.tsx';
+import App from 'containers/App/App';
 
 const store = configureStore();
 const Root = () => (

@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "baseUrl": "src",
+        "baseUrl": "./src/",
         "target": "es5",
         "module": "esnext",
         "moduleResolution": "node",
@@ -13,7 +13,7 @@
         "strict": true,
         "sourceMap": true,
         "jsx": "react",
-        "allowJs": false,
+        "allowJs": true,
         "noEmit": true,
         "esModuleInterop": true,
         "isolatedModules": true,
