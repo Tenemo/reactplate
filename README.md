@@ -20,6 +20,7 @@ Boilerplate for a fully configured quick start.
 -   manifest.json with colors themes and stuff
 -   favicon generated through webpack
 -   add ErrorBoundary
+-   use only grid from antd
 
 ## Ideas:
 

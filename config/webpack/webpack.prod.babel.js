@@ -12,7 +12,7 @@ export default commonConfig({
         sideEffects: true,
         concatenateModules: true,
     },
-    plugins: [...(process.env.ANALYZE && [new BundleAnalyzerPlugin()])],
+    plugins: [...(process.env.ANALYZE && new BundleAnalyzerPlugin())],
     output: {
         filename: `${packageJSON.name}-${packageJSON.version}-[hash].min.js`,
         path: path.join(process.cwd(), 'dist'),

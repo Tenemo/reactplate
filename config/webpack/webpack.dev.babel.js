@@ -22,7 +22,6 @@ export default commonConfig({
     ],
     output: {
         filename: '[name].js',
-        // path: path.resolve(process.cwd(), 'dist'),
         publicPath: `http://localhost:${PORT}/`,
     },
     devtool: 'cheap-module-eval-source-map',
