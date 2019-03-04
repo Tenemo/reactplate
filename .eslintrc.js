@@ -64,7 +64,6 @@ module.exports = {
             1,
             {
                 printWidth: 100,
-                tabWidth: 4,
                 useTabs: false,
                 semi: true,
                 singleQuote: true,
@@ -77,7 +76,12 @@ module.exports = {
         // redundant with no-unused-vars on https://github.com/typescript-eslint/typescript-eslint/issues/122
         '@typescript-eslint/no-unused-vars': 0,
 
-        'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],
+        'react/jsx-filename-extension': [
+            2,
+            {
+                extensions: ['.jsx', '.tsx'],
+            },
+        ],
 
         'import/no-extraneous-dependencies': [2, { devDependencies: true }],
 

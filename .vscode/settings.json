@@ -7,7 +7,6 @@
     "prettier.stylelintIntegration": true,
     "prettier.eslintIntegration": true,
     "files.insertFinalNewline": true,
-    "files.eol": "\n",
     "typescript.tsdk": "node_modules\\typescript\\lib",
     "eslint.validate": [
         "javascript",
