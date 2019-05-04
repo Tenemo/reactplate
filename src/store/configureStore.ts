@@ -2,12 +2,12 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { routerMiddleware } from 'connected-react-router';
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 
 import makeRootReducer from 'reducers';
-import { ENVIRONMENT } from 'constants/appConstants';
+import { BUILD_TYPE } from 'constants/appConstants';
 
-export const history = createHistory();
+export const history = createBrowserHistory();
 const logger = createLogger({
     diff: true,
     collapsed: true,
@@ -22,11 +22,11 @@ function configureStoreDev(initialState) {
         initialState,
         composeEnhancers(applyMiddleware(...middleware)),
     );
-    // if (module.hot) {
-    //     module.hot.accept('../reducers', () => {
-    //         store.replaceReducer(makeRootReducer(history));
-    //     });
-    // }
+    if (module.hot) {
+        module.hot.accept('../reducers', () => {
+            store.replaceReducer(makeRootReducer(history));
+        });
+    }
     return store;
 }
 function configureStoreProd(initialState) {
@@ -38,6 +38,6 @@ function configureStoreProd(initialState) {
         compose(applyMiddleware(...middleware)),
     );
 }
-const configureStore = ENVIRONMENT === 'production' ? configureStoreProd : configureStoreDev;
+const configureStore = BUILD_TYPE === 'production' ? configureStoreProd : configureStoreDev;
 
 export default configureStore;

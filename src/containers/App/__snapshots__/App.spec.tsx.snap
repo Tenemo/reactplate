@@ -4,12 +4,24 @@ exports[`App should match the snapshot 1`] = `
 <ThemeProvider
   theme={
     Object {
-      "main": "black",
+      "primary": "#333",
+      "secondary": "#ccc",
     }
   }
 >
-  <div>
-    Reactplate
-  </div>
+  <styled.div>
+    <Header />
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        path="*"
+      />
+    </Switch>
+  </styled.div>
 </ThemeProvider>
 `;
