@@ -1,6 +1,5 @@
 {
     "css.validate": false,
-    "less.validate": false,
     "scss.validate": false,
     "eslint.autoFixOnSave": true,
     "editor.formatOnSave": true,
