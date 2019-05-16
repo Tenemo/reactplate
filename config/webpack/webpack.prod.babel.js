@@ -6,7 +6,7 @@ import packageJSON from '../../package.json';
 
 export default commonConfig({
     mode: 'production',
-    entry: ['@babel/polyfill', 'react', 'react-dom', path.join(process.cwd(), 'src/index')],
+    entry: ['core-js/stable', 'react', 'react-dom', path.join(process.cwd(), 'src/index')],
     optimization: {
         minimize: true,
         sideEffects: true,

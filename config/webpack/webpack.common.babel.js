@@ -29,7 +29,7 @@ export default options => ({
         }),
     ]),
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.scss'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
         ...options.resolve,
     },
     module: {

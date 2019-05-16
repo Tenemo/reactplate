@@ -3,10 +3,11 @@
     "version": "0.0.1",
     "author": "Piotr Piech <piotr@hadron.design>",
     "license": "UNLICENSED",
-    "description": "Boilerplate | React + Redux + Jest + 🔥 reload | TypeScript parsed with Babel 7 | ESLint + @typescript-eslint",
+    "description": "TypeScript parsed with Babel 7 | React, Redux, Jest & 🔥 reload | ESLint + @typescript-eslint",
     "scripts": {
+        "postinstall": "rimraf ./node_modules/@types/react-native",
         "start": "cross-env NODE_ENV=development npm run open:src",
-        "prebuild": "npm run lint && npm test && tsc && npm run cleanDist",
+        "prebuild": "npm run tsc && npm run lint && npm test && npm run cleanDist",
         "build": "cross-env NODE_ENV=production babel-node config/build",
         "build:analyze": "cross-env NODE_ENV=production ANALYZE=true babel-node config/build",
         "build:quick": "cross-env NODE_ENV=production babel-node config/build",
@@ -15,6 +16,7 @@
         "open:src": "cross-env PORT=3000 webpack-dev-server --hot --config config/webpack/webpack.dev.babel.js",
         "lint": "npm run eslint && npm run stylelint",
         "eslint": "eslint src config --ext js,jsx,ts,tsx",
+        "tsc": "tsc",
         "stylelint": "stylelint **/*.jsx **/*.js **/*.ts **/*.tsx",
         "test": "cross-env NODE_ENV=test jest",
         "test:coverage": "npm run test -- --coverage",
@@ -30,14 +32,15 @@
     },
     "homepage": "https://github.com/Tenemo/reactplate#readme",
     "dependencies": {
-        "@babel/polyfill": "^7.4.4",
         "axios": "^0.18.0",
         "bootstrap": "^4.3.1",
         "connected-react-router": "^6.4.0",
+        "core-js": "^3.0.1",
         "history": "^4.9.0",
         "npm": "^6.9.0",
         "react": "16.8.6",
         "react-dom": "16.8.6",
+        "react-helmet": "^6.0.0-beta",
         "react-redux": "^6.0.1",
         "react-router": "^5.0.0",
         "react-router-dom": "^5.0.0",
@@ -59,6 +62,7 @@
         "@types/axios": "^0.14.0",
         "@types/bootstrap": "^4.3.0",
         "@types/chalk": "^2.2.0",
+        "@types/core-js": "^2.5.0",
         "@types/enzyme": "^3.9.2",
         "@types/enzyme-adapter-react-16": "^1.0.5",
         "@types/enzyme-to-json": "^1.5.3",
@@ -74,6 +78,7 @@
         "@types/prettier": "^1.16.4",
         "@types/react": "^16.8.17",
         "@types/react-dom": "^16.8.4",
+        "@types/react-helmet": "^5.0.8",
         "@types/react-hot-loader": "^4.1.0",
         "@types/react-redux": "^7.0.9",
         "@types/react-router": "^5.0.0",
@@ -88,6 +93,7 @@
         "@types/stylelint": "^9.10.0",
         "@types/typescript": "^2.0.0",
         "@types/webpack": "^4.4.31",
+        "@types/webpack-bundle-analyzer": "^2.13.1",
         "@types/webpack-dev-server": "^3.1.5",
         "@typescript-eslint/eslint-plugin": "^1.9.0",
         "@typescript-eslint/parser": "^1.9.0",
@@ -173,7 +179,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-push": "npm run lint && tsc && npm test"
+            "pre-push": "npm run tsc && npm run lint && npm test"
         }
     }
 }

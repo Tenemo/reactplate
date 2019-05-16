@@ -17,7 +17,7 @@ export default commonConfig({
     },
     mode: 'development',
     entry: [
-        '@babel/polyfill',
+        'core-js/stable',
         'react',
         'react-dom',
         'eventsource-polyfill',
