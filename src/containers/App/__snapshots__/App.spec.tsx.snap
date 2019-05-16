@@ -4,12 +4,13 @@ exports[`App should match the snapshot 1`] = `
 <ThemeProvider
   theme={
     Object {
-      "primary": "#333",
-      "secondary": "#ccc",
+      "primary": "#222",
+      "secondary": "#CCC",
     }
   }
 >
   <styled.div>
+    <GlobalStyleComponent />
     <Header />
     <Switch>
       <Route
