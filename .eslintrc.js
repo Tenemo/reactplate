@@ -12,11 +12,12 @@ module.exports = {
         'prettier',
         'prettier/@typescript-eslint',
         'prettier/react',
+        'plugin:prettier/recommended',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         project: './tsconfig.json',
-        ecmaVersion: 6,
+        ecmaVersion: 2018,
         sourceType: 'module',
         ecmaFeatures: {
             jsx: true,
@@ -71,10 +72,8 @@ module.exports = {
             },
         ],
 
-        'no-unused-vars': 1,
-
-        // redundant with no-unused-vars on https://github.com/typescript-eslint/typescript-eslint/issues/122
-        '@typescript-eslint/no-unused-vars': 0,
+        // @typescript-eslint/no-unused-vars replaces this rule
+        'no-unused-vars': 'off',
 
         'react/jsx-filename-extension': [
             2,
@@ -82,9 +81,10 @@ module.exports = {
                 extensions: ['.jsx', '.tsx'],
             },
         ],
+        'react/prop-types': 'off',
+        'react-hooks/rules-of-hooks': 'error',
+        'react/prefer-stateless-function': 'off',
 
         'import/no-extraneous-dependencies': [2, { devDependencies: true }],
-
-        'react-hooks/rules-of-hooks': 'error',
     },
 };

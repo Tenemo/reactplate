@@ -7,8 +7,6 @@ class HomePage extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {};
-}
+const mapStateToProps = state => {};
 
 export default connect(mapStateToProps)(HomePage);

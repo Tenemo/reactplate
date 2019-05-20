@@ -1,7 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Header extends Component {
-    render() {
-        return <div>Header</div>;
-    }
-}
+// interface HeaderProps {
+//     title: string;
+// }
+
+export const Header: React.FunctionComponent = ({ title }): JSX.Element => (
+    <div>Header {title}</div>
+);
+
+export default Header;

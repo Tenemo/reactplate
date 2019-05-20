@@ -1,0 +1,10 @@
+export const LIST_ADD_ITEM = 'LIST_ADD_ITEM';
+export type LIST_ADD_ITEM = typeof LIST_ADD_ITEM;
+
+export const LIST_REMOVE_ITEM = 'LIST_REMOVE_ITEM';
+export type LIST_REMOVE_ITEM = typeof LIST_REMOVE_ITEM;
+
+export const APP_CHANGE_THEME = 'APP_CHANGE_THEME';
+export type APP_CHANGE_THEME = typeof APP_CHANGE_THEME;
+
+export type ActionType = LIST_ADD_ITEM | LIST_REMOVE_ITEM | APP_CHANGE_THEME;

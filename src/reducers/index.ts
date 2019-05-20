@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 
-import requestsStatusReducer from 'reducers/requestsStatusReducer';
+import appReducer from 'reducers/appReducer';
+import listReducer from 'reducers/listReducer';
 
 export default history =>
     combineReducers({
         router: connectRouter(history),
-        requestsInProgress: requestsStatusReducer,
+        app: appReducer,
+        list: listReducer,
     });

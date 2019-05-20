@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import 'vendor.scss';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-import { hot } from 'react-hot-loader/root';
 
 import NotFound from 'components/NotFound';
 import Header from 'components/Header';
@@ -16,13 +13,13 @@ import RobotoMonoRegularTtf from 'fonts/RobotoMono-Regular.ttf';
 import RobotoMonoRegularSvg from 'fonts/RobotoMono-Regular.svg';
 
 const theme = {
-    primary: '#222',
-    secondary: '#CCC',
+    dark: { primary: '#222', secondary: '#CCC' },
+    light: { primary: '#CCC', secondary: '#222' },
 };
 const GlobalStyle = createGlobalStyle`
     html,
     body,
-    #app {
+    #root {
         height: 100%;
     }
 `;
@@ -36,16 +33,15 @@ const AppContainer = styled.div`
             url(${RobotoMonoRegularSvg}) format('svg');
     }
     font-family: 'Roboto Mono', 'Courier New', 'Courier', monospace;
-    height: 100%;
     padding: 10px 15px;
-    color: ${props => props.theme.secondary};
-    background-color: ${props => props.theme.primary};
+    height: 100%;
+    color: ${(props): string => props.theme.secondary};
+    background-color: ${(props): string => props.theme.primary};
 `;
-
 export class App extends Component {
-    render() {
+    public render(): JSX.Element {
         return (
-            <ThemeProvider theme={theme}>
+            <ThemeProvider theme={theme.dark}>
                 <AppContainer>
                     <GlobalStyle />
                     <Header />
@@ -59,4 +55,4 @@ export class App extends Component {
     }
 }
 
-export default hot(App);
+export default App;
