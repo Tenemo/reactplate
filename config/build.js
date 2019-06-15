@@ -21,4 +21,5 @@ webpack(config).run((error, stats) => {
     console.log(`Webpack stats: ${stats}`);
     console.log();
     console.log(chalkSuccess('App successfully compiled in production mode'));
+    return 0;
 });

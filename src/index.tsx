@@ -4,7 +4,6 @@ import Root from './Root';
 
 render(<Root />, document.getElementById('root'));
 
-declare const module: any;
 if (module.hot) {
-    module.hot.accept('./Root', () => render(<Root />, document.getElementById('root')));
+    module.hot.accept('./Root', (): void => render(<Root />, document.getElementById('root')));
 }

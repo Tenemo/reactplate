@@ -5,7 +5,7 @@ import { routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import makeRootReducer from 'reducers';
+import { makeRootReducer } from 'reducers';
 import { BUILD_TYPE } from 'constants/appConstants';
 import { ApplicationStore } from 'store';
 

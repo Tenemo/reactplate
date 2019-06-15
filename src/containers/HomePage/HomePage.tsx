@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 class HomePage extends Component {
-    render() {
+    public render(): JSX.Element {
         return <div>HomePage</div>;
     }
 }
 
-const mapStateToProps = state => {};
-
-export default connect(mapStateToProps)(HomePage);
+export default HomePage;

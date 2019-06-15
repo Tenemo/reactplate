@@ -1,9 +1,7 @@
 import * as types from 'constants/actionTypes';
 import { Action, ListStore } from 'store';
 
-export const initialState: ListStore = {
-    list: [],
-};
+export const initialState = [];
 
 const listReducer = (state: ListStore = initialState, action: Action): ListStore => {
     switch (action.type) {

@@ -47,7 +47,7 @@ export class App extends Component {
                     <Header />
                     <Switch>
                         <Route exact path="/" component={HomePage} />
-                        <Route path="*" component={NotFound} />
+                        <Route component={NotFound} />
                     </Switch>
                 </AppContainer>
             </ThemeProvider>

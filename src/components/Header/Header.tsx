@@ -1,11 +1,5 @@
 import React from 'react';
 
-// interface HeaderProps {
-//     title: string;
-// }
-
-export const Header: React.FunctionComponent = ({ title }): JSX.Element => (
-    <div>Header {title}</div>
-);
+const Header: React.FunctionComponent = (): JSX.Element => <div>Header</div>;
 
 export default Header;

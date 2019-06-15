@@ -1,8 +1,8 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
-const NotFound: React.FunctionComponent<RouteComponentProps> = ({ match }): JSX.Element => {
-    return <div>Path &quot;{match.params[0]}&quot; not found.</div>;
-};
+const NotFound: React.FunctionComponent<RouteComponentProps> = (): JSX.Element => (
+    <div>Path &quot;{window.location.href}&quot; not found.</div>
+);
 
 export default NotFound;
