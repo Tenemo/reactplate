@@ -4,25 +4,17 @@
     "prettier.stylelintIntegration": true,
     "prettier.eslintIntegration": true,
     "files.insertFinalNewline": true,
+    "files.eol": "\n",
+    "files.autoSave": "off",
     "typescript.tsdk": "node_modules\\typescript\\lib",
-    "eslint.autoFixOnSave": true,
+    "javascript.updateImportsOnFileMove.enabled": "prompt",
+    "eslint.autoFixOnSave": false,
+    "editor.formatOnSave": true,
+    "cSpell.ignorePaths": ["node_modules", ".git"],
     "eslint.validate": [
         "javascript",
         "javascriptreact",
-        { "language": "typescript", "autoFix": true },
-        { "language": "typescriptreact", "autoFix": true }
-    ],
-    "editor.formatOnSave": true,
-    "[javascript]": {
-        "editor.formatOnSave": false
-    },
-    "[javascriptreact]": {
-        "editor.formatOnSave": false
-    },
-    "[typescript]": {
-        "editor.formatOnSave": false
-    },
-    "[typescriptreact]": {
-        "editor.formatOnSave": false
-    }
+        "typescript",
+        "typescriptreact"
+    ]
 }

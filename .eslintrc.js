@@ -6,7 +6,6 @@ module.exports = {
         'plugin:import/react',
         'plugin:react/recommended',
         'plugin:jest/recommended',
-        'plugin:jsdoc/recommended',
         'plugin:jsx-a11y/recommended',
         'airbnb',
         'prettier',
@@ -37,12 +36,12 @@ module.exports = {
     plugins: [
         'import',
         '@typescript-eslint',
+        'html',
         'react',
         'jsx-a11y',
-        'jsdoc',
         'jest',
         'react-hooks',
-        'prettier'
+        'prettier',
     ],
     settings: {
         'import/resolver': {
