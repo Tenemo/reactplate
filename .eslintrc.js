@@ -38,11 +38,11 @@ module.exports = {
         'import',
         '@typescript-eslint',
         'react',
-        'prettier',
         'jsx-a11y',
         'jsdoc',
         'jest',
         'react-hooks',
+        'prettier'
     ],
     settings: {
         'import/resolver': {

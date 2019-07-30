@@ -1,7 +1,6 @@
 {
     "css.validate": false,
     "scss.validate": false,
-    "editor.formatOnSave": true,
     "prettier.stylelintIntegration": true,
     "prettier.eslintIntegration": true,
     "files.insertFinalNewline": true,
@@ -13,6 +12,7 @@
         { "language": "typescript", "autoFix": true },
         { "language": "typescriptreact", "autoFix": true }
     ],
+    "editor.formatOnSave": true,
     "[javascript]": {
         "editor.formatOnSave": false
     },

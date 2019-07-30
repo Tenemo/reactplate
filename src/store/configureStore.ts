@@ -24,12 +24,9 @@ const configureStoreDev = (initialState?: ApplicationStore): Store<ApplicationSt
         composeWithDevTools(applyMiddleware(...middleware)),
     );
     if (module.hot) {
-        module.hot.accept(
-            '../reducers',
-            (): void => {
-                store.replaceReducer(makeRootReducer(history));
-            },
-        );
+        module.hot.accept('../reducers', (): void => {
+            store.replaceReducer(makeRootReducer(history));
+        });
     }
     return store;
 };
