@@ -4,6 +4,14 @@
     "author": "Piotr Piech <piotr@hadron.design>",
     "license": "MIT",
     "description": "TypeScript parsed with Babel 7 | React, Redux, Jest & 🔥 reload | ESLint + @typescript-eslint",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Tenemo/reactplate.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Tenemo/reactplate/issues"
+    },
+    "homepage": "https://github.com/Tenemo/reactplate#readme",
     "scripts": {
         "postinstall": "rimraf ./node_modules/@types/react-native",
         "start": "cross-env NODE_ENV=development npm run open:src",
@@ -22,15 +30,11 @@
         "test:coverage": "npm run test -- --coverage",
         "test:watch": "npm run test -- --watch"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Tenemo/reactplate.git"
+    "engines": {
+        "node": ">=9"
     },
-    "bugs": {
-        "url": "https://github.com/Tenemo/reactplate/issues"
-    },
-    "homepage": "https://github.com/Tenemo/reactplate#readme",
     "dependencies": {
+        "@types/node": "^12.6.8",
         "axios": "^0.19.0",
         "bootstrap": "^4.3.1",
         "connected-react-router": "^6.5.2",
@@ -74,6 +78,7 @@
         "@types/jsdom": "^12.2.4",
         "@types/node-sass": "^4.11.0",
         "@types/npm": "^2.0.30",
+        "@types/prettier": "^1.18.0",
         "@types/react": "^16.8.23",
         "@types/react-dom": "^16.8.5",
         "@types/react-helmet": "^5.0.8",
@@ -129,6 +134,8 @@
         "node-sass": "^4.12.0",
         "postcss-flexbugs-fixes": "^4.1.0",
         "postcss-loader": "^3.0.0",
+        "prettier": "^1.18.2",
+        "prettier-eslint": "^9.0.0",
         "prettier-stylelint": "^0.4.2",
         "react-hot-loader": "^4.12.10",
         "redux-devtools-extension": "^2.13.8",
@@ -156,10 +163,10 @@
     ],
     "jest": {
         "collectCoverageFrom": [
-            "src/**/*{js,jsx,ts,tsx}"
+            "<rootDir>/src/**/*{js,jsx,ts,tsx}"
         ],
         "coveragePathIgnorePatterns": [
-            "src/index.tsx"
+            "<rootDir>/src/index.tsx"
         ],
         "setupFilesAfterEnv": [
             "<rootDir>/config/enzymeSetup.js"

@@ -23,7 +23,6 @@ const GlobalStyle = createGlobalStyle`
         height: 100%;
     }
 `;
-
 const AppContainer = styled.div`
     @font-face {
         font-family: 'Roboto Mono';
@@ -38,6 +37,7 @@ const AppContainer = styled.div`
     color: ${(props): string => props.theme.secondary};
     background-color: ${(props): string => props.theme.primary};
 `;
+
 export class App extends Component {
     public render(): JSX.Element {
         return (

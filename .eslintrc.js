@@ -28,11 +28,7 @@ module.exports = {
         jest: true,
         node: true,
     },
-    globals: {
-        shallow: true,
-        render: true,
-        mount: true,
-    },
+    globals: { shallow: true, render: true, mount: true },
     plugins: [
         'import',
         '@typescript-eslint',
@@ -85,5 +81,6 @@ module.exports = {
         'react/prefer-stateless-function': 'off',
 
         'import/no-extraneous-dependencies': [2, { devDependencies: true }],
+        'import/prefer-default-export': 'off',
     },
 };

@@ -19,7 +19,8 @@ module.exports = {
         '@babel/plugin-proposal-class-properties',
         '@babel/plugin-proposal-optional-chaining',
         [
-            'module-resolver',            {
+            'module-resolver',
+            {
                 extensions,
                 root: [baseUrl],
             },
