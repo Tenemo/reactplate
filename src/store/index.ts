@@ -10,6 +10,6 @@ export interface AppStore {
     readonly requestsInProgress: number;
 }
 export interface ApplicationStore {
-    app: AppStore;
-    list: ListStore;
+    readonly app: AppStore;
+    readonly list: ListStore;
 }
