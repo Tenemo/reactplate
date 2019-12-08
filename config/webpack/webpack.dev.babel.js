@@ -9,25 +9,25 @@ export default commonConfig({
         historyApiFallback: {
             disableDotRule: true,
         },
-        stats: 'errors-only',
+        stats: `errors-only`,
         port: PORT,
         headers: {
-            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': `*`,
         },
     },
-    mode: 'development',
+    mode: `development`,
     entry: [
-        'core-js/stable',
-        'react',
-        'react-dom',
-        'eventsource-polyfill',
-        path.join(process.cwd(), 'src/index'),
+        `core-js/stable`,
+        `react`,
+        `react-dom`,
+        `eventsource-polyfill`,
+        path.join(process.cwd(), `src/index`),
     ],
     output: {
-        filename: '[name].js',
+        filename: `[name].js`,
         publicPath: `http://localhost:${PORT}/`,
     },
-    devtool: 'cheap-module-eval-source-map',
+    devtool: `cheap-module-eval-source-map`,
     optimization: {
         minimize: false,
         noEmitOnErrors: true,
@@ -37,7 +37,7 @@ export default commonConfig({
     },
     resolve: {
         alias: {
-            'react-dom': '@hot-loader/react-dom',
+            'react-dom': `@hot-loader/react-dom`,
         },
     },
     plugins: [],

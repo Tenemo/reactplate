@@ -3,7 +3,10 @@ import { Action, ListStore } from 'store';
 
 export const initialState = [];
 
-const listReducer = (state: ListStore = initialState, action: Action): ListStore => {
+const listReducer = (
+    state: ListStore = initialState,
+    action: Action,
+): ListStore => {
     switch (action.type) {
         case types.LIST_ADD_ITEM:
             return state;

@@ -7,11 +7,11 @@ import packageJSON from '../../package.json';
 
 export default options => ({
     devServer: options.devServer || {},
-    mode: options.mode || 'production',
+    mode: options.mode || `production`,
     entry: options.entry,
     output: options.output,
     devtool: options.devtool || false,
-    target: 'web',
+    target: `web`,
     optimization: options.optimization || {},
     performance: options.performance || {},
     plugins: options.plugins.concat([
@@ -24,12 +24,12 @@ export default options => ({
         }),
         new HtmlWebpackPlugin({
             title: packageJSON.name,
-            template: 'src/index.html',
-            inject: 'true',
+            template: `src/index.html`,
+            inject: `true`,
         }),
     ]),
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        extensions: [`.ts`, `.tsx`, `.js`, `.jsx`],
         ...options.resolve,
     },
     module: {
@@ -37,27 +37,27 @@ export default options => ({
             {
                 test: /\.(t|j)sx?$/,
                 exclude: [/node_modules/],
-                use: 'babel-loader',
+                use: `babel-loader`,
             },
             {
                 test: /(\.css|\.scss|\.sass)$/,
                 use: [
-                    'style-loader',
+                    `style-loader`,
                     {
-                        loader: 'css-loader',
+                        loader: `css-loader`,
                         options: {
                             sourceMap: true,
                         },
                     },
                     {
-                        loader: 'postcss-loader',
+                        loader: `postcss-loader`,
                         options: {
                             plugins: () => [postcssFlexbugsFixes, autoprefixer],
                             sourceMap: true,
                         },
                     },
                     {
-                        loader: 'sass-loader',
+                        loader: `sass-loader`,
                         options: {
                             sourceMap: true,
                         },
@@ -68,11 +68,11 @@ export default options => ({
                 test: /\.(woff|woff2|svg|ttf|eot)$/,
                 use: [
                     {
-                        loader: 'url-loader',
+                        loader: `url-loader`,
                         options: {
                             limit: 8192,
-                            name: '[name]-[hash].[ext]',
-                            outputPath: 'fonts/',
+                            name: `[name]-[hash].[ext]`,
+                            outputPath: `fonts/`,
                         },
                     },
                 ],
@@ -81,11 +81,11 @@ export default options => ({
                 test: /\.(jpe?g|png|gif|ico)$/,
                 use: [
                     {
-                        loader: 'url-loader',
+                        loader: `url-loader`,
                         options: {
                             limit: 8192,
-                            name: '[name]-[hash].[ext]',
-                            outputPath: 'images/',
+                            name: `[name]-[hash].[ext]`,
+                            outputPath: `images/`,
                         },
                     },
                 ],

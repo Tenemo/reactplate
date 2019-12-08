@@ -13,3 +13,4 @@ coverage/
 # Miscellaneous
 .DS_Store
 temp/
+*sandbox.*

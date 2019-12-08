@@ -4,7 +4,7 @@
         "asvetliakov.snapshot-tools",
         "christian-kohler.npm-intellisense",
         "christian-kohler.path-intellisense",
-        "CoenraadS.bracket-pair-colorizer",
+        "CoenraadS.bracket-pair-colorizer-2",
         "dbaeumer.vscode-eslint",
         "eamodio.gitlens",
         "EditorConfig.EditorConfig",
@@ -15,7 +15,7 @@
         "jvitor83.types-autoinstaller",
         "msjsdiag.debugger-for-chrome",
         "vscode-icons-team.vscode-icons",
-        "shinnn.stylelint",
+        "thibaudcolas.stylelint",
         "streetsidesoftware.code-spell-checker",
         "xabikos.ReactSnippets"
     ]

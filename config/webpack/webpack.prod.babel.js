@@ -5,8 +5,13 @@ import commonConfig from './webpack.common.babel';
 import packageJSON from '../../package.json';
 
 export default commonConfig({
-    mode: 'production',
-    entry: ['core-js/stable', 'react', 'react-dom', path.join(process.cwd(), 'src/index')],
+    mode: `production`,
+    entry: [
+        `core-js/stable`,
+        `react`,
+        `react-dom`,
+        path.join(process.cwd(), `src/index`),
+    ],
     optimization: {
         minimize: true,
         sideEffects: true,
@@ -15,6 +20,6 @@ export default commonConfig({
     plugins: [...(process.env.ANALYZE && new BundleAnalyzerPlugin())],
     output: {
         filename: `${packageJSON.name}-${packageJSON.version}-[hash].min.js`,
-        path: path.join(process.cwd(), 'dist'),
+        path: path.join(process.cwd(), `dist`),
     },
 });

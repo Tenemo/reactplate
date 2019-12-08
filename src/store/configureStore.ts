@@ -14,7 +14,9 @@ const logger = createLogger({
     diff: true,
     collapsed: true,
 });
-const configureStoreDev = (initialState?: ApplicationStore): Store<ApplicationStore> => {
+const configureStoreDev = (
+    initialState?: ApplicationStore,
+): Store<ApplicationStore> => {
     const reactRouterMiddleware = routerMiddleware(history);
     const middleware = [thunk, logger, reactRouterMiddleware];
     /* eslint-disable-next-line no-underscore-dangle */
@@ -24,13 +26,15 @@ const configureStoreDev = (initialState?: ApplicationStore): Store<ApplicationSt
         composeWithDevTools(applyMiddleware(...middleware)),
     );
     if (module.hot) {
-        module.hot.accept('../reducers', (): void => {
+        module.hot.accept(`../reducers`, (): void => {
             store.replaceReducer(makeRootReducer(history));
         });
     }
     return store;
 };
-const configureStoreProd = (initialState?: ApplicationStore): Store<ApplicationStore> => {
+const configureStoreProd = (
+    initialState?: ApplicationStore,
+): Store<ApplicationStore> => {
     const reactRouterMiddleware = routerMiddleware(history);
     const middleware = [thunk, reactRouterMiddleware];
     return createStore(
@@ -39,6 +43,7 @@ const configureStoreProd = (initialState?: ApplicationStore): Store<ApplicationS
         compose(applyMiddleware(...middleware)),
     );
 };
-const configureStore = BUILD_TYPE === 'production' ? configureStoreProd : configureStoreDev;
+const configureStore =
+    BUILD_TYPE === `production` ? configureStoreProd : configureStoreDev;
 
 export default configureStore;

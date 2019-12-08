@@ -56,13 +56,14 @@ module.exports = {
         },
     ],
     rules: {
+        quotes: ['error', 'backtick'],
         'prettier/prettier': [
-            1,
+            'error',
             {
-                printWidth: 100,
                 useTabs: false,
                 semi: true,
                 singleQuote: true,
+                jsxSingleQuote: false,
                 trailingComma: 'all',
             },
         ],
@@ -71,16 +72,41 @@ module.exports = {
         'no-unused-vars': 'off',
 
         'react/jsx-filename-extension': [
-            2,
+            'error',
             {
                 extensions: ['.jsx', '.tsx'],
             },
         ],
+        'react/jsx-sort-props': 'error',
         'react/prop-types': 'off',
         'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'error',
         'react/prefer-stateless-function': 'off',
-
-        'import/no-extraneous-dependencies': [2, { devDependencies: true }],
+        'import/no-extraneous-dependencies': [
+            'error',
+            { devDependencies: true },
+        ],
         'import/prefer-default-export': 'off',
+        '@typescript-eslint/explicit-function-return-type': [
+            'warn',
+            {
+                allowExpressions: true,
+                allowTypedFunctionExpressions: true,
+            },
+        ],
     },
+    overrides: [
+        {
+            files: ['*.ts', '*.tsx'],
+            rules: {
+                '@typescript-eslint/explicit-function-return-type': [
+                    'warn',
+                    {
+                        allowExpressions: true,
+                        allowTypedFunctionExpressions: true,
+                    },
+                ],
+            },
+        },
+    ],
 };

@@ -19,6 +19,6 @@
         "esModuleInterop": true,
         "isolatedModules": true
     },
-    "include": ["src/**/*.ts", "src/**/*.tsx"],
-    "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.snap"]
+    "include": ["src/**/*", "config/**/*"],
+    "exclude": ["**/*.snap"]
 }

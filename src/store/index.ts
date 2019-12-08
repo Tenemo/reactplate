@@ -3,7 +3,7 @@ import { ListAction } from 'actions/listActions';
 
 export type Action = AppAction | ListAction;
 
-export type AppTheme = 'dark' | 'light';
+export type AppTheme = `dark` | `light`;
 export type ListStore = string[];
 export interface AppStore {
     readonly theme: AppTheme;

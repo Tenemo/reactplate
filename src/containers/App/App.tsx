@@ -13,14 +13,15 @@ import RobotoMonoRegularTtf from 'fonts/RobotoMono-Regular.ttf';
 import RobotoMonoRegularSvg from 'fonts/RobotoMono-Regular.svg';
 
 const theme = {
-    dark: { primary: '#222', secondary: '#CCC' },
-    light: { primary: '#CCC', secondary: '#222' },
+    dark: { primary: `#222`, secondary: `#CCC` },
+    light: { primary: `#CCC`, secondary: `#222` },
 };
 const GlobalStyle = createGlobalStyle`
     html,
     body,
     #root {
         height: 100%;
+        font-size: 16px;
     }
 `;
 const AppContainer = styled.div`
@@ -36,6 +37,8 @@ const AppContainer = styled.div`
     height: 100%;
     color: ${(props): string => props.theme.secondary};
     background-color: ${(props): string => props.theme.primary};
+    display: flex;
+    flex-direction: column;
 `;
 
 export class App extends Component {
