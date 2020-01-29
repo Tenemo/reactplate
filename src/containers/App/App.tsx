@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import 'vendor.scss';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-
-import NotFound from 'components/NotFound';
-import Header from 'components/Header';
-import HomePage from 'containers/HomePage';
+import 'normalize.css';
 
 import RobotoMonoRegularWoff2 from 'fonts/RobotoMono-Regular.woff2';
 import RobotoMonoRegularWoff from 'fonts/RobotoMono-Regular.woff';
 import RobotoMonoRegularTtf from 'fonts/RobotoMono-Regular.ttf';
 import RobotoMonoRegularSvg from 'fonts/RobotoMono-Regular.svg';
 
+import NotFound from 'components/NotFound';
+import Header from 'components/Header';
+import HomePage from 'containers/HomePage';
+
 const theme = {
-    dark: { primary: `#222`, secondary: `#CCC` },
-    light: { primary: `#CCC`, secondary: `#222` },
+    dark: { primary: `#111`, secondary: `#CCC` },
+    light: { primary: `#CCC`, secondary: `#111` },
 };
 const GlobalStyle = createGlobalStyle`
     html,
@@ -22,6 +22,10 @@ const GlobalStyle = createGlobalStyle`
     #root {
         height: 100%;
         font-size: 16px;
+        box-sizing: border-box;
+    }
+    *, *:before, *:after {
+        box-sizing: inherit;
     }
 `;
 const AppContainer = styled.div`
@@ -49,7 +53,7 @@ export class App extends Component {
                     <GlobalStyle />
                     <Header />
                     <Switch>
-                        <Route exact path="/" component={HomePage} />
+                        <Route component={HomePage} exact path="/" />
                         <Route component={NotFound} />
                     </Switch>
                 </AppContainer>
