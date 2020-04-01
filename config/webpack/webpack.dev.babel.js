@@ -1,14 +1,13 @@
 import path from 'path';
+import merge from 'webpack-merge';
 
 import commonConfig from './webpack.common.babel';
 
 const PORT = process.env.PORT || 3000;
 
-export default commonConfig({
+export default merge.smart(commonConfig, {
     devServer: {
-        historyApiFallback: {
-            disableDotRule: true,
-        },
+        historyApiFallback: true,
         stats: `errors-only`,
         port: PORT,
         headers: {

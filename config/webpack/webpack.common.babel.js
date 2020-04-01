@@ -5,16 +5,9 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 import packageJSON from '../../package.json';
 
-export default options => ({
-    devServer: options.devServer || {},
-    mode: options.mode || `production`,
-    entry: options.entry,
-    output: options.output,
-    devtool: options.devtool || false,
+export default {
     target: `web`,
-    optimization: options.optimization || {},
-    performance: options.performance || {},
-    plugins: options.plugins.concat([
+    plugins: [
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
@@ -27,10 +20,9 @@ export default options => ({
             template: `src/index.html`,
             inject: `true`,
         }),
-    ]),
+    ],
     resolve: {
         extensions: [`.ts`, `.tsx`, `.js`, `.jsx`],
-        ...options.resolve,
     },
     module: {
         rules: [
@@ -92,4 +84,4 @@ export default options => ({
             },
         ],
     },
-});
+};

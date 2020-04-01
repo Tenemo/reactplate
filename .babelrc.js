@@ -1,7 +1,9 @@
 const fs = require('fs');
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
-const { baseUrl } = JSON.parse(fs.readFileSync('./tsconfig.json', 'utf8')).compilerOptions;
+const { baseUrl } = JSON.parse(
+    fs.readFileSync('./tsconfig.json', 'utf8'),
+).compilerOptions;
 
 module.exports = {
     presets: [
@@ -12,12 +14,16 @@ module.exports = {
                 corejs: 3,
             },
         ],
-        '@babel/preset-react',
+        [
+            '@babel/preset-react',
+            {
+                development: process.env.NODE_ENV === 'development',
+            },
+        ],
         '@babel/preset-typescript',
     ],
     plugins: [
         '@babel/plugin-proposal-class-properties',
-        '@babel/plugin-proposal-optional-chaining',
         [
             'module-resolver',
             {

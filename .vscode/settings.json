@@ -9,7 +9,6 @@
         "typescript",
         "typescriptreact"
     ],
-    "editor.codeActionsOnSaveTimeout": 3000,
     "files.insertFinalNewline": true,
     "files.eol": "\n",
     "files.autoSave": "off",
@@ -18,5 +17,8 @@
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
     "cSpell.ignorePaths": ["node_modules", ".git"],
-    "cSpell.words": ["esbenp"]
+    "cSpell.words": [
+        "esbenp",
+        "sourcemap"
+    ]
 }

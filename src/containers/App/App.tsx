@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import 'normalize.css';
+import { Helmet } from 'react-helmet-async';
 
 import RobotoMonoRegularWoff2 from 'fonts/RobotoMono-Regular.woff2';
 import RobotoMonoRegularWoff from 'fonts/RobotoMono-Regular.woff';
@@ -25,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
     *, *:before, *:after {
-        box-sizing: inherit;
+        box-sizing: border-box;
     }
 `;
 const AppContainer = styled.div`
@@ -49,8 +50,11 @@ export class App extends Component {
     public render(): JSX.Element {
         return (
             <ThemeProvider theme={theme.dark}>
+                <GlobalStyle />
+                <Helmet>
+                    <title>Reactplate</title>
+                </Helmet>
                 <AppContainer>
-                    <GlobalStyle />
                     <Header />
                     <Switch>
                         <Route component={HomePage} exact path="/" />

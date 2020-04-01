@@ -21,6 +21,7 @@ Boilerplate for a fully configured quick start.
 -   favicon generated through webpack
 -   add ErrorBoundary
 -   use only grid from antd
+-   https://babeljs.io/docs/en/babel-preset-react
 
 ## Ideas:
 

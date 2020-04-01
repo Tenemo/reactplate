@@ -7,7 +7,7 @@ render(<Root />, document.getElementById(`root`));
 if (module.hot) {
     module.hot.accept(`./Root`, (): void =>
         render(
-            <Root prop={{ property: {} }} anotherProp={{}} />,
+            <Root anotherProp={{}} prop={{ property: {} }} />,
             document.getElementById(`root`),
         ),
     );
