@@ -2,33 +2,18 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:import/recommended',
-        'plugin:import/react',
+        'plugin:import/errors',
+        'plugin:import/warnings',
+        'plugin:import/typescript',
         'plugin:react/recommended',
         'plugin:jest/recommended',
         'plugin:jsx-a11y/recommended',
         'airbnb',
         'prettier',
-        'prettier/@typescript-eslint',
         'prettier/react',
+        'prettier/@typescript-eslint',
         'plugin:prettier/recommended',
     ],
-    parser: '@typescript-eslint/parser',
-    parserOptions: {
-        project: './tsconfig.json',
-        ecmaVersion: 2018,
-        sourceType: 'module',
-        ecmaFeatures: {
-            jsx: true,
-        },
-    },
-    env: {
-        browser: true,
-        es6: true,
-        jest: true,
-        node: true,
-    },
-    globals: { shallow: true, render: true, mount: true },
     plugins: [
         'import',
         '@typescript-eslint',
@@ -39,6 +24,24 @@ module.exports = {
         'react-hooks',
         'prettier',
     ],
+    parser: '@typescript-eslint/parser',
+    parserOptions: {
+        project: './tsconfig.json',
+        ecmaFeatures: {
+            jsx: true,
+        },
+    },
+    env: {
+        browser: true,
+        es6: true,
+        jest: true,
+        node: true,
+    },
+    globals: {
+        shallow: true,
+        render: true,
+        mount: true,
+    },
     settings: {
         'import/resolver': {
             typescript: {},
@@ -65,12 +68,16 @@ module.exports = {
                 singleQuote: true,
                 jsxSingleQuote: false,
                 trailingComma: 'all',
+                arrowParens: 'avoid',
             },
         ],
-
         // @typescript-eslint/no-unused-vars replaces this rule
         'no-unused-vars': 'off',
+        'arrow-parens': ['error', 'as-needed', { requireForBlockBody: false }],
 
+        'react/prop-types': 'off',
+        'react/prefer-stateless-function': 'off',
+        'react/destructuring-assignment': ['error', 'always'],
         'react/jsx-filename-extension': [
             'error',
             {
@@ -78,15 +85,21 @@ module.exports = {
             },
         ],
         'react/jsx-sort-props': 'error',
-        'react/prop-types': 'off',
+        'react/jsx-props-no-spreading': 'off',
+        'react/jsx-one-expression-per-line': [
+            'error',
+            { allow: 'single-child' },
+        ],
+
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
-        'react/prefer-stateless-function': 'off',
+
         'import/no-extraneous-dependencies': [
             'error',
             { devDependencies: true },
         ],
         'import/prefer-default-export': 'off',
+
         '@typescript-eslint/explicit-function-return-type': [
             'warn',
             {
@@ -94,6 +107,8 @@ module.exports = {
                 allowTypedFunctionExpressions: true,
             },
         ],
+
+        'jsx-a11y/label-has-for': ['error', { required: { every: ['id'] } }],
     },
     overrides: [
         {

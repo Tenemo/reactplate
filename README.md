@@ -8,7 +8,7 @@ Boilerplate for a fully configured quick start.
 -   TypeScript support, parsed by Babel with @babel/preset-typescript
 -   ESLint with @typescript-eslint, without TSLint
 -   Great Visual Studio Code support, recommended extensions and workspace settings enabling all features
--   Styled-components with autocomplete and linting
+-   SCSS modules with autocomplete and linting
 
 ## TODO:
 

@@ -16,7 +16,6 @@
         "msjsdiag.debugger-for-chrome",
         "vscode-icons-team.vscode-icons",
         "stylelint.vscode-stylelint",
-        "streetsidesoftware.code-spell-checker",
-        "xabikos.ReactSnippets"
+        "streetsidesoftware.code-spell-checker"
     ]
 }
