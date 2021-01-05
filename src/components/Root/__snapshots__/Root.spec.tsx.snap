@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Root matches snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <HelmetProvider
+    context={Object {}}
+  >
+    <Connect(ConnectedRouterWithContext)
+      history={
+        Object {
+          "action": "POP",
+          "back": [Function],
+          "block": [Function],
+          "createHref": [Function],
+          "forward": [Function],
+          "go": [Function],
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "key": "default",
+            "pathname": "/",
+            "search": "",
+            "state": null,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <App />
+    </Connect(ConnectedRouterWithContext)>
+  </HelmetProvider>
+</Provider>
+`;

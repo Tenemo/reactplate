@@ -1,4 +1,4 @@
 node_modules/
 .tmp/
 dist/
-docs/
+src/index.html

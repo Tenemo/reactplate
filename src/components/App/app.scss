@@ -1,0 +1,14 @@
+.app {
+    @font-face {
+        font-family: "Roboto Mono";
+        src: url("../../fonts/RobotoMono-Regular.woff2") format("woff2"),
+            url("../../fonts/RobotoMono-Regular.woff") format("woff");
+    }
+    font-family: "Roboto Mono", "Courier New", "Courier", monospace;
+    padding: 10px 15px;
+    height: 100%;
+    color: #ccc;
+    background-color: #111;
+    display: flex;
+    flex-direction: column;
+}

@@ -2,23 +2,24 @@
     "compilerOptions": {
         "baseUrl": "./src/",
         "jsx": "react",
-        "target": "es5",
-        "lib": ["es2015"],
-        "module": "esnext",
+        "target": "ES6",
+        "module": "commonjs",
         "moduleResolution": "node",
         "removeComments": true,
         "declaration": false,
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
-        "noUnusedLocals": true,
         "strict": true,
         "sourceMap": true,
         "allowJs": true,
         "noEmit": true,
         "esModuleInterop": true,
-        "isolatedModules": true
+        "isolatedModules": true,
+        "skipLibCheck": true,
+        "noUnusedParameters": true,
+        "noUnusedLocals": true
     },
-    "include": ["src/**/*", "config/**/*"],
+    "include": ["src/**/*", "config/**/*", ".eslintrc.js", "temp/**/*"],
     "exclude": ["**/*.snap"]
 }

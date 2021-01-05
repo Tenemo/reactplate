@@ -1,0 +1,19 @@
+html,
+body,
+#root {
+    height: 100%;
+    font-size: 16px;
+}
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body.using-mouse {
+    :focus,
+    [class$="-is-focused"] {
+        outline: none;
+        box-shadow: initial;
+    }
+}

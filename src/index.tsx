@@ -1,14 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Root from './Root';
+
+import Root from 'components/Root';
 
 render(<Root />, document.getElementById(`root`));
-
-if (module.hot) {
-    module.hot.accept(`./Root`, (): void =>
-        render(
-            <Root anotherProp={{}} prop={{ property: {} }} />,
-            document.getElementById(`root`),
-        ),
-    );
-}

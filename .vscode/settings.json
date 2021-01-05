@@ -1,24 +1,69 @@
 {
+    "editor.formatOnSave": true,
+    "files.insertFinalNewline": true,
+    "editor.linkedEditing": true,
+    "files.autoSave": "off",
+    "javascript.updateImportsOnFileMove.enabled": "prompt",
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+
     "css.validate": false,
     "scss.validate": false,
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": { "source.fixAll.eslint": true },
+    "javascript.validate.enable": false,
+
+    "eslint.format.enable": true,
+    "[javascript]": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[javascriptreact]": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescript]": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescriptreact]": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "eslint.validate": [
         "javascript",
         "javascriptreact",
         "typescript",
         "typescriptreact"
     ],
-    "files.insertFinalNewline": true,
-    "files.eol": "\n",
-    "files.autoSave": "off",
-    "typescript.tsdk": "node_modules\\typescript\\lib",
-    "javascript.updateImportsOnFileMove.enabled": "prompt",
+    "editor.codeActionsOnSave": { "source.fixAll.eslint": true },
+    "prettier.disableLanguages": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
+
+    "workbench.iconTheme": "vscode-icons",
     "cSpell.ignorePaths": ["node_modules", ".git"],
     "cSpell.words": [
+        "asvetliakov",
+        "autoinstaller",
+        "coenraad",
+        "dbaeumer",
+        "eamodio",
         "esbenp",
-        "sourcemap"
+        "formulahendry",
+        "gitlens",
+        "jpoissonnier",
+        "jvitor",
+        "kohler",
+        "msjsdiag",
+        "sourcemap",
+        "streetsidesoftware",
+        "teamsupercell"
     ]
 }

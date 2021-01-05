@@ -23,7 +23,6 @@ module.exports = {
         '@babel/preset-typescript',
     ],
     plugins: [
-        '@babel/plugin-proposal-class-properties',
         [
             'module-resolver',
             {
@@ -31,6 +30,7 @@ module.exports = {
                 root: [baseUrl],
             },
         ],
+        '@babel/plugin-proposal-class-properties',
         'react-hot-loader/babel',
     ],
     ignore: ['node_modules'],

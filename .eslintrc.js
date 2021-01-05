@@ -1,28 +1,33 @@
+const OFF = 0;
+const ERROR = 2;
+
 module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:import/errors',
         'plugin:import/warnings',
         'plugin:import/typescript',
         'plugin:react/recommended',
         'plugin:jest/recommended',
-        'plugin:jsx-a11y/recommended',
+        'plugin:jsx-a11y/strict',
         'airbnb',
+        'airbnb/hooks',
         'prettier',
         'prettier/react',
         'prettier/@typescript-eslint',
         'plugin:prettier/recommended',
     ],
     plugins: [
-        'import',
         '@typescript-eslint',
+        'import',
+        'prettier',
         'html',
         'react',
-        'jsx-a11y',
-        'jest',
         'react-hooks',
-        'prettier',
+        'jest',
+        'jsx-a11y',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -30,6 +35,7 @@ module.exports = {
         ecmaFeatures: {
             jsx: true,
         },
+        extraFileExtensions: ['.html'],
     },
     env: {
         browser: true,
@@ -38,89 +44,106 @@ module.exports = {
         node: true,
     },
     globals: {
-        shallow: true,
         render: true,
         mount: true,
     },
     settings: {
         'import/resolver': {
+            'babel-module': {},
             typescript: {},
         },
         react: {
             version: 'detect',
         },
     },
-    overrides: [
-        {
-            files: ['*.js'],
-            rules: {
-                '@typescript-eslint/no-var-requires': 'off',
-            },
-        },
-    ],
     rules: {
-        quotes: ['error', 'backtick'],
+        quotes: OFF,
         'prettier/prettier': [
-            'error',
+            ERROR,
             {
                 useTabs: false,
                 semi: true,
                 singleQuote: true,
                 jsxSingleQuote: false,
                 trailingComma: 'all',
-                arrowParens: 'avoid',
+                arrowParens: 'always',
             },
         ],
-        // @typescript-eslint/no-unused-vars replaces this rule
-        'no-unused-vars': 'off',
-        'arrow-parens': ['error', 'as-needed', { requireForBlockBody: false }],
 
-        'react/prop-types': 'off',
-        'react/prefer-stateless-function': 'off',
-        'react/destructuring-assignment': ['error', 'always'],
+        'no-unused-vars': OFF, // @typescript-eslint/no-unused-vars replaces this rule
+        'arrow-parens': [ERROR, 'always', { requireForBlockBody: false }],
+        'no-use-before-define': OFF, // @typescript-eslint/no-use-before-define replaces this rule
+
+        'react/prop-types': OFF,
+        'react/prefer-stateless-function': OFF,
+        'react/destructuring-assignment': [ERROR, 'always'],
         'react/jsx-filename-extension': [
-            'error',
+            ERROR,
             {
                 extensions: ['.jsx', '.tsx'],
             },
         ],
-        'react/jsx-sort-props': 'error',
-        'react/jsx-props-no-spreading': 'off',
-        'react/jsx-one-expression-per-line': [
-            'error',
-            { allow: 'single-child' },
+        'react/jsx-sort-props': ERROR,
+        'react/jsx-props-no-spreading': OFF,
+        'react/jsx-one-expression-per-line': OFF,
+        'react/static-property-placement': [ERROR, 'static public field'],
+        'react/state-in-constructor': [ERROR, 'never'],
+        'react/display-name': [
+            ERROR,
+            {
+                ignoreTranspilerName: false,
+            },
         ],
 
-        'react-hooks/rules-of-hooks': 'error',
-        'react-hooks/exhaustive-deps': 'error',
+        'react-hooks/rules-of-hooks': ERROR,
+        'react-hooks/exhaustive-deps': ERROR,
 
-        'import/no-extraneous-dependencies': [
-            'error',
-            { devDependencies: true },
+        'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
+        'import/prefer-default-export': OFF,
+        'import/extensions': [
+            ERROR,
+            'ignorePackages',
+            {
+                js: 'never',
+                jsx: 'never',
+                ts: 'never',
+                tsx: 'never',
+            },
         ],
-        'import/prefer-default-export': 'off',
+
+        'jsx-a11y/label-has-for': [ERROR, { required: { every: ['id'] } }],
 
         '@typescript-eslint/explicit-function-return-type': [
-            'warn',
+            ERROR,
             {
                 allowExpressions: true,
                 allowTypedFunctionExpressions: true,
             },
         ],
+        '@typescript-eslint/explicit-module-boundary-types': ERROR,
+        '@typescript-eslint/no-unused-vars': ERROR,
+        '@typescript-eslint/no-use-before-define': ERROR,
+        '@typescript-eslint/unbound-method': ERROR,
 
-        'jsx-a11y/label-has-for': ['error', { required: { every: ['id'] } }],
+        'jest/no-commented-out-tests': ERROR,
     },
     overrides: [
         {
-            files: ['*.ts', '*.tsx'],
+            files: ['*.js'],
             rules: {
-                '@typescript-eslint/explicit-function-return-type': [
-                    'warn',
-                    {
-                        allowExpressions: true,
-                        allowTypedFunctionExpressions: true,
-                    },
-                ],
+                '@typescript-eslint/no-var-requires': OFF,
+            },
+        },
+        {
+            files: '*.scss.d.ts',
+            rules: {
+                'prettier/prettier': OFF,
+            },
+        },
+        {
+            files: '*.spec.tsx',
+            rules: {
+                '@typescript-eslint/ban-ts-comment': OFF,
             },
         },
     ],

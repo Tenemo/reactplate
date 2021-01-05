@@ -3,6 +3,8 @@ node_modules/
 *.tgz
 npm-debug.log
 .tmp/
+sh.exe.stackdump
+debug.log
 
 # Build
 dist/

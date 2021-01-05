@@ -1,6 +1,6 @@
-import webpack from 'webpack';
+import webpack, { Configuration } from 'webpack';
 
-export default {
+export const commonConfig: Configuration = {
     target: `web`,
     plugins: [
         new webpack.DefinePlugin({
