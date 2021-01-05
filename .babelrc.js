@@ -31,7 +31,6 @@ module.exports = {
             },
         ],
         '@babel/plugin-proposal-class-properties',
-        'react-hot-loader/babel',
     ],
     ignore: ['node_modules'],
 };

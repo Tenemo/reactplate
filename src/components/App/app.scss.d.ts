@@ -3,6 +3,8 @@
 declare namespace AppScssNamespace {
   export interface IAppScss {
     app: string;
+    error: string;
+    errorInfo: string;
   }
 }
 

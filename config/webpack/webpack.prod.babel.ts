@@ -68,6 +68,11 @@ export default merge(commonConfig, {
     module: {
         rules: [
             {
+                test: /\.(t|j)sx?$/,
+                exclude: [/node_modules/],
+                use: `babel-loader`,
+            },
+            {
                 test: /\.(css|scss)$/,
                 use: [
                     `style-loader`,

@@ -1,6 +1,5 @@
 import React, { ReactElement, useEffect } from 'react';
 import { Provider } from 'react-redux';
-import { hot } from 'react-hot-loader';
 import { ConnectedRouter } from 'connected-react-router';
 import { HelmetProvider } from 'react-helmet-async';
 
@@ -33,4 +32,4 @@ export const Root = (): ReactElement => {
     );
 };
 
-export default hot(module)(Root);
+export default Root;

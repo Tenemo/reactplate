@@ -2,8 +2,10 @@ import path from 'path';
 import { merge } from 'webpack-merge';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import ReactRefreshBabel from 'react-refresh/babel';
+import webpack, { WatchIgnorePlugin } from 'webpack';
 
-import { WatchIgnorePlugin } from 'webpack';
 import { commonConfig } from './webpack.common.babel';
 import packageJSON from '../../package.json';
 
@@ -14,7 +16,7 @@ export default merge(commonConfig, {
     devServer: {
         historyApiFallback: true,
         port: PORT as number,
-        compress: true,
+        hot: true,
         headers: {
             'Access-Control-Allow-Origin': `*`,
         },
@@ -45,18 +47,27 @@ export default merge(commonConfig, {
             failOnError: false,
         }),
         new WatchIgnorePlugin({ paths: [/(css|scss)\.d\.ts$/] }),
+        new webpack.HotModuleReplacementPlugin(),
+        new ReactRefreshWebpackPlugin(),
     ],
     optimization: {
         minimize: false,
-        noEmitOnErrors: true,
-    },
-    resolve: {
-        alias: {
-            'react-dom': `@hot-loader/react-dom`,
-        },
+        emitOnErrors: false,
     },
     module: {
         rules: [
+            {
+                test: /\.(t|j)sx?$/,
+                exclude: [/node_modules/],
+                use: [
+                    {
+                        loader: `babel-loader`,
+                        // typings not available yet
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                        options: { plugins: [ReactRefreshBabel] },
+                    },
+                ],
+            },
             {
                 test: /\.(css|scss)$/,
                 use: [

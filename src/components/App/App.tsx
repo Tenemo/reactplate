@@ -12,18 +12,52 @@ import HomePage from 'components/HomePage';
 
 import styles from './app.scss';
 
+type State = {
+    hasError: boolean;
+    error: Error | string | null;
+    errorInformation?: { componentStack: string } | null;
+};
+
 export class App extends Component {
+    static getDerivedStateFromError = (): { hasError: boolean } => ({
+        hasError: true,
+    });
+
+    readonly state: State = { hasError: false, error: null };
+
+    componentDidCatch(
+        error: Error | null,
+        errorInformation: { componentStack: string },
+    ): void {
+        // eslint-disable-next-line no-console
+        console.error(errorInformation.componentStack, error);
+        this.setState({ error, errorInformation });
+    }
+
     render(): ReactElement {
+        const { hasError, error, errorInformation } = this.state;
         return (
             <div className={styles.app}>
                 <Helmet>
                     <title>Reactplate</title>
                 </Helmet>
-                <Header />
-                <Switch>
-                    <Route component={HomePage} exact path="/" />
-                    <Route component={NotFound} />
-                </Switch>
+                {hasError ? (
+                    <div>
+                        The application has crashed due to a rendering error.{' '}
+                        <div className={styles.errorInfo}>
+                            {JSON.stringify(error, null, 4)}
+                            {JSON.stringify(errorInformation, null, 4)}
+                        </div>
+                    </div>
+                ) : (
+                    <>
+                        <Header />
+                        <Switch>
+                            <Route component={HomePage} exact path="/" />
+                            <Route component={NotFound} />
+                        </Switch>
+                    </>
+                )}
             </div>
         );
     }

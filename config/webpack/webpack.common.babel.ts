@@ -17,13 +17,4 @@ export const commonConfig: Configuration = {
     performance: {
         hints: false,
     },
-    module: {
-        rules: [
-            {
-                test: /\.(t|j)sx?$/,
-                exclude: [/node_modules/],
-                use: `babel-loader`,
-            },
-        ],
-    },
 };
