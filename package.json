@@ -1,6 +1,6 @@
 {
     "name": "reactplate",
-    "version": "0.0.3",
+    "version": "1.0.0",
     "author": "Piotr Piech <piotr@piech.dev>",
     "license": "MIT",
     "description": "React, Redux, Jest & 🔥 reload | TypeScript parsed with Babel 7 | ESLint + @typescript-eslint",
