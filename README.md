@@ -1,6 +1,6 @@
 ## reactplate
 
-[testing.land](https://testing.land)
+[reactplate-355203.netlify.app](https://reactplate-355203.netlify.app)
 
 ### Deployment Status
 
