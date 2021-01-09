@@ -1,5 +1,7 @@
 # reactplate
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f7de86a5-c5d7-43f8-b507-4cf6656eb752/deploy-status)](https://app.netlify.com/sites/reactplate-355203/deploys)
+
 Boilerplate for a fully configured quick start.
 
 -   React + Redux
