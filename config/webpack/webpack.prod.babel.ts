@@ -3,7 +3,6 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { merge } from 'webpack-merge';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
-import TerserJSPlugin from 'terser-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 import { commonConfig } from './webpack.common.babel';
@@ -50,14 +49,7 @@ export default merge(commonConfig, {
         ...(ANALYZE ? [new BundleAnalyzerPlugin()] : []),
     ],
     optimization: {
-        minimizer: [
-            new TerserJSPlugin({
-                terserOptions: {
-                    sourceMap: false,
-                },
-            }),
-            new CssMinimizerPlugin({ sourceMap: false }),
-        ],
+        minimizer: [new CssMinimizerPlugin({ sourceMap: false })],
         sideEffects: true,
         concatenateModules: true,
         nodeEnv: `production`,
