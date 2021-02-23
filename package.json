@@ -32,12 +32,6 @@
         "test:coverage": "npm run test -- --coverage",
         "test:watch": "npm run test -- --watch"
     },
-    "husky": {
-        "hooks": {
-            "pre-commit": "npm run lint && npm run tsc",
-            "pre-push": "npm test"
-        }
-    },
     "browserslist": [
         "> 0.5%",
         "not dead",
