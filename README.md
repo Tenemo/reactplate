@@ -20,8 +20,8 @@ Boilerplate for a fully configured quick start.
 
 -   check redux reducers/actions hot reload
 -   check coverage
--   manifest.json with colors themes and stuff
--   favicon
+-   manifest.json with colors themes
+-   favicon + phone icons?
 
 ### Ideas:
 
