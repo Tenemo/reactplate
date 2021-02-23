@@ -25,6 +25,7 @@
         "lint": "npm run eslint && npm run stylelint",
         "open:dist": "http-server dist --port 4000  --proxy http://localhost:4000?",
         "open:src": "cross-env PORT=3000 webpack-dev-server --config config/webpack/webpack.dev.babel.ts",
+        "postinstall": "husky install",
         "tsc": "tsc",
         "test": "cross-env NODE_ENV=test jest",
         "test:update": "npm run test -- --update",
