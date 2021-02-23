@@ -23,6 +23,7 @@ export default merge(commonConfig, {
     output: {
         filename: `${packageJSON.name}-${packageJSON.version}.[chunkhash].min.js`,
         path: path.join(process.cwd(), `dist`),
+        publicPath: '',
     },
     devtool: false,
     plugins: [
@@ -49,12 +50,20 @@ export default merge(commonConfig, {
         ...(ANALYZE ? [new BundleAnalyzerPlugin()] : []),
     ],
     optimization: {
-        minimizer: [new CssMinimizerPlugin({ sourceMap: false })],
+        minimize: true,
+        minimizer: [new CssMinimizerPlugin()],
         sideEffects: true,
         concatenateModules: true,
         nodeEnv: `production`,
+        runtimeChunk: 'single',
         splitChunks: {
-            chunks: `all`,
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendor',
+                    chunks: 'all',
+                },
+            },
         },
     },
     module: {
@@ -67,7 +76,12 @@ export default merge(commonConfig, {
             {
                 test: /\.(css|scss)$/,
                 use: [
-                    `style-loader`,
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            esModule: true,
+                        },
+                    },
                     {
                         loader: '@teamsupercell/typings-for-css-modules-loader',
                         options: {
