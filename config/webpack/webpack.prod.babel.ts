@@ -47,10 +47,14 @@ export default merge(commonConfig, {
             filename: `${packageJSON.name}-${packageJSON.version}.[chunkhash].min.css`,
             chunkFilename: `${packageJSON.name}-${packageJSON.version}.[chunkhash].[id].min.css`,
         }),
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         ...(ANALYZE ? [new BundleAnalyzerPlugin()] : []),
     ],
     optimization: {
         minimize: true,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         minimizer: [new CssMinimizerPlugin()],
         sideEffects: true,
         concatenateModules: true,
