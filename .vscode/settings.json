@@ -5,6 +5,8 @@
     "files.autoSave": "off",
     "javascript.updateImportsOnFileMove.enabled": "prompt",
     "typescript.tsdk": "node_modules\\typescript\\lib",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
 
     "css.validate": false,
     "scss.validate": false,
@@ -37,15 +39,6 @@
         "typescriptreact"
     ],
     "editor.codeActionsOnSave": { "source.fixAll.eslint": true },
-    "prettier.disableLanguages": [
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact"
-    ],
-
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
 
     "workbench.iconTheme": "vscode-icons",
     "cSpell.ignorePaths": ["node_modules", ".git"],

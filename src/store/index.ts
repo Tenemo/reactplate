@@ -2,14 +2,14 @@ import { connectRouter } from 'connected-react-router';
 import { combineReducers, Reducer } from 'redux';
 import { History } from 'history';
 
+import { appReducer, initialAppState } from 'store/app/appReducer';
+
 export const makeRootReducer = (history: History): Reducer =>
-    // https://github.com/supasate/connected-react-router/issues/325
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     combineReducers({
         router: connectRouter(history),
+        app: appReducer,
     });
 
-export const initialState = {};
+export const initialState = { app: initialAppState };
 
 export default makeRootReducer;

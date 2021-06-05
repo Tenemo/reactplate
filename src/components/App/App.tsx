@@ -1,10 +1,14 @@
 import React, { Component, ReactElement } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 import 'normalize.css';
 import { Helmet } from 'react-helmet-async';
 
 import 'fonts/RobotoMono-Regular.woff2';
 import 'fonts/RobotoMono-Regular.woff';
+
+import { getAppTheme } from 'store/app/appSelectors';
+import { RootState } from 'store/types';
 
 import NotFound from 'components/NotFound';
 import Header from 'components/Header';
@@ -18,7 +22,11 @@ type State = {
     errorInformation?: { componentStack: string } | null;
 };
 
-export class App extends Component {
+type Props = {
+    appTheme: string;
+};
+
+export class App extends Component<Props> {
     static getDerivedStateFromError = (): { hasError: boolean } => ({
         hasError: true,
     });
@@ -36,8 +44,12 @@ export class App extends Component {
 
     render(): ReactElement {
         const { hasError, error, errorInformation } = this.state;
+        const { appTheme } = this.props;
+        const classNames = `${styles.app} ${
+            appTheme === 'dark' ? 'theme-dark' : 'theme-light'
+        }`;
         return (
-            <div className={styles.app}>
+            <div className={classNames}>
                 <Helmet>
                     <title>Reactplate</title>
                 </Helmet>
@@ -63,4 +75,8 @@ export class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = (state: RootState): { appTheme: string } => ({
+    appTheme: getAppTheme(state),
+});
+
+export default connect(mapStateToProps)(App);

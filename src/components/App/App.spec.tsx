@@ -4,7 +4,7 @@ import { App } from './App';
 
 describe(`App`, (): void => {
     it(`should match the snapshot`, (): void => {
-        const wrapper = shallow(<App />);
+        const wrapper = shallow(<App appTheme="light" />);
         expect(wrapper).toMatchSnapshot();
     });
 });
