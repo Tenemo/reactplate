@@ -22,7 +22,7 @@ describe('Root', () => {
     });
     it('renders App', () => {
         const wrapper = shallow(<Root />);
-        const App = wrapper.find('App');
+        const App = wrapper.find('Connect(App)');
         expect(App.exists()).toEqual(true);
     });
 });

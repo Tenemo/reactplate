@@ -6,7 +6,7 @@ import { toggleTheme } from 'store/app/appActions';
 
 import styles from './header.scss';
 
-const Header = (): ReactElement => {
+export const Header = (): ReactElement => {
     const dispatch = useDispatch();
     const appTheme = useSelector(getAppTheme);
 
