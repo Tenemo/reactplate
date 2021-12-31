@@ -19,11 +19,10 @@ jest.mock('react-redux', () => ({
     useDispatch: jest.fn(() => mockStore.dispatch),
 }));
 
-jest.mock('store/app/appActions', async () => {
-    const appTypes = await import('store/app/appTypes');
+jest.mock('store/app/appActions', () => {
     return {
         toggleTheme: jest.fn(() => ({
-            type: appTypes.APP_TOGGLE_THEME,
+            type: 'APP_TOGGLE_THEME',
         })),
     };
 });
