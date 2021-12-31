@@ -1,10 +1,10 @@
-import { RouterState } from 'connected-react-router';
+import { RouterState } from 'redux-first-history';
 import { ThunkDispatch } from 'redux-thunk';
 
 import { AppState, AppActionTypes } from 'store/app/appTypes';
 
 export type RootState = {
-    readonly route: RouterState;
+    readonly router: RouterState;
     readonly app: AppState;
 };
 

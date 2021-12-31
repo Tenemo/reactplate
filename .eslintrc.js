@@ -33,17 +33,13 @@ module.exports = {
         ecmaFeatures: {
             jsx: true,
         },
-        extraFileExtensions: ['.html'],
+        extraFileExtensions: ['.html', '.cjs'],
     },
     env: {
         browser: true,
         es6: true,
         jest: true,
         node: true,
-    },
-    globals: {
-        render: true,
-        mount: true,
     },
     settings: {
         'import/resolver': {
@@ -71,6 +67,7 @@ module.exports = {
         'no-unused-vars': OFF, // @typescript-eslint/no-unused-vars replaces this rule
         'arrow-parens': [ERROR, 'always', { requireForBlockBody: false }],
         'no-use-before-define': OFF, // @typescript-eslint/no-use-before-define replaces this rule
+        'no-restricted-exports': OFF,
 
         'react/prop-types': OFF,
         'react/prefer-stateless-function': OFF,
@@ -90,6 +87,13 @@ module.exports = {
             ERROR,
             {
                 ignoreTranspilerName: false,
+            },
+        ],
+        'react/function-component-definition': [
+            ERROR,
+            {
+                namedComponents: 'arrow-function',
+                unnamedComponents: 'arrow-function',
             },
         ],
 
@@ -130,6 +134,12 @@ module.exports = {
             files: ['*.js'],
             rules: {
                 '@typescript-eslint/no-var-requires': OFF,
+            },
+        },
+        {
+            files: '*Reducer.ts',
+            rules: {
+                'default-param-last': OFF,
             },
         },
         {

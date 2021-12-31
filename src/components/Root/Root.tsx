@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect } from 'react';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
+import { HistoryRouter as Router } from 'redux-first-history/rr6';
 import { HelmetProvider } from 'react-helmet-async';
 
 import { store, history } from 'store/configureStore';
@@ -24,9 +24,9 @@ export const Root = (): ReactElement => {
     return (
         <Provider store={store}>
             <HelmetProvider>
-                <ConnectedRouter history={history}>
+                <Router history={history}>
                     <App />
-                </ConnectedRouter>
+                </Router>
             </HelmetProvider>
         </Provider>
     );

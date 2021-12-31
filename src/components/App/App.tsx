@@ -1,5 +1,5 @@
 import React, { Component, ReactElement } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { connect } from 'react-redux';
 import 'normalize.css';
 import { Helmet } from 'react-helmet-async';
@@ -64,10 +64,10 @@ export class App extends Component<Props> {
                 ) : (
                     <>
                         <Header />
-                        <Switch>
-                            <Route component={HomePage} exact path="/" />
-                            <Route component={NotFound} />
-                        </Switch>
+                        <Routes>
+                            <Route element={<HomePage />} path="/" />
+                            <Route element={<NotFound />} path="*" />
+                        </Routes>
                     </>
                 )}
             </div>

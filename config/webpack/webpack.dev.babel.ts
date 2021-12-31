@@ -1,10 +1,9 @@
-import path from 'path';
 import { merge } from 'webpack-merge';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import ReactRefreshBabel from 'react-refresh/babel';
-import webpack, { WatchIgnorePlugin } from 'webpack';
+import { WatchIgnorePlugin, HotModuleReplacementPlugin } from 'webpack';
 
 import { commonConfig } from './webpack.common.babel';
 import packageJSON from '../../package.json';
@@ -21,13 +20,6 @@ export default merge(commonConfig, {
             'Access-Control-Allow-Origin': `*`,
         },
     },
-    entry: [
-        `core-js/stable`,
-        `react`,
-        `react-dom`,
-        `eventsource-polyfill`,
-        path.join(process.cwd(), `src/index`),
-    ],
     output: {
         filename: `[name].js`,
         publicPath: `http://localhost:${PORT}/`,
@@ -39,15 +31,12 @@ export default merge(commonConfig, {
             template: `src/index.html`,
             inject: true,
         }),
-        // remove the plugin if it doesn't work at all, otherwise the error is due to incorrect @types
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         new CircularDependencyPlugin({
             exclude: /a\.js|node_modules/,
             failOnError: false,
         }),
         new WatchIgnorePlugin({ paths: [/(css|scss)\.d\.ts$/] }),
-        new webpack.HotModuleReplacementPlugin(),
+        new HotModuleReplacementPlugin(),
         new ReactRefreshWebpackPlugin(),
     ],
     optimization: {

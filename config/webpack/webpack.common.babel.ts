@@ -1,6 +1,17 @@
 import webpack, { Configuration } from 'webpack';
+import path from 'path';
+
+import packageJSON from '../../package.json';
 
 export const commonConfig: Configuration = {
+    entry: {
+        [packageJSON.name]: [
+            `core-js/stable`,
+            `react`,
+            `react-dom`,
+            path.join(process.cwd(), `src/index`),
+        ],
+    },
     target: `web`,
     plugins: [
         new webpack.DefinePlugin({

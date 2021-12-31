@@ -15,22 +15,26 @@ exports[`Root matches snapshot 1`] = `
   <HelmetProvider
     context={Object {}}
   >
-    <Connect(ConnectedRouterWithContext)
+    <HistoryRouter
       history={
         Object {
           "action": "POP",
+          "back": [Function],
           "block": [Function],
           "createHref": [Function],
+          "forward": [Function],
           "go": [Function],
           "goBack": [Function],
           "goForward": [Function],
-          "length": 1,
+          "length": undefined,
           "listen": [Function],
+          "listenObject": false,
           "location": Object {
             "hash": "",
+            "key": "default",
             "pathname": "/",
             "search": "",
-            "state": undefined,
+            "state": null,
           },
           "push": [Function],
           "replace": [Function],
@@ -38,7 +42,7 @@ exports[`Root matches snapshot 1`] = `
       }
     >
       <Connect(App) />
-    </Connect(ConnectedRouterWithContext)>
+    </HistoryRouter>
   </HelmetProvider>
 </Provider>
 `;

@@ -1,40 +1,47 @@
-import { Store, createStore, applyMiddleware, compose } from 'redux';
+import {
+    Store,
+    createStore,
+    applyMiddleware,
+    compose,
+    combineReducers,
+} from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import { routerMiddleware } from 'connected-react-router';
+import { createReduxHistoryContext } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { makeRootReducer } from 'store';
+import { appReducer, initialAppState } from 'store/app/appReducer';
 import { RootState } from 'store/types';
 import { BUILD_TYPE } from 'constants/appConstants';
 
-export const history = createBrowserHistory();
+export const initialState = { app: initialAppState };
+
+const { createReduxHistory, routerMiddleware, routerReducer } =
+    createReduxHistoryContext({
+        history: createBrowserHistory(),
+    });
+const rootReducer = combineReducers({
+    router: routerReducer,
+    app: appReducer,
+});
+
 const logger = createLogger({
     diff: true,
     collapsed: true,
 });
-const configureStoreDev = (initialState?: RootState): Store<RootState> => {
-    const reactRouterMiddleware = routerMiddleware(history);
-    const middleware = [thunk, logger, reactRouterMiddleware];
-    /* eslint-disable-next-line no-underscore-dangle */
-    const store = createStore(
-        makeRootReducer(history),
+const configureStoreDev = (): Store<RootState> => {
+    const middleware = [thunk, logger, routerMiddleware];
+    return createStore(
+        rootReducer,
         initialState,
         composeWithDevTools(applyMiddleware(...middleware)),
     );
-    if (module.hot) {
-        module.hot.accept(`../store`, (): void => {
-            store.replaceReducer(makeRootReducer(history));
-        });
-    }
-    return store;
 };
-const configureStoreProd = (initialState?: RootState): Store<RootState> => {
-    const reactRouterMiddleware = routerMiddleware(history);
-    const middleware = [thunk, reactRouterMiddleware];
+const configureStoreProd = (): Store<RootState> => {
+    const middleware = [thunk, routerMiddleware];
     return createStore(
-        makeRootReducer(history),
+        rootReducer,
         initialState,
         compose(applyMiddleware(...middleware)),
     );
@@ -43,3 +50,4 @@ const configureStore =
     BUILD_TYPE === `production` ? configureStoreProd : configureStoreDev;
 
 export const store = configureStore();
+export const history = createReduxHistory(store);

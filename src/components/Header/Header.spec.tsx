@@ -14,18 +14,16 @@ let mockStore: MockStore;
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
     useSelector: jest.fn((selector: (state: RootState) => void) =>
-        selector(mockStore.getState()),
+        selector(mockStore.getState() as RootState),
     ),
     useDispatch: jest.fn(() => mockStore.dispatch),
 }));
 
-jest.mock('store/app/appActions', () => {
-    return {
-        toggleTheme: jest.fn(() => ({
-            type: 'APP_TOGGLE_THEME',
-        })),
-    };
-});
+jest.mock('store/app/appActions', () => ({
+    toggleTheme: jest.fn(() => ({
+        type: 'APP_TOGGLE_THEME',
+    })),
+}));
 
 describe('Header', () => {
     const emptyMockStore = createMockStore([thunk]);

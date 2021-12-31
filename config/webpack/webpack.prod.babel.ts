@@ -12,20 +12,13 @@ const { ANALYZE } = process.env;
 
 export default merge(commonConfig, {
     mode: `production`,
-    entry: {
-        [packageJSON.name]: [
-            `core-js/stable`,
-            `react`,
-            `react-dom`,
-            path.join(process.cwd(), `src/index`),
-        ],
-    },
     output: {
-        filename: `${packageJSON.name}-${packageJSON.version}.[chunkhash].min.js`,
+        filename: `[name].[contenthash].min.js`,
         path: path.join(process.cwd(), `dist`),
         publicPath: '',
     },
     devtool: false,
+    stats: 'normal',
     plugins: [
         new HtmlWebpackPlugin({
             title: packageJSON.name,
@@ -44,17 +37,13 @@ export default merge(commonConfig, {
             },
         }),
         new MiniCssExtractPlugin({
-            filename: `${packageJSON.name}-${packageJSON.version}.[chunkhash].min.css`,
-            chunkFilename: `${packageJSON.name}-${packageJSON.version}.[chunkhash].[id].min.css`,
+            filename: `[name].[contenthash].min.css`,
+            chunkFilename: `[id].[contenthash].min.css`,
         }),
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         ...(ANALYZE ? [new BundleAnalyzerPlugin()] : []),
     ],
     optimization: {
         minimize: true,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         minimizer: [new CssMinimizerPlugin()],
         sideEffects: true,
         concatenateModules: true,
@@ -80,12 +69,7 @@ export default merge(commonConfig, {
             {
                 test: /\.(css|scss)$/,
                 use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            esModule: true,
-                        },
-                    },
+                    'style-loader',
                     {
                         loader: '@teamsupercell/typings-for-css-modules-loader',
                         options: {
