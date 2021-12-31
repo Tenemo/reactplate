@@ -3,7 +3,9 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { merge } from 'webpack-merge';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import MiniCssExtractPlugin, {
+    loader as MiniCssExtractPluginLoader,
+} from 'mini-css-extract-plugin';
 
 import { commonConfig } from './webpack.common.babel';
 import packageJSON from '../../package.json';
@@ -16,6 +18,7 @@ export default merge(commonConfig, {
         filename: `[name].[contenthash].min.js`,
         path: path.join(process.cwd(), `dist`),
         publicPath: '',
+        assetModuleFilename: 'assets/[hash][ext][query]',
     },
     devtool: false,
     stats: 'normal',
@@ -69,7 +72,7 @@ export default merge(commonConfig, {
             {
                 test: /\.(css|scss)$/,
                 use: [
-                    'style-loader',
+                    MiniCssExtractPluginLoader,
                     {
                         loader: '@teamsupercell/typings-for-css-modules-loader',
                         options: {
@@ -112,29 +115,11 @@ export default merge(commonConfig, {
             },
             {
                 test: /\.(woff|woff2|svg|ttf|eot)$/,
-                use: [
-                    {
-                        loader: `url-loader`,
-                        options: {
-                            limit: 8192,
-                            name: `[name].[hash].[ext]`,
-                            outputPath: `fonts/`,
-                        },
-                    },
-                ],
+                type: 'asset/resource',
             },
             {
                 test: /\.(jpe?g|png|gif|ico)$/,
-                use: [
-                    {
-                        loader: `url-loader`,
-                        options: {
-                            limit: 8192,
-                            name: `[name].[hash].[ext]`,
-                            outputPath: `images/`,
-                        },
-                    },
-                ],
+                type: 'asset/resource',
             },
         ],
     },

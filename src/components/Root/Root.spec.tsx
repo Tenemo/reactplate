@@ -32,7 +32,4 @@ describe('Root', () => {
         const App = wrapper.find('Connect(App)');
         expect(App.exists()).toEqual(true);
     });
-    it('passes', () => {
-        expect(true).toEqual(true);
-    });
 });

@@ -70,7 +70,7 @@ export default merge(commonConfig, {
                         loader: `css-loader`,
                         options: {
                             modules: {
-                                localIdentName: `[hash:base64]`,
+                                localIdentName: `[path]_[local]`,
                                 auto: (resourcePath: string) =>
                                     !resourcePath.includes('node_modules') &&
                                     !resourcePath.includes('global.'),
@@ -101,19 +101,11 @@ export default merge(commonConfig, {
             },
             {
                 test: /\.(woff|woff2|svg|ttf|eot)$/,
-                use: [
-                    {
-                        loader: `url-loader`,
-                    },
-                ],
+                type: 'asset/resource',
             },
             {
                 test: /\.(jpe?g|png|gif|ico)$/,
-                use: [
-                    {
-                        loader: `url-loader`,
-                    },
-                ],
+                type: 'asset/resource',
             },
         ],
     },
