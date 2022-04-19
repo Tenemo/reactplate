@@ -1,7 +1,11 @@
 import React, { ReactElement } from 'react';
 
-const HomePage = (): ReactElement => {
-    return <main>HomePage</main>;
+export const HomePage = (): ReactElement => {
+    return (
+        <main>
+            <h2>HomePage</h2>
+        </main>
+    );
 };
 
 export default HomePage;

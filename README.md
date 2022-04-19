@@ -9,7 +9,7 @@
 Boilerplate for a fully configured quick start.
 
 -   React + Redux
--   Jest + Enzyme testing
+-   Jest + React Testing Library
 -   Hot reload with HMR and react-hot-loader
 -   TypeScript support, parsed by Babel with @babel/preset-typescript
 -   ESLint with @typescript-eslint, without TSLint

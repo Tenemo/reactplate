@@ -4,14 +4,19 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import ReactRefreshBabel from 'react-refresh/babel';
 import { WatchIgnorePlugin, HotModuleReplacementPlugin } from 'webpack';
+import type { Configuration } from 'webpack';
 
 import { commonConfig } from './webpack.common.babel';
 import packageJSON from '../../package.json';
 
 const PORT = process.env.PORT || 3000;
 
-export default merge(commonConfig, {
+const developmentConfiguration: Configuration = {
     mode: `development`,
+    // devServer is still part of the configuration and has effect
+    // on the server. Seems like it was mistakenly removed from types.
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     devServer: {
         historyApiFallback: true,
         port: PORT as number,
@@ -109,4 +114,6 @@ export default merge(commonConfig, {
             },
         ],
     },
-});
+};
+
+export default merge(commonConfig, developmentConfiguration);

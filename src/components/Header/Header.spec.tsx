@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import thunk from 'redux-thunk';
 import createMockStore, { MockStore } from 'redux-mock-store';
 
@@ -56,16 +56,10 @@ describe('Header', () => {
         (appActions as unknown as MockAppActions).toggleTheme.mockClear();
     });
 
-    it('should match the snapshot', () => {
-        const wrapper = shallow(<Header />);
-        expect(wrapper).toMatchSnapshot();
-    });
-    it('clicking theme toggle button should change the theme', () => {
-        const wrapper = mount(<Header />);
-        const ToggleThemeButton = wrapper.find('button');
-        ToggleThemeButton.simulate('click', {
-            preventDefault: () => undefined,
-        });
+    it('clicking theme toggle button should change the theme', async () => {
+        render(<Header />);
+        await waitFor(() => screen.getByRole('button'));
+        fireEvent.click(screen.getByRole('button'));
         expect(mockStore.getActions()).toEqual([{ type: APP_TOGGLE_THEME }]);
         expect(appActions.toggleTheme).toHaveBeenCalledTimes(1);
     });

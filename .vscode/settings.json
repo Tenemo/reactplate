@@ -14,19 +14,15 @@
 
     "eslint.format.enable": true,
     "[javascript]": {
-        "editor.formatOnSave": false,
         "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
     "[javascriptreact]": {
-        "editor.formatOnSave": false,
         "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
     "[typescript]": {
-        "editor.formatOnSave": false,
         "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
     "[typescriptreact]": {
-        "editor.formatOnSave": false,
         "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
     "[html]": {
