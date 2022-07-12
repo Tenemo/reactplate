@@ -4,11 +4,14 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import ReactRefreshBabel from 'react-refresh/babel';
 import { WatchIgnorePlugin, HotModuleReplacementPlugin } from 'webpack';
+import ip from 'ip';
+
 import type { Configuration } from 'webpack';
 
 import { commonConfig } from './webpack.common.babel';
 import packageJSON from '../../package.json';
 
+const localIp = ip.address();
 const PORT = process.env.PORT || 3000;
 
 const developmentConfiguration: Configuration = {
@@ -27,7 +30,7 @@ const developmentConfiguration: Configuration = {
     },
     output: {
         filename: `[name].js`,
-        publicPath: `http://localhost:${PORT}/`,
+        publicPath: `http://${localIp}:${PORT}/`,
     },
     devtool: `eval-source-map`,
     plugins: [
