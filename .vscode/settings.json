@@ -28,6 +28,9 @@
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
     },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "prettier.htmlWhitespaceSensitivity": "ignore",
     "eslint.validate": [
         "javascript",

@@ -2,6 +2,8 @@ import React from 'react';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import thunk from 'redux-thunk';
 import createMockStore, { MockStore } from 'redux-mock-store';
+import { useDispatch as mockUseDispatch } from 'react-redux/es/hooks/useDispatch';
+import { useSelector as mockUseSelector } from 'react-redux/es/hooks/useSelector';
 
 import { APP_TOGGLE_THEME } from 'store/app/appTypes';
 import { initialAppState } from 'store/app/appReducer';
@@ -11,12 +13,12 @@ import { Header } from './Header';
 
 let mockStore: MockStore;
 
-jest.mock('react-redux', () => ({
+jest.mock('react-redux', (): typeof import('react-redux') => ({
     ...jest.requireActual('react-redux'),
     useSelector: jest.fn((selector: (state: RootState) => void) =>
         selector(mockStore.getState() as RootState),
-    ),
-    useDispatch: jest.fn(() => mockStore.dispatch),
+    ) as typeof mockUseSelector,
+    useDispatch: jest.fn(() => mockStore.dispatch) as typeof mockUseDispatch,
 }));
 
 jest.mock('store/app/appActions', () => ({
