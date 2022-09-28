@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getAppTheme } from 'store/app/appSelectors';
-import { toggleTheme } from 'store/app/appActions';
-
 import styles from './header.scss';
+
+import { toggleTheme } from 'store/app/appActions';
+import { getAppTheme } from 'store/app/appSelectors';
 
 export const Header = (): ReactElement => {
     const dispatch = useDispatch();

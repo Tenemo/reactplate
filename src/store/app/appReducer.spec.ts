@@ -1,5 +1,5 @@
-import { appReducer, initialAppState } from './appReducer';
 import { toggleTheme } from './appActions';
+import { appReducer, initialAppState } from './appReducer';
 
 describe('appReducer', () => {
     const previousState = initialAppState;

@@ -1,15 +1,15 @@
-import React from 'react';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-import thunk from 'redux-thunk';
-import createMockStore, { MockStore } from 'redux-mock-store';
+import React from 'react';
 import { useDispatch as mockUseDispatch } from 'react-redux/es/hooks/useDispatch';
 import { useSelector as mockUseSelector } from 'react-redux/es/hooks/useSelector';
-
-import { APP_TOGGLE_THEME } from 'store/app/appTypes';
-import { initialAppState } from 'store/app/appReducer';
-import { RootState } from 'store/types';
+import createMockStore, { MockStore } from 'redux-mock-store';
+import thunk from 'redux-thunk';
 
 import { Header } from './Header';
+
+import { initialAppState } from 'store/app/appReducer';
+import { APP_TOGGLE_THEME } from 'store/app/appTypes';
+import { RootState } from 'store/types';
 
 let mockStore: MockStore;
 

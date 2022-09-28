@@ -1,15 +1,15 @@
-import { merge } from 'webpack-merge';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import ip from 'ip';
 import ReactRefreshBabel from 'react-refresh/babel';
 import { WatchIgnorePlugin, HotModuleReplacementPlugin } from 'webpack';
-import ip from 'ip';
-
 import type { Configuration } from 'webpack';
+import { merge } from 'webpack-merge';
+
+import packageJSON from '../../package.json';
 
 import { commonConfig } from './webpack.common.babel';
-import packageJSON from '../../package.json';
 
 const localIp = ip.address();
 const PORT = process.env.PORT || 3000;

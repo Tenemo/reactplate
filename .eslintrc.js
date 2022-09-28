@@ -113,6 +113,14 @@ module.exports = {
                 tsx: 'never',
             },
         ],
+        'import/order': [
+            'error',
+            {
+                'newlines-between': 'always',
+                alphabetize: { order: 'asc', caseInsensitive: true },
+                pathGroupsExcludedImportTypes: ['builtin'],
+            },
+        ],
 
         'jsx-a11y/label-has-for': [ERROR, { required: { every: ['id'] } }],
 

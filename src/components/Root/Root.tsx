@@ -1,11 +1,11 @@
 import React, { ReactElement, useEffect } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { Provider } from 'react-redux';
 import { HistoryRouter as Router } from 'redux-first-history/rr6';
-import { HelmetProvider } from 'react-helmet-async';
-
-import { store, history } from 'store/configureStore';
 
 import App from 'components/App';
+import { store, history } from 'store/configureStore';
+
 import 'styles/global.scss';
 
 export const Root = (): ReactElement => {

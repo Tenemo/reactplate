@@ -1,3 +1,5 @@
+import { composeWithDevTools } from '@redux-devtools/extension';
+import { createBrowserHistory } from 'history';
 import {
     Store,
     createStore,
@@ -5,15 +7,13 @@ import {
     compose,
     combineReducers,
 } from 'redux';
-import thunk from 'redux-thunk';
-import { createLogger } from 'redux-logger';
 import { createReduxHistoryContext } from 'redux-first-history';
-import { createBrowserHistory } from 'history';
-import { composeWithDevTools } from '@redux-devtools/extension';
+import { createLogger } from 'redux-logger';
+import thunk from 'redux-thunk';
 
+import { BUILD_TYPE } from 'constants/appConstants';
 import { appReducer, initialAppState } from 'store/app/appReducer';
 import { RootState } from 'store/types';
-import { BUILD_TYPE } from 'constants/appConstants';
 
 export const initialState = { app: initialAppState };
 

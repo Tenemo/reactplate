@@ -1,20 +1,19 @@
 import React, { Component, ReactElement } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { connect } from 'react-redux';
-import 'normalize.css';
 import { Helmet } from 'react-helmet-async';
+import { connect } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import 'normalize.css';
 
 import 'fonts/RobotoMono-Regular.woff2';
 import 'fonts/RobotoMono-Regular.woff';
 
-import { getAppTheme } from 'store/app/appSelectors';
-import { RootState } from 'store/types';
+import styles from './app.scss';
 
-import NotFound from 'components/NotFound';
 import Header from 'components/Header';
 import HomePage from 'components/HomePage';
-
-import styles from './app.scss';
+import NotFound from 'components/NotFound';
+import { getAppTheme } from 'store/app/appSelectors';
+import { RootState } from 'store/types';
 
 type State = {
     hasError: boolean;

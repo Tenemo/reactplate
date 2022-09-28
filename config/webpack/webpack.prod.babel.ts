@@ -1,14 +1,16 @@
 import path from 'path';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { merge } from 'webpack-merge';
+
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin, {
     loader as MiniCssExtractPluginLoader,
 } from 'mini-css-extract-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import { merge } from 'webpack-merge';
+
+import packageJSON from '../../package.json';
 
 import { commonConfig } from './webpack.common.babel';
-import packageJSON from '../../package.json';
 
 const { ANALYZE } = process.env;
 

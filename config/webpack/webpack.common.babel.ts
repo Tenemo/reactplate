@@ -1,5 +1,6 @@
-import webpack, { Configuration } from 'webpack';
 import path from 'path';
+
+import webpack, { Configuration } from 'webpack';
 
 import packageJSON from '../../package.json';
 
