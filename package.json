@@ -39,7 +39,7 @@
         "not op_mini all"
     ],
     "engines": {
-        "node": ">=12.17"
+        "node": ">=16.17.1"
     },
     "dependencies": {
         "@babel/runtime-corejs3": "^7.19.1",
