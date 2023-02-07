@@ -2,7 +2,7 @@ import { composeWithDevTools } from '@redux-devtools/extension';
 import { createBrowserHistory } from 'history';
 import {
     Store,
-    createStore,
+    legacy_createStore, // eslint-disable-line camelcase
     applyMiddleware,
     compose,
     combineReducers,
@@ -32,7 +32,7 @@ const logger = createLogger({
 });
 const configureStoreDev = (): Store<RootState> => {
     const middleware = [thunk, logger, routerMiddleware];
-    return createStore(
+    return legacy_createStore(
         rootReducer,
         initialState,
         composeWithDevTools(applyMiddleware(...middleware)),
@@ -40,7 +40,7 @@ const configureStoreDev = (): Store<RootState> => {
 };
 const configureStoreProd = (): Store<RootState> => {
     const middleware = [thunk, routerMiddleware];
-    return createStore(
+    return legacy_createStore(
         rootReducer,
         initialState,
         compose(applyMiddleware(...middleware)),
