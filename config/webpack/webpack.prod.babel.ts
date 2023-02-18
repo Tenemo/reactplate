@@ -111,6 +111,10 @@ export default merge(commonConfig, {
                         loader: `sass-loader`,
                         options: {
                             sourceMap: false,
+                            implementation: require.resolve('sass'),
+                            sassOptions: {
+                                includePaths: ['src/styles'],
+                            },
                         },
                     },
                 ],

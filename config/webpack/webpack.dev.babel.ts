@@ -103,6 +103,10 @@ const developmentConfiguration: Configuration = {
                         loader: `sass-loader`,
                         options: {
                             sourceMap: true,
+                            implementation: require.resolve('sass'),
+                            sassOptions: {
+                                includePaths: ['src/styles'],
+                            },
                         },
                     },
                 ],
