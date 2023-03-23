@@ -1,15 +1,18 @@
 {
-    "plugin": ["stylelint-scss"],
+    "plugin": [
+        "stylelint-scss"
+    ],
     "extends": [
         "stylelint-config-recommended",
-        "stylelint-config-prettier",
         "stylelint-config-recommended-scss"
     ],
     "rules": {
         "selector-pseudo-class-no-unknown": [
             true,
             {
-                "ignorePseudoClasses": ["global"]
+                "ignorePseudoClasses": [
+                    "global"
+                ]
             }
         ]
     }
