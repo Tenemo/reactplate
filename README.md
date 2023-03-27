@@ -4,7 +4,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f7de86a5-c5d7-43f8-b507-4cf6656eb752/deploy-status)](https://app.netlify.com/sites/reactplate-355203/deploys)
 
-[https://reactplate-355203.netlify.app](https://reactplate-355203.netlify.app)
+[reactplate-355203.netlify.app](https://reactplate-355203.netlify.app)
 
 An opinionated React + Redux boilerplate for a fully configured quick start.
 
