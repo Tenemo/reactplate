@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 
 import styles from './header.scss';
 
+import { useSelector, useDispatch } from 'store';
 import { toggleTheme } from 'store/app/appActions';
 import { getAppTheme } from 'store/app/appSelectors';
 

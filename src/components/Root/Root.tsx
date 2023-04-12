@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { HistoryRouter as Router } from 'redux-first-history/rr6';
 
 import App from 'components/App';
-import { store, history } from 'store/configureStore';
+import { store, history } from 'store';
 
 import 'styles/global.scss';
 

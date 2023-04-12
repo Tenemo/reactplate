@@ -1,15 +1,21 @@
 import { composeWithDevTools } from '@redux-devtools/extension';
 import { createBrowserHistory } from 'history';
 import {
+    TypedUseSelectorHook,
+    useDispatch as useReduxDispatch,
+    useSelector as useReduxSelector,
+} from 'react-redux';
+import {
     Store,
     legacy_createStore, // eslint-disable-line camelcase
     applyMiddleware,
     compose,
     combineReducers,
+    AnyAction,
 } from 'redux';
 import { createReduxHistoryContext } from 'redux-first-history';
 import { createLogger } from 'redux-logger';
-import thunk from 'redux-thunk';
+import thunk, { ThunkDispatch } from 'redux-thunk';
 
 import { BUILD_TYPE } from 'constants/appConstants';
 import { appReducer, initialAppState } from 'store/app/appReducer';
@@ -51,3 +57,7 @@ const configureStore =
 
 export const store = configureStore();
 export const history = createReduxHistory(store);
+
+export type AppDispatch = ThunkDispatch<RootState, unknown, AnyAction>;
+export const useDispatch: () => AppDispatch = useReduxDispatch;
+export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
