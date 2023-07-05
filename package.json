@@ -30,7 +30,8 @@
         "test": "cross-env NODE_ENV=test jest",
         "test:update": "npm run test -- --update",
         "test:coverage": "npm run test -- --coverage",
-        "test:watch": "npm run test -- --watch"
+        "test:watch": "npm run test -- --watch",
+        "morse": "ts-node ./temp/morse"
     },
     "browserslist": [
         "> 0.5%",
@@ -43,6 +44,7 @@
     },
     "dependencies": {
         "@babel/runtime-corejs3": "^7.21.0",
+        "@easy-cipher/morse": "^1.1.0",
         "@sentry/react": "^7.47.0",
         "@sentry/tracing": "^7.47.0",
         "axios": "^1.3.5",
@@ -103,6 +105,7 @@
         "babel-jest": "^29.5.0",
         "babel-loader": "^9.1.2",
         "babel-plugin-module-resolver": "^5.0.0",
+        "check-word": "^1.1.0",
         "circular-dependency-plugin": "^5.2.2",
         "cross-env": "^7.0.3",
         "css-loader": "^6.7.3",
