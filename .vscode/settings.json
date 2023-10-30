@@ -4,7 +4,7 @@
     "editor.linkedEditing": true,
     "files.autoSave": "off",
     "javascript.updateImportsOnFileMove.enabled": "prompt",
-    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "typescript.tsdk": "node_modules/typescript/lib",
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
     "files.eol": "\n",

@@ -5,6 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin, {
     loader as MiniCssExtractPluginLoader,
 } from 'mini-css-extract-plugin';
+import { DefinePlugin } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { merge } from 'webpack-merge';
 
@@ -25,6 +26,9 @@ export default merge(commonConfig, {
     devtool: false,
     stats: 'normal',
     plugins: [
+        new DefinePlugin({
+            'process.env.BUILD_DATE': new Date().toISOString(),
+        }),
         new HtmlWebpackPlugin({
             title: packageJSON.name,
             template: `src/index.html`,

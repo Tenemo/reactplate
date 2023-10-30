@@ -13,6 +13,9 @@ Sentry.init({
 
 const container = document.getElementById('root');
 
+// eslint-disable-next-line no-console
+console.log(`Build time: ${process.env.BUILD_DATE}`);
+
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = createRoot(container!);
 root.render(<Root />);
