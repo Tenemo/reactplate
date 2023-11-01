@@ -39,11 +39,11 @@ describe('Header', () => {
     };
 
     let appActions: typeof import('store/app/appActions');
-    type MockAppActions = {
+    interface MockAppActions {
         toggleTheme: {
             mockClear: () => void;
         };
-    };
+    }
 
     beforeAll(async () => {
         reactRedux = await import('react-redux');

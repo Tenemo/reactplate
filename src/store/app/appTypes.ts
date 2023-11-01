@@ -6,42 +6,42 @@ export const APP_EXAMPLE_REQUEST = 'APP_EXAMPLE_REQUEST';
 export const APP_EXAMPLE_FAILURE = 'APP_EXAMPLE_FAILURE';
 export const APP_EXAMPLE_SUCCESS = 'APP_EXAMPLE_SUCCESS';
 
-export type ExampleRequest = {
+export interface ExampleRequest {
     id: number;
-};
+}
 
-export type ExampleResponse = {
+export interface ExampleResponse {
     id: number;
     itemName: string;
-};
+}
 
-export type AppState = {
+export interface AppState {
     theme: string;
     example: {
         isLoading: boolean;
         error: UnknownError | null;
         response: ExampleResponse | null;
     };
-};
+}
 
-type ToggleThemeAction = {
+interface ToggleThemeAction {
     type: typeof APP_TOGGLE_THEME;
-};
-type ExampleRequestAction = {
+}
+interface ExampleRequestAction {
     type: typeof APP_EXAMPLE_REQUEST;
-};
-type ExampleFailureAction = {
+}
+interface ExampleFailureAction {
     type: typeof APP_EXAMPLE_FAILURE;
     payload: {
         error: UnknownError;
     };
-};
-type ExampleSuccessAction = {
+}
+interface ExampleSuccessAction {
     type: typeof APP_EXAMPLE_SUCCESS;
     payload: {
         response: ExampleResponse;
     };
-};
+}
 
 export type AppActionTypes =
     | ToggleThemeAction

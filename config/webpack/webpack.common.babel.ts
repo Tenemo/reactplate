@@ -1,6 +1,6 @@
 import path from 'path';
 
-import webpack, { Configuration } from 'webpack';
+import { DefinePlugin, Configuration } from 'webpack';
 
 import packageJSON from '../../package.json';
 
@@ -15,7 +15,7 @@ export const commonConfig: Configuration = {
     },
     target: `web`,
     plugins: [
-        new webpack.DefinePlugin({
+        new DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
                 PORT: JSON.stringify(process.env.PORT),

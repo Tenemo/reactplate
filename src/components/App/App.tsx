@@ -15,15 +15,15 @@ import NotFound from 'components/NotFound';
 import { getAppTheme } from 'store/app/appSelectors';
 import { RootState } from 'store/types';
 
-type State = {
+interface State {
     hasError: boolean;
     error: Error | string | null;
     errorInformation?: { componentStack: string } | null;
-};
+}
 
-type Props = {
+interface Props {
     appTheme: string;
-};
+}
 
 export class App extends Component<Props> {
     static getDerivedStateFromError = (): { hasError: boolean } => ({
@@ -36,7 +36,6 @@ export class App extends Component<Props> {
         error: Error | null,
         errorInformation: { componentStack: string },
     ): void {
-        // eslint-disable-next-line no-console
         console.error(errorInformation.componentStack, error);
         this.setState({ error, errorInformation });
     }

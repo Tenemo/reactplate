@@ -20,6 +20,12 @@
         "noUnusedParameters": true,
         "noUnusedLocals": true
     },
-    "include": ["src/**/*", "config/**/*", ".eslintrc.js", "temp/**/*"],
+    "include": [
+        "src/**/*",
+        "config/**/*",
+        "temp/**/*",
+        "eslint.config.js",
+        ".babelrc.cjs"
+    ],
     "exclude": ["**/*.snap"]
 }

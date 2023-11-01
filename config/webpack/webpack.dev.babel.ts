@@ -1,7 +1,7 @@
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import ip from 'ip';
+import { address } from 'ip';
 import ReactRefreshBabel from 'react-refresh/babel';
 import { WatchIgnorePlugin, HotModuleReplacementPlugin } from 'webpack';
 import type { Configuration } from 'webpack';
@@ -11,8 +11,8 @@ import packageJSON from '../../package.json';
 
 import { commonConfig } from './webpack.common.babel';
 
-const localIp = ip.address();
-const PORT = process.env.PORT || 3000;
+const localIp = address();
+const PORT = process.env.PORT ?? 3000;
 
 const developmentConfiguration: Configuration = {
     mode: `development`,

@@ -7,7 +7,7 @@ import {
 } from 'react-redux';
 import {
     Store,
-    legacy_createStore, // eslint-disable-line camelcase
+    legacy_createStore,
     applyMiddleware,
     compose,
     combineReducers,
