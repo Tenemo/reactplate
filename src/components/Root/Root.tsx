@@ -19,7 +19,7 @@ export const Root = (): ReactElement => {
                 document.body.classList.remove('using-mouse');
             }
         });
-        console.log(`Build time: ${process.env.BUILD_DATE}`);
+        console.log(`Build date: ${process.env.BUILD_DATE}`);
     }, []);
 
     return (

@@ -13,8 +13,10 @@ import eslintJs from '@eslint/js';
 // import prettierPlugin from 'eslint-plugin-prettier';
 // import importPlugin from 'eslint-plugin-import';
 // import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
+// import securityPlugin from 'eslint-plugin-security';
 // import htmlPlugin from 'eslint-plugin-html'; // broken with @html-eslint as of 2023-11
 // import typescriptParser from '@typescript-eslint/parser';
+import errorOnlyPlugin from 'eslint-plugin-only-error';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 
@@ -34,6 +36,7 @@ export default [
             'plugin:import/errors', // adds eslint-plugin-import
             'plugin:import/warnings',
             'plugin:jest/recommended', // adds eslint-plugin-jest
+            'plugin:security/recommended', // adds eslint-plugin-security
             'plugin:jsx-a11y/strict', // adds eslint-plugin-jsx-a11y
             'prettier', // adds eslint-plugin-prettier
             'plugin:prettier/recommended',
@@ -155,6 +158,7 @@ export default [
         },
         plugins: {
             'react-hooks': reactHooksPlugin,
+            'only-error': errorOnlyPlugin,
         },
         linterOptions: {
             reportUnusedDisableDirectives: true,

@@ -1,13 +1,11 @@
 {
     "editor.formatOnSave": true,
-    "files.insertFinalNewline": true,
     "editor.linkedEditing": true,
     "files.autoSave": "off",
     "javascript.updateImportsOnFileMove.enabled": "prompt",
     "typescript.tsdk": "node_modules/typescript/lib",
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
-    "files.eol": "\n",
 
     "css.validate": false,
     "scss.validate": false,
