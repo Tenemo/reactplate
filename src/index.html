@@ -3,10 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" 
-    />
-    
-    <meta   name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <base href="/" />
     <title>
         <%= htmlWebpackPlugin.options.title %>
@@ -15,8 +13,7 @@
         if (window.MSCompatibleInfo) {
             var error =
                 "Internet Explorer is not supported. Please use a modern browser instead.";
-                document.querySelector("html").innerHTML = error;
-                    console.log('test');
+            document.querySelector("html").innerHTML = error;
             throw new Error(error);
         }
 

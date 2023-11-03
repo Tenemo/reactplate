@@ -20,6 +20,9 @@ export const commonConfig: Configuration = {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
                 PORT: JSON.stringify(process.env.PORT),
                 ANALYZE: JSON.stringify(process.env.ANALYZE),
+                BUILD_DATE: JSON.stringify(
+                    new Date().toISOString().split('T')[0],
+                ),
             },
         }),
     ],

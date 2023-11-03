@@ -15,9 +15,6 @@
 
     "eslint.format.enable": true,
     "eslint.experimental.useFlatConfig": true,
-    "eslint.options": {
-        "overrideConfigFile": "eslint.config.js"
-    },
     "[javascript]": {
         "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
@@ -31,7 +28,7 @@
         "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
     "[html]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+        "editor.defaultFormatter": "vscode.html-language-features"
     },
     "[scss]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -41,8 +38,7 @@
         "javascript",
         "javascriptreact",
         "typescript",
-        "typescriptreact",
-        "html"
+        "typescriptreact"
     ],
     "editor.codeActionsOnSave": { "source.fixAll.eslint": false },
 

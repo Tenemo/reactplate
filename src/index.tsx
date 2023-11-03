@@ -13,7 +13,5 @@ Sentry.init({
 
 const container = document.getElementById('root');
 
-console.log(`Build time: ${process.env.BUILD_DATE}`);
-
 const root = createRoot(container!);
 root.render(<Root />);

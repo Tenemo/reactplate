@@ -6,8 +6,6 @@ import { fileURLToPath } from 'url';
 // eslint-disable-next-line import/namespace
 import { FlatCompat } from '@eslint/eslintrc';
 import eslintJs from '@eslint/js';
-import htmlParser from '@html-eslint/parser';
-import typescriptParser from '@typescript-eslint/parser';
 // When flat config is supported, those should be used instead of strings:
 // import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
 // import typescriptPlugin from '@typescript-eslint/eslint-plugin';
@@ -15,7 +13,8 @@ import typescriptParser from '@typescript-eslint/parser';
 // import prettierPlugin from 'eslint-plugin-prettier';
 // import importPlugin from 'eslint-plugin-import';
 // import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
-import htmlPlugin from 'eslint-plugin-html';
+// import htmlPlugin from 'eslint-plugin-html'; // broken with @html-eslint as of 2023-11
+// import typescriptParser from '@typescript-eslint/parser';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 
@@ -30,39 +29,25 @@ const compat = new FlatCompat({
 });
 
 export default [
-    /*  ====== HTML ====== */
-    {
-        files: ['*.html'],
-        parser: htmlParser,
-        parserOptions: {
-            extraFileExtensions: ['.html'],
-        },
-        rules: {
-            'no-console': ERROR,
-        },
-    },
-    /*  ====== JavaScript && TypeScript ====== */
     ...compat.config({
         extends: [
-            // airbnb config can be considered to be added back later, when properly supporting flat config
-            // currently it results in conflicts
-            'plugin:import/errors',
+            'plugin:import/errors', // adds eslint-plugin-import
             'plugin:import/warnings',
-            'plugin:jest/recommended',
-            'plugin:jsx-a11y/strict',
-            'prettier',
+            'plugin:jest/recommended', // adds eslint-plugin-jest
+            'plugin:jsx-a11y/strict', // adds eslint-plugin-jsx-a11y
+            'prettier', // adds eslint-plugin-prettier
             'plugin:prettier/recommended',
-            'plugin:react/recommended', // supports flat config, but has to be here to avoid erroring out on double plugin declaration
+            'plugin:react/recommended', // adds eslint-plugin-react, supports flat config, but has to be here to avoid plugin declaration conflicts
         ],
         parser: '@typescript-eslint/parser',
         parserOptions: {
+            parser: '@typescript-eslint/parser',
             sourceType: 'module',
             ecmaFeatures: {
                 jsx: true,
             },
             project: './tsconfig.json',
             ecmaVersion: 2021,
-            extraFileExtensions: ['.html'],
         },
         settings: {
             react: {
@@ -72,21 +57,8 @@ export default [
                 typescript: {}, // eslint-import-resolver-typescript
             },
         },
-        plugins: ['@html-eslint'],
-        rules: {
-            'no-console': ERROR,
-        },
-        overrides: [
-            {
-                files: ['*.html'],
-                parser: '@html-eslint/parser',
-                parserOptions: {
-                    extraFileExtensions: ['.html'],
-                },
-                extends: ['plugin:@html-eslint/recommended'],
-            },
-        ],
     }),
+
     {
         files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.mjs'],
         rules: {
@@ -126,10 +98,7 @@ export default [
             'react/jsx-filename-extension': [
                 ERROR,
                 {
-                    extensions: [
-                        // '.jsx', All components are expected to be TS-based
-                        '.tsx',
-                    ],
+                    extensions: ['.tsx'],
                 },
             ],
             'react/jsx-sort-props': ERROR,
@@ -186,30 +155,11 @@ export default [
         },
         plugins: {
             'react-hooks': reactHooksPlugin,
-            html: htmlPlugin,
         },
-        // jsx-a11y already added by plugin:jsx-a11y/strict extend
-        // prettier already added by prettier extend
-        // jest already added by plugin:jest/recommended extend
-        // import already added by plugin:import extend
-        // react already added by eslint-plugin-react/configs/recommended extend
-
         linterOptions: {
             reportUnusedDisableDirectives: true,
         },
         languageOptions: {
-            // Why does it need to be a duplicate of what's already in compat.config? I would like to know as well.
-            // For the time being, the same parser needs to be configured in both places.
-            // Once everything switches to flat config, of course, this will stop being a problem.
-            parser: typescriptParser,
-            parserOptions: {
-                sourceType: 'module',
-                ecmaFeatures: {
-                    jsx: true,
-                },
-                project: './tsconfig.json',
-                ecmaVersion: 2021,
-            },
             globals: {
                 ...globals.browser,
                 ...globals.node,
@@ -219,27 +169,12 @@ export default [
             },
         },
     },
-
-    /*  ====== TypeScript only ====== */
-    // {
-    // files: ['**/*.ts', '**/*.tsx'],
-    // plugins: {},
-    // "@typescript-eslint": typescriptPlugin already added by @typescript-eslint/recommended-requiring-type-checking
-    // },
     ...compat.config({
         extends: [
-            'plugin:@typescript-eslint/recommended-requiring-type-checking',
+            'plugin:@typescript-eslint/recommended-requiring-type-checking', // adds @typescript-eslint plugin
             'plugin:@typescript-eslint/stylistic-type-checked',
             'plugin:import/typescript',
         ],
-        // parserOptions: {
-        //     sourceType: 'module',
-        //     ecmaFeatures: {
-        //         jsx: true,
-        //     },
-        //     project: './tsconfig.json',
-        //     ecmaVersion: 2021,
-        // },
         // I didn't find a way to apply an ignore pattern to JUST one compat.config spread,
         // ignorePatterns: ["**/*.mjs", "**/*.js"] makes it global
         // so I'm just disabling rules that don't work with .mjs and .js files
@@ -252,22 +187,8 @@ export default [
                     '@typescript-eslint/no-unsafe-call': OFF,
                 },
             },
-            // {
-            //     files: ['*.html'],
-            //     parser: '@html-eslint/parser',
-            //     extends: ['plugin:@html-eslint/recommended'],
-            //     rules: {
-            //         'no-console': ERROR,
-            //     },
-            // },
         ],
     }),
-
-    /*  ====== JavaScript only ====== */
-    // {
-    //     files: ['**/*.js', '**/*.jsx', '**/*.mjs'],
-    // },
-
     /*  ====== Other rules ====== */
     {
         files: ['*Reducer.ts'],
@@ -288,6 +209,12 @@ export default [
         },
     },
     {
-        ignores: ['node_modules/*', '.tmp/*', 'coverage/*', 'dist/*'],
+        ignores: [
+            'node_modules/*',
+            '.tmp/*',
+            'coverage/*',
+            'dist/*',
+            '**/*.html',
+        ],
     },
 ];
