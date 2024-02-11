@@ -41,6 +41,8 @@ const configureStoreDev = (): Store<RootState> => {
     return legacy_createStore(
         rootReducer,
         initialState,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-ignore
         composeWithDevTools(applyMiddleware(...middleware)),
     );
 };
