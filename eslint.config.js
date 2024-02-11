@@ -6,16 +6,16 @@ import { fileURLToPath } from 'url';
 // eslint-disable-next-line import/namespace
 import { FlatCompat } from '@eslint/eslintrc';
 import eslintJs from '@eslint/js';
-// When flat config is supported, those should be used instead of strings:
-// import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
-// import typescriptPlugin from '@typescript-eslint/eslint-plugin';
-// import jestPlugin from 'eslint-plugin-jest';
-// import prettierPlugin from 'eslint-plugin-prettier';
-// import importPlugin from 'eslint-plugin-import';
-// import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
+// When flat config is supported, actual imports should be used instead of strings:
+// import typescriptPlugin from '@typescript-eslint/eslint-plugin'; // as of 2024-02-11 no flat config support but very close! v.7, almost out for release, supports it https://github.com/typescript-eslint/typescript-eslint/issues/8420
+// import typescriptParser from '@typescript-eslint/parser'; // ^ same as above
+// import jestPlugin from 'eslint-plugin-jest'; // as of 2024-02-11 no flat config support https://github.com/jest-community/eslint-plugin-jest/issues/1408
+// import importPlugin from 'eslint-plugin-import'; // as of 2024-02-11 no flat config support https://github.com/import-js/eslint-plugin-import/issues/2556
+// import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'; // as of 2024-02-11 no flat config support https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/pull/891
 // import htmlPlugin from 'eslint-plugin-html'; // broken with @html-eslint as of 2023-11
-// import typescriptParser from '@typescript-eslint/parser';
 import errorOnlyPlugin from 'eslint-plugin-only-error';
+import prettierPluginRecommended from 'eslint-plugin-prettier/recommended';
+import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import securityPlugin from 'eslint-plugin-security';
 import globals from 'globals';
@@ -39,7 +39,6 @@ export default [
             'plugin:jsx-a11y/strict', // adds eslint-plugin-jsx-a11y
             'prettier', // adds eslint-plugin-prettier
             'plugin:prettier/recommended',
-            'plugin:react/recommended', // adds eslint-plugin-react, supports flat config, but has to be here to avoid plugin declaration conflicts
         ],
         parser: '@typescript-eslint/parser',
         parserOptions: {
@@ -61,6 +60,7 @@ export default [
         },
     }),
     securityPlugin.configs.recommended,
+    prettierPluginRecommended,
     {
         files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.mjs'],
         rules: {
@@ -156,6 +156,7 @@ export default [
             'jest/no-commented-out-tests': ERROR,
         },
         plugins: {
+            react: reactPlugin,
             'react-hooks': reactHooksPlugin,
             'only-error': errorOnlyPlugin,
         },
