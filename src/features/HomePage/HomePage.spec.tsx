@@ -6,7 +6,7 @@ import HomePage from './HomePage';
 import { renderWithProviders } from 'utils/test-utils';
 
 jest.mock('features/ExampleRequest/exampleRequestSlice', () => ({
-    ...jest.requireActual('features/ExampleRequest/exampleRequestSlice'), // This keeps the actual implementations of other exports
+    ...jest.requireActual('features/ExampleRequest/exampleRequestSlice'),
     useGetExamplePageQuery: jest.fn(() => ({
         data: {
             results: [
