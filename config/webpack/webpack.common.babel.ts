@@ -10,7 +10,7 @@ export const commonConfig: Configuration = {
             `core-js/stable`,
             `react`,
             `react-dom`,
-            path.join(process.cwd(), `src/index`),
+            path.join(process.cwd(), `src/main`),
         ],
     },
     target: `web`,

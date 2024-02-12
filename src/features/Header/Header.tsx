@@ -1,14 +1,13 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
 import styles from './header.scss';
 
-import { useSelector, useDispatch } from 'store';
-import { toggleTheme } from 'store/app/appActions';
-import { getAppTheme } from 'store/app/appSelectors';
+import { useAppSelector, useAppDispatch } from 'app/hooks';
+import { toggleTheme, selectAppTheme } from 'features/AppTheme/appThemeSlice';
 
-export const Header = (): ReactElement => {
-    const dispatch = useDispatch();
-    const appTheme = useSelector(getAppTheme);
+const Header = (): React.JSX.Element => {
+    const dispatch = useAppDispatch();
+    const appTheme = useAppSelector(selectAppTheme);
 
     const onToggleThemeClick = (): void => {
         dispatch(toggleTheme());

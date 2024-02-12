@@ -23,7 +23,6 @@ module.exports = {
                 root: ["./src/"],
             },
         ],
-        "@babel/plugin-proposal-class-properties",
     ],
     ignore: ["node_modules"],
 };

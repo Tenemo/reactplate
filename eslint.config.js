@@ -85,6 +85,7 @@ export default [
                     allowTypedFunctionExpressions: true,
                 },
             ],
+            '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
 
             // eslint-plugin-prettier
             'prettier/prettier': [
@@ -198,21 +199,16 @@ export default [
         ],
     }),
     {
-        files: ['*Reducer.ts'],
-        rules: {
-            'default-param-last': OFF,
-        },
-    },
-    {
-        files: ['*.scss.d.ts'],
+        files: ['**/*.scss.d.ts'],
         rules: {
             'prettier/prettier': OFF,
         },
     },
     {
-        files: ['*.spec.tsx'],
+        files: ['**/*.spec.tsx'],
         rules: {
             '@typescript-eslint/ban-ts-comment': OFF,
+            '@typescript-eslint/no-unsafe-return': OFF,
         },
     },
     {
