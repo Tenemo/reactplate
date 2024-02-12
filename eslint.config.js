@@ -11,7 +11,6 @@ import eslintJs from '@eslint/js';
 // import jestPlugin from 'eslint-plugin-jest'; // as of 2024-02-11 no flat config support https://github.com/jest-community/eslint-plugin-jest/issues/1408
 // import importPlugin from 'eslint-plugin-import'; // as of 2024-02-11 no flat config support https://github.com/import-js/eslint-plugin-import/issues/2556
 // import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'; // as of 2024-02-11 no flat config support https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/pull/891
-// import htmlPlugin from 'eslint-plugin-html';
 import errorOnlyPlugin from 'eslint-plugin-only-error';
 import prettierPluginRecommended from 'eslint-plugin-prettier/recommended';
 import reactPlugin from 'eslint-plugin-react';
@@ -22,7 +21,9 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import securityPlugin from 'eslint-plugin-security';
 import globals from 'globals';
 
-// html-eslint doesn't work with @typescript-eslint/parser https://github.com/yeonjuan/html-eslint/issues/87
+// To avoid wasting time with html-eslint in the future, it doesn't work with @typescript-eslint/parser
+// https://github.com/yeonjuan/html-eslint/issues/87
+// eslint-plugin-html should work when typescript will support flat config, currently it conflicts with parserOptions
 
 const OFF = 0;
 const ERROR = 2;
@@ -41,7 +42,6 @@ export default [
             'plugin:import/warnings',
             'plugin:jest/recommended', // adds eslint-plugin-jest
             'plugin:jsx-a11y/strict', // adds eslint-plugin-jsx-a11y
-            'prettier', // adds eslint-plugin-prettier
         ],
         parser: '@typescript-eslint/parser',
         parserOptions: {
@@ -178,12 +178,6 @@ export default [
             },
         },
     },
-    // {
-    //     files: ['**/*.html'],
-    //     plugins: {
-    //         html: htmlPlugin,
-    //     },
-    // },
     ...compat.config({
         extends: [
             'plugin:@typescript-eslint/recommended-requiring-type-checking', // adds @typescript-eslint plugin
