@@ -1,8 +1,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Bugged:
-// https://github.com/import-js/eslint-plugin-import/issues/2556
+// Bugged: https://github.com/import-js/eslint-plugin-import/issues/2556
 // eslint-disable-next-line import/namespace
 import { FlatCompat } from '@eslint/eslintrc';
 import eslintJs from '@eslint/js';
@@ -12,13 +11,18 @@ import eslintJs from '@eslint/js';
 // import jestPlugin from 'eslint-plugin-jest'; // as of 2024-02-11 no flat config support https://github.com/jest-community/eslint-plugin-jest/issues/1408
 // import importPlugin from 'eslint-plugin-import'; // as of 2024-02-11 no flat config support https://github.com/import-js/eslint-plugin-import/issues/2556
 // import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'; // as of 2024-02-11 no flat config support https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/pull/891
-// import htmlPlugin from 'eslint-plugin-html'; // broken with @html-eslint as of 2023-11
+// import htmlPlugin from 'eslint-plugin-html';
 import errorOnlyPlugin from 'eslint-plugin-only-error';
 import prettierPluginRecommended from 'eslint-plugin-prettier/recommended';
 import reactPlugin from 'eslint-plugin-react';
+// Doesn't work otherwise
+// eslint-disable-next-line import/extensions
+import reactPluginRecommended from 'eslint-plugin-react/configs/recommended.js';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import securityPlugin from 'eslint-plugin-security';
 import globals from 'globals';
+
+// html-eslint doesn't work with @typescript-eslint/parser https://github.com/yeonjuan/html-eslint/issues/87
 
 const OFF = 0;
 const ERROR = 2;
@@ -38,11 +42,11 @@ export default [
             'plugin:jest/recommended', // adds eslint-plugin-jest
             'plugin:jsx-a11y/strict', // adds eslint-plugin-jsx-a11y
             'prettier', // adds eslint-plugin-prettier
-            'plugin:prettier/recommended',
         ],
         parser: '@typescript-eslint/parser',
         parserOptions: {
             parser: '@typescript-eslint/parser',
+            // extraFileExtensions: ['.js', '.jsx', '.ts', '.tsx', '.mjs, .html'],
             sourceType: 'module',
             ecmaFeatures: {
                 jsx: true,
@@ -63,6 +67,7 @@ export default [
     prettierPluginRecommended,
     {
         files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.mjs'],
+        ...reactPluginRecommended,
         rules: {
             ...eslintJs.configs.recommended.rules,
             'arrow-parens': [ERROR, 'always', { requireForBlockBody: false }],
@@ -173,13 +178,19 @@ export default [
             },
         },
     },
+    // {
+    //     files: ['**/*.html'],
+    //     plugins: {
+    //         html: htmlPlugin,
+    //     },
+    // },
     ...compat.config({
         extends: [
             'plugin:@typescript-eslint/recommended-requiring-type-checking', // adds @typescript-eslint plugin
             'plugin:@typescript-eslint/stylistic-type-checked',
             'plugin:import/typescript',
         ],
-        // I didn't find a way to apply an ignore pattern to JUST one compat.config spread,
+        // I haven't found a way to apply an ignore pattern to JUST one compat.config spread,
         // ignorePatterns: ["**/*.mjs", "**/*.js"] makes it global
         // so I'm just disabling rules that don't work with .mjs and .js files
         overrides: [
@@ -193,7 +204,6 @@ export default [
             },
         ],
     }),
-    /*  ====== Other rules ====== */
     {
         files: ['*Reducer.ts'],
         rules: {
