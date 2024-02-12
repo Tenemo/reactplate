@@ -46,7 +46,6 @@ export default [
         parser: '@typescript-eslint/parser',
         parserOptions: {
             parser: '@typescript-eslint/parser',
-            // extraFileExtensions: ['.js', '.jsx', '.ts', '.tsx', '.mjs, .html'],
             sourceType: 'module',
             ecmaFeatures: {
                 jsx: true,
