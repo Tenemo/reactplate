@@ -203,6 +203,7 @@ export default [
         files: ['**/*.scss.d.ts'],
         rules: {
             'prettier/prettier': OFF,
+            '@typescript-eslint/consistent-type-definitions': OFF,
         },
     },
     {

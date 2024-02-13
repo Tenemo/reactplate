@@ -15,3 +15,6 @@ coverage/
 # Miscellaneous
 .DS_Store
 temp/
+
+# env
+.env

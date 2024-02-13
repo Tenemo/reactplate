@@ -1,5 +1,3 @@
-// false positive, possibly related to https://github.com/import-js/eslint-plugin-import/issues/2297
-
 import path from 'path';
 
 module.exports = {
