@@ -53,6 +53,7 @@ export default [
             project: './tsconfig.json',
             ecmaVersion: 2021,
         },
+        plugins: ['only-error'],
         settings: {
             react: {
                 version: 'detect',
