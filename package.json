@@ -43,6 +43,11 @@
         "node": ">=20.11.0"
     },
     "type": "module",
+    "overrides": {
+        "@pmmmwh/react-refresh-webpack-plugin": {
+            "webpack-dev-server": "^5.0.4"
+        }
+    },
     "dependencies": {
         "@babel/runtime-corejs3": "^7.24.1",
         "@reduxjs/toolkit": "^2.2.3",
