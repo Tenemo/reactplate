@@ -120,11 +120,11 @@
         "eslint-plugin-react": "^7.34.1",
         "eslint-plugin-react-hooks": "4.6.0",
         "eslint-plugin-security": "^2.1.1",
-        "globals": "^14.0.0",
+        "globals": "^15.0.0",
         "html-webpack-plugin": "^5.6.0",
         "http-server": "^14.1.1",
         "husky": "^9.0.11",
-        "ip": "^1.1.9",
+        "ip": "^2.0.1",
         "jest": "^29.7.0",
         "jest-cli": "^29.7.0",
         "jest-environment-jsdom": "^29.7.0",
@@ -152,7 +152,7 @@
         "webpack": "^5.91.0",
         "webpack-bundle-analyzer": "^4.10.1",
         "webpack-cli": "^5.1.4",
-        "webpack-dev-server": "^4.15.2",
+        "webpack-dev-server": "^5.0.4",
         "webpack-merge": "^5.10.0"
     },
     "jest": {
