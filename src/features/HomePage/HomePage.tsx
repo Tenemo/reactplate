@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { useGetExamplePageQuery } from 'features/ExampleRequest/exampleRequestSlice';
+import {
+    Article,
+    useGetExamplePageQuery,
+} from 'features/ExampleRequest/exampleRequestSlice';
 
 const HomePage = (): React.JSX.Element => {
     const { data, error, isLoading } = useGetExamplePageQuery();
@@ -21,7 +24,7 @@ const HomePage = (): React.JSX.Element => {
                 </a>
             </h2>
             <ul>
-                {data.results.map((article) => (
+                {data.results.map((article: Article) => (
                     <li key={article.id}>
                         <a
                             href={article.url}

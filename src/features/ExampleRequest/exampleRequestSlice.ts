@@ -1,7 +1,7 @@
 // Importing necessary functions from RTK Query
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-type Article = {
+export type Article = {
     id: number;
     title: string;
     url: string;
