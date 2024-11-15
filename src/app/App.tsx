@@ -8,7 +8,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Helmet } from 'react-helmet-async';
 import { Route, Routes } from 'react-router-dom';
 
-import styles from './app.scss';
+import * as styles from './app.scss';
 
 import { useAppSelector } from 'app/hooks';
 import NotFound from 'components/NotFound/NotFound';
@@ -33,7 +33,9 @@ const App = (): React.JSX.Element => {
                         The application has crashed due to a rendering error.
                     </div>
                 }
-                onError={(error) => console.error(error)}
+                onError={(error) => {
+                    console.error(error);
+                }}
             >
                 <Header />
                 <Routes>

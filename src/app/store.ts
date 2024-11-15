@@ -38,7 +38,8 @@ export const makeStoreDev = (preloadedState?: Partial<RootState>) => {
     });
     return store;
 };
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types
 export const makeStoreProd = (preloadedState?: Partial<RootState>) => {
     const store = configureStore({
         reducer: rootReducer,

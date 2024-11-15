@@ -31,7 +31,7 @@ export const exampleRequestSlice = createApi({
         baseUrl: 'https://api.spaceflightnewsapi.net/v4/',
     }),
     endpoints: (build) => ({
-        getExamplePage: build.query<ExampleApiResponse, void | number>({
+        getExamplePage: build.query<ExampleApiResponse, number | void>({
             query: () => `articles?limit=10`,
         }),
     }),

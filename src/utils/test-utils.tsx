@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types */
 import type { RenderOptions } from '@testing-library/react';
 import { render } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
@@ -17,6 +16,7 @@ type ExtendedRenderOptions = {
 export const renderWithProviders = (
     ui: ReactElement,
     extendedRenderOptions: ExtendedRenderOptions = {},
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types
 ) => {
     const {
         preloadedState = {},
@@ -24,7 +24,7 @@ export const renderWithProviders = (
         ...renderOptions
     } = extendedRenderOptions;
 
-    const Wrapper = ({ children }: PropsWithChildren) => (
+    const Wrapper = ({ children }: PropsWithChildren): React.JSX.Element => (
         <Provider store={store}>{children}</Provider>
     );
 

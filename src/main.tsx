@@ -14,15 +14,15 @@ import 'styles/global.scss';
 export const Root = (): React.JSX.Element => {
     useEffect(() => {
         // https://stackoverflow.com/questions/31402576/enable-focus-only-on-keyboard-use-or-tab-press
-        document.body.addEventListener('mousedown', () =>
-            document.body.classList.add('using-mouse'),
-        );
+        document.body.addEventListener('mousedown', () => {
+            document.body.classList.add('using-mouse');
+        });
         document.body.addEventListener('keydown', (event) => {
             if (event.key === 'Tab') {
                 document.body.classList.remove('using-mouse');
             }
         });
-        console.log(`Build date: ${process.env.BUILD_DATE}`);
+        console.log(`Build date: ${process.env.BUILD_DATE ?? 'N/A'}`);
     }, []);
 
     return (
@@ -46,5 +46,6 @@ Sentry.init({
 
 const container = document.getElementById('root');
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = createRoot(container!);
 root.render(<Root />);

@@ -1,28 +1,28 @@
 module.exports = {
     presets: [
         [
-            "@babel/preset-env",
+            '@babel/preset-env',
             {
-                useBuiltIns: "entry",
+                useBuiltIns: 'entry',
                 corejs: 3,
             },
         ],
         [
-            "@babel/preset-react",
+            '@babel/preset-react',
             {
-                development: process.env.NODE_ENV === "development",
+                development: process.env.NODE_ENV === 'development',
             },
         ],
-        "@babel/preset-typescript",
+        '@babel/preset-typescript',
     ],
     plugins: [
         [
-            "module-resolver",
+            'module-resolver',
             {
-                extensions: [".js", ".jsx", ".ts", ".tsx"],
-                root: ["./src/"],
+                extensions: ['.js', '.jsx', '.ts', '.tsx'],
+                root: ['./src/'],
             },
         ],
     ],
-    ignore: ["node_modules"],
+    ignore: ['node_modules'],
 };

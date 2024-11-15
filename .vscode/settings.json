@@ -12,7 +12,7 @@
     "javascript.validate.enable": false,
 
     "eslint.format.enable": true,
-    "eslint.experimental.useFlatConfig": true,
+    "eslint.useFlatConfig": true,
     "[javascript]": {
         "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
@@ -64,6 +64,7 @@
         "spaceflightnewsapi",
         "streetsidesoftware",
         "teamsupercell",
+        "tseslint",
         "wojtekmaj"
     ]
 }

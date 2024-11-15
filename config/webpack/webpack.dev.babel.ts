@@ -30,7 +30,7 @@ const developmentConfiguration: Configuration = {
     },
     output: {
         filename: `[name].js`,
-        publicPath: `http://${localIp}:${PORT}/`,
+        publicPath: `http://${localIp}:${PORT.toString()}/`,
     },
     devtool: `eval-source-map`,
     plugins: [
@@ -43,13 +43,15 @@ const developmentConfiguration: Configuration = {
             exclude: /a\.js|node_modules/,
             failOnError: false,
         }),
-        new WatchIgnorePlugin({ paths: [/(css|scss)\.d\.ts$/] }),
+        new WatchIgnorePlugin({
+            paths: [/(css|scss)\.d\.ts$/],
+        }),
         new HotModuleReplacementPlugin(),
         new ReactRefreshWebpackPlugin(),
     ],
     optimization: {
         minimize: false,
-        emitOnErrors: false,
+        noEmitOnErrors: true,
     },
     module: {
         rules: [

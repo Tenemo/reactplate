@@ -1,25 +1,19 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Bugged: https://github.com/import-js/eslint-plugin-import/issues/2556
-// eslint-disable-next-line import/namespace
 import { FlatCompat } from '@eslint/eslintrc';
-import eslintJs from '@eslint/js';
-// When flat config is supported, actual imports should be used instead of strings:
-// import typescriptPlugin from '@typescript-eslint/eslint-plugin'; // as of 2024-02-11 no flat config support but very close! v.7, almost out for release, supports it https://github.com/typescript-eslint/typescript-eslint/issues/8420
-// import typescriptParser from '@typescript-eslint/parser'; // ^ same as above
-// import jestPlugin from 'eslint-plugin-jest'; // as of 2024-02-11 no flat config support https://github.com/jest-community/eslint-plugin-jest/issues/1408
-// import importPlugin from 'eslint-plugin-import'; // as of 2024-02-11 no flat config support https://github.com/import-js/eslint-plugin-import/issues/2556
-// import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'; // as of 2024-02-11 no flat config support https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/pull/891
+import eslint from '@eslint/js';
+import { flatConfigs as importConfigs } from 'eslint-plugin-import';
+import jestPlugin from 'eslint-plugin-jest';
+import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import errorOnlyPlugin from 'eslint-plugin-only-error';
+import prettierPlugin from 'eslint-plugin-prettier';
 import prettierPluginRecommended from 'eslint-plugin-prettier/recommended';
 import reactPlugin from 'eslint-plugin-react';
-// Doesn't work otherwise
-// eslint-disable-next-line import/extensions
-import reactPluginRecommended from 'eslint-plugin-react/configs/recommended.js';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import securityPlugin from 'eslint-plugin-security';
 import globals from 'globals';
+import tseslint, { configs as tsConfigs } from 'typescript-eslint';
 
 // To avoid wasting time with html-eslint in the future, it doesn't work with @typescript-eslint/parser
 // https://github.com/yeonjuan/html-eslint/issues/87
@@ -30,30 +24,38 @@ const ERROR = 2;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 const compat = new FlatCompat({
     baseDirectory: __dirname,
 });
 
-export default [
+export default tseslint.config(
+    eslint.configs.recommended,
+    ...tsConfigs.strictTypeChecked,
+    ...tsConfigs.stylisticTypeChecked,
+    importConfigs.recommended,
+    importConfigs.typescript,
+    importConfigs.react,
+    importConfigs.errors,
+    importConfigs.warnings,
+    prettierPluginRecommended,
+    reactPlugin.configs.flat.recommended,
+    reactPlugin.configs.flat['jsx-runtime'],
+    securityPlugin.configs.recommended,
     ...compat.config({
-        extends: [
-            'plugin:import/errors', // adds eslint-plugin-import
-            'plugin:import/warnings',
-            'plugin:jest/recommended', // adds eslint-plugin-jest
-            'plugin:jsx-a11y/strict', // adds eslint-plugin-jsx-a11y
-        ],
-        parser: '@typescript-eslint/parser',
-        parserOptions: {
-            parser: '@typescript-eslint/parser',
-            sourceType: 'module',
-            ecmaFeatures: {
-                jsx: true,
-            },
-            project: './tsconfig.json',
-            ecmaVersion: 2021,
-        },
         plugins: ['only-error'],
+    }),
+    {
+        files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
+        ...reactHooksPlugin.configs['recommended-latest'],
+        plugins: {
+            react: reactPlugin,
+            'react-hooks': reactHooksPlugin,
+            'jsx-a11y': jsxA11yPlugin,
+            'only-error': errorOnlyPlugin,
+            prettier: prettierPlugin,
+            security: securityPlugin,
+            jest: jestPlugin,
+        },
         settings: {
             react: {
                 version: 'detect',
@@ -62,32 +64,30 @@ export default [
                 typescript: {}, // eslint-import-resolver-typescript
             },
         },
-    }),
-    securityPlugin.configs.recommended,
-    prettierPluginRecommended,
-    {
-        files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.mjs'],
-        ...reactPluginRecommended,
-        rules: {
-            ...eslintJs.configs.recommended.rules,
-            'arrow-parens': [ERROR, 'always', { requireForBlockBody: false }],
-            'no-restricted-exports': OFF,
-            'no-shadow': OFF, // duplicated by @typescript-eslint/no-shadow
-
-            // @typescript-eslint/eslint-plugin
-            '@typescript-eslint/no-use-before-define': ERROR,
-            '@typescript-eslint/no-shadow': ERROR,
-            '@typescript-eslint/explicit-module-boundary-types': ERROR,
-            '@typescript-eslint/unbound-method': ERROR,
-            '@typescript-eslint/explicit-function-return-type': [
-                ERROR,
-                {
-                    allowExpressions: true,
-                    allowTypedFunctionExpressions: true,
+        languageOptions: {
+            parserOptions: {
+                sourceType: 'module',
+                ecmaFeatures: {
+                    jsx: true,
                 },
-            ],
-            '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
-
+                project: './tsconfig.json',
+                ecmaVersion: 2021,
+                projectService: true,
+                tsconfigRootDir: import.meta.dirname,
+            },
+            globals: {
+                ...globals.browser,
+                ...globals.node,
+                ...globals.es2021,
+                ...globals.commonjs,
+            },
+        },
+        linterOptions: {
+            reportUnusedDisableDirectives: true,
+        },
+        rules: {
+            'react/jsx-uses-react': 'error',
+            'react/jsx-uses-vars': 'error',
             // eslint-plugin-prettier
             'prettier/prettier': [
                 ERROR,
@@ -100,6 +100,26 @@ export default [
                     arrowParens: 'always',
                 },
             ],
+            'arrow-parens': [ERROR, 'always', { requireForBlockBody: false }],
+            'no-restricted-exports': OFF,
+            'no-shadow': OFF, // duplicated by @typescript-eslint/no-shadow
+
+            '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+            '@typescript-eslint/no-use-before-define': ERROR,
+            '@typescript-eslint/no-shadow': ERROR,
+            '@typescript-eslint/explicit-module-boundary-types': ERROR,
+            '@typescript-eslint/unbound-method': ERROR,
+            '@typescript-eslint/explicit-function-return-type': [
+                ERROR,
+                {
+                    allowExpressions: true,
+                    allowTypedFunctionExpressions: true,
+                },
+            ],
+            // RTK Query suggests to use that
+            // https://redux-toolkit.js.org/rtk-query/usage-with-typescript#typing-query-and-mutation-endpoints
+            // https://stackoverflow.com/questions/74698932/rtk-query-eslint-gives-errors-typescript-eslint-no-invalid-void-type-if-query
+            '@typescript-eslint/no-invalid-void-type': OFF,
 
             // eslint-plugin-react
             'react/destructuring-assignment': [ERROR, 'always'],
@@ -157,48 +177,17 @@ export default [
                     pathGroupsExcludedImportTypes: ['builtin'],
                 },
             ],
-
-            // eslint-plugin-jest
-            'jest/no-commented-out-tests': ERROR,
-        },
-        plugins: {
-            react: reactPlugin,
-            'react-hooks': reactHooksPlugin,
-            'only-error': errorOnlyPlugin,
-        },
-        linterOptions: {
-            reportUnusedDisableDirectives: true,
-        },
-        languageOptions: {
-            globals: {
-                ...globals.browser,
-                ...globals.node,
-                ...globals.es2021,
-                ...globals.commonjs,
-                ...globals.jest,
-            },
         },
     },
-    ...compat.config({
-        extends: [
-            'plugin:@typescript-eslint/recommended-requiring-type-checking', // adds @typescript-eslint plugin
-            'plugin:@typescript-eslint/stylistic-type-checked',
-            'plugin:import/typescript',
-        ],
-        // I haven't found a way to apply an ignore pattern to JUST one compat.config spread,
-        // ignorePatterns: ["**/*.mjs", "**/*.js"] makes it global
-        // so I'm just disabling rules that don't work with .mjs and .js files
-        overrides: [
-            {
-                files: ['**/*.mjs', '**/*.js', '**/*.jsx', 'eslint.config.mjs'],
-                rules: {
-                    '@typescript-eslint/no-unsafe-assignment': OFF,
-                    '@typescript-eslint/no-unsafe-member-access': OFF,
-                    '@typescript-eslint/no-unsafe-call': OFF,
-                },
-            },
-        ],
-    }),
+    {
+        files: ['**/*.js', '**/*.jsx', '**/*.mjs'],
+        rules: {
+            '@typescript-eslint/no-unsafe-assignment': OFF,
+            '@typescript-eslint/no-unsafe-argument': OFF,
+            '@typescript-eslint/no-unsafe-member-access': OFF,
+            '@typescript-eslint/no-unsafe-call': OFF,
+        },
+    },
     {
         files: ['**/*.scss.d.ts'],
         rules: {
@@ -207,8 +196,23 @@ export default [
         },
     },
     {
-        files: ['**/*.spec.tsx'],
+        files: [
+            '**/*.spec.tsx',
+            '**/*.spec.js',
+            '**/*.test.tsx',
+            '**/*.test.js',
+        ],
+        plugins: { jest: jestPlugin },
+        languageOptions: {
+            globals: jestPlugin.environments.globals.globals,
+        },
         rules: {
+            'jest/no-commented-out-tests': ERROR,
+            'jest/no-disabled-tests': ERROR,
+            'jest/no-focused-tests': ERROR,
+            'jest/no-identical-title': ERROR,
+            'jest/prefer-to-have-length': ERROR,
+            'jest/valid-expect': ERROR,
             '@typescript-eslint/ban-ts-comment': OFF,
             '@typescript-eslint/no-unsafe-return': OFF,
         },
@@ -222,4 +226,4 @@ export default [
             '**/*.html',
         ],
     },
-];
+);
