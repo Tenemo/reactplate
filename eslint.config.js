@@ -1,7 +1,3 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-import { FlatCompat } from '@eslint/eslintrc';
 import eslint from '@eslint/js';
 import { flatConfigs as importConfigs } from 'eslint-plugin-import';
 import jestPlugin from 'eslint-plugin-jest';
@@ -22,12 +18,6 @@ import tseslint, { configs as tsConfigs } from 'typescript-eslint';
 const OFF = 0;
 const ERROR = 2;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-});
-
 export default tseslint.config(
     eslint.configs.recommended,
     ...tsConfigs.strictTypeChecked,
@@ -41,9 +31,6 @@ export default tseslint.config(
     reactPlugin.configs.flat.recommended,
     reactPlugin.configs.flat['jsx-runtime'],
     securityPlugin.configs.recommended,
-    ...compat.config({
-        plugins: ['only-error'],
-    }),
     {
         files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
         ...reactHooksPlugin.configs['recommended-latest'],
