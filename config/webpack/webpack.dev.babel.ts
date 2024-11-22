@@ -51,7 +51,7 @@ const developmentConfiguration: Configuration = {
     ],
     optimization: {
         minimize: false,
-        noEmitOnErrors: true,
+        emitOnErrors: false,
     },
     module: {
         rules: [
