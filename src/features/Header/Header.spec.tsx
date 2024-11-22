@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, act } from '@testing-library/react';
 import React from 'react';
 
 import { makeStore } from 'app/store';
@@ -14,7 +14,9 @@ describe('Header', () => {
         renderWithProviders(<Header />, { store });
 
         const button = screen.getByRole('button');
-        button.click();
+        act(() => {
+            button.click();
+        });
 
         expect(store.getState().appTheme.theme).toBe('light');
     });

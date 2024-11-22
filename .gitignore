@@ -14,8 +14,6 @@ coverage/
 
 # Miscellaneous
 .DS_Store
-temp/
-temp.*
 *concatenated.txt
 
 # env
