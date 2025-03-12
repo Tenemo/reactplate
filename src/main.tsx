@@ -1,13 +1,13 @@
+import { HelmetProvider } from '@dr.pogodin/react-helmet';
 import { browserTracingIntegration } from '@sentry/browser';
 import * as Sentry from '@sentry/react';
 import React, { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-import { HelmetProvider } from 'react-helmet-async';
 import { Provider } from 'react-redux';
-import { HistoryRouter as Router } from 'redux-first-history/rr6';
+import { BrowserRouter } from 'react-router';
 
 import App from 'app/App';
-import { store, history } from 'app/store';
+import { store } from 'app/store';
 
 import 'styles/global.scss';
 
@@ -29,9 +29,9 @@ export const Root = (): React.JSX.Element => {
         <React.StrictMode>
             <Provider store={store}>
                 <HelmetProvider>
-                    <Router history={history}>
+                    <BrowserRouter>
                         <App />
-                    </Router>
+                    </BrowserRouter>
                 </HelmetProvider>
             </Provider>
         </React.StrictMode>
