@@ -8,7 +8,7 @@ import React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Route, Routes } from 'react-router-dom';
 
-import * as styles from './app.scss';
+import styles from './app.scss';
 
 import { useAppSelector } from 'app/hooks';
 import NotFound from 'components/NotFound/NotFound';

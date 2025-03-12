@@ -8,6 +8,7 @@ import prettierPluginRecommended from 'eslint-plugin-prettier/recommended';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import securityPlugin from 'eslint-plugin-security';
+import unusedImportsPlugin from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import tseslint, { configs as tsConfigs } from 'typescript-eslint';
 
@@ -42,6 +43,7 @@ export default tseslint.config(
             prettier: prettierPlugin,
             security: securityPlugin,
             jest: jestPlugin,
+            'unused-imports': unusedImportsPlugin,
         },
         settings: {
             react: {
@@ -164,6 +166,19 @@ export default tseslint.config(
                     pathGroupsExcludedImportTypes: ['builtin'],
                 },
             ],
+
+            // eslint-plugin-unused-imports
+            '@typescript-eslint/no-unused-vars': OFF,
+            'unused-imports/no-unused-imports': ERROR,
+            'unused-imports/no-unused-vars': [
+                ERROR,
+                {
+                    vars: 'all',
+                    varsIgnorePattern: '^_',
+                    args: 'after-used',
+                    argsIgnorePattern: '^_',
+                },
+            ],
         },
     },
     {
@@ -180,6 +195,7 @@ export default tseslint.config(
         rules: {
             'prettier/prettier': OFF,
             '@typescript-eslint/consistent-type-definitions': OFF,
+            '@typescript-eslint/no-empty-object-type': OFF,
         },
     },
     {
