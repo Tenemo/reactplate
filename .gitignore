@@ -5,6 +5,7 @@ npm-debug.log
 .tmp/
 sh.exe.stackdump
 debug.log
+temp/
 
 # Build
 dist/
@@ -14,8 +15,6 @@ coverage/
 
 # Miscellaneous
 .DS_Store
-temp/
-temp.*
 *concatenated.txt
 
 # env
