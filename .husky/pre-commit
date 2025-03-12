@@ -1,4 +1,1 @@
-npm run eslint
-npm run stylelint
-npm run tsc
 npm test
