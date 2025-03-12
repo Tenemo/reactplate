@@ -22,7 +22,7 @@ export const Root = (): React.JSX.Element => {
                 document.body.classList.remove('using-mouse');
             }
         });
-        console.log(`Build date: ${process.env.BUILD_DATE ?? 'N/A'}`);
+        console.log(`Build date: ${__BUILD_DATE__}`);
     }, []);
 
     return (
@@ -39,7 +39,7 @@ export const Root = (): React.JSX.Element => {
 };
 
 Sentry.init({
-    dsn: process.env.SENTRY_DSN,
+    dsn: import.meta.env.VITE_SENTRY_DSN,
     integrations: [browserTracingIntegration()],
     tracesSampleRate: 1.0,
 });

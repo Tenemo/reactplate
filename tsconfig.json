@@ -2,8 +2,8 @@
     "compilerOptions": {
         "baseUrl": "./src/",
         "jsx": "react",
-        "target": "ES2017",
-        "module": "commonjs",
+        "target": "esnext",
+        "module": "esnext",
         "moduleResolution": "node",
         "removeComments": true,
         "declaration": false,

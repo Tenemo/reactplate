@@ -1,6 +1,6 @@
 import eslint from '@eslint/js';
+import vitestPlugin from '@vitest/eslint-plugin';
 import { flatConfigs as importConfigs } from 'eslint-plugin-import';
-import jestPlugin from 'eslint-plugin-jest';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import errorOnlyPlugin from 'eslint-plugin-only-error';
 import prettierPlugin from 'eslint-plugin-prettier';
@@ -42,7 +42,6 @@ export default tseslint.config(
             'only-error': errorOnlyPlugin,
             prettier: prettierPlugin,
             security: securityPlugin,
-            jest: jestPlugin,
             'unused-imports': unusedImportsPlugin,
         },
         settings: {
@@ -205,19 +204,12 @@ export default tseslint.config(
             '**/*.test.tsx',
             '**/*.test.js',
         ],
-        plugins: { jest: jestPlugin },
-        languageOptions: {
-            globals: jestPlugin.environments.globals.globals,
+        plugins: {
+            vitest: vitestPlugin,
         },
         rules: {
-            'jest/no-commented-out-tests': ERROR,
-            'jest/no-disabled-tests': ERROR,
-            'jest/no-focused-tests': ERROR,
-            'jest/no-identical-title': ERROR,
-            'jest/prefer-to-have-length': ERROR,
-            'jest/valid-expect': ERROR,
-            '@typescript-eslint/ban-ts-comment': OFF,
-            '@typescript-eslint/no-unsafe-return': OFF,
+            ...vitestPlugin.configs.recommended.rules,
+            'vitest/max-nested-describe': ['error', { max: 3 }],
         },
     },
     {

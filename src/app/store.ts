@@ -44,8 +44,7 @@ export const makeStoreProd = (preloadedState?: Partial<RootState>) => {
     });
     return store;
 };
-
-const buildType = process.env.NODE_ENV ?? `production`;
+const buildType = import.meta.env.MODE;
 export const makeStore =
     buildType === `development` ? makeStoreDev : makeStoreProd;
 
