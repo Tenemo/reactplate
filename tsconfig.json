@@ -22,10 +22,11 @@
     },
     "include": [
         "src/**/*",
-        "config/**/*",
         "temp/**/*",
         "eslint.config.js",
-        ".babelrc.cjs"
+        "vite.config.ts",
+        "vitest.config.ts",
+        "postcss.config.js"
     ],
     "exclude": ["**/*.snap"]
 }

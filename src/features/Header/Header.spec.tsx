@@ -1,5 +1,6 @@
-import { screen, act } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import React from 'react';
+import { describe, it, expect } from 'vitest';
 
 import { makeStore } from 'app/store';
 import Header from 'features/Header/Header';
@@ -14,9 +15,7 @@ describe('Header', () => {
         renderWithProviders(<Header />, { store });
 
         const button = screen.getByRole('button');
-        act(() => {
-            button.click();
-        });
+        button.click();
 
         expect(store.getState().appTheme.theme).toBe('light');
     });

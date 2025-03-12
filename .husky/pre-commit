@@ -1,1 +1,4 @@
+npm run eslint:fix
+npm run stylelint
+npm run tsc
 npm test

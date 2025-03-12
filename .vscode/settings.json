@@ -41,7 +41,6 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "never"
     },
-
     "workbench.iconTheme": "vscode-icons",
     "cSpell.ignorePaths": ["node_modules", ".git"],
     "cSpell.words": [
@@ -55,6 +54,7 @@
         "formulahendry",
         "gitlens",
         "jpoissonnier",
+        "julr",
         "jvitor",
         "kohler",
         "msjsdiag",

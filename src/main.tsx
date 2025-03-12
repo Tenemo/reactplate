@@ -39,7 +39,7 @@ export const Root = (): React.JSX.Element => {
 };
 
 Sentry.init({
-    dsn: 'https://ae9f630bfc884a3a86d5a3bbb5ae29c4@o502294.ingest.sentry.io/4504912262463488',
+    dsn: process.env.SENTRY_DSN,
     integrations: [browserTracingIntegration()],
     tracesSampleRate: 1.0,
 });
