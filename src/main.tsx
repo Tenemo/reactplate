@@ -11,6 +11,8 @@ import { store } from 'app/store';
 
 import 'styles/global.scss';
 
+declare const __BUILD_DATE__: string;
+
 export const Root = (): React.JSX.Element => {
     useEffect(() => {
         // https://stackoverflow.com/questions/31402576/enable-focus-only-on-keyboard-use-or-tab-press
@@ -46,6 +48,9 @@ Sentry.init({
 
 const container = document.getElementById('root');
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const root = createRoot(container!);
+if (!container) {
+    throw new Error('Root element not found');
+}
+
+const root = createRoot(container);
 root.render(<Root />);

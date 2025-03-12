@@ -5,30 +5,32 @@ import { Schema, ValidateEnv } from '@julr/vite-plugin-validate-env';
 import react from '@vitejs/plugin-react';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, loadEnv } from 'vite';
+import { patchCssModules } from 'vite-css-modules';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
+// Automatically pick up all directories in the src/ directory and add them as aliases later
 const absolutePathAliases: Record<string, string> = {};
 const srcPath = path.resolve('./src/');
 const srcRootContent = readdirSync(srcPath, { withFileTypes: true }).map(
     (direct) => direct.name.replace(/(\.ts){1}(x?)/, ''),
 );
-
 srcRootContent.forEach((directory) => {
     // eslint-disable-next-line security/detect-object-injection
     absolutePathAliases[directory] = path.join(srcPath, directory);
 });
-console.log(absolutePathAliases);
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
     const analyze = env.ANALYZE === 'true';
     return {
+        base: './',
         plugins: [
             react(),
             tsconfigPaths(),
             ValidateEnv({
                 VITE_SENTRY_DSN: Schema.string(),
             }),
+            patchCssModules(),
             analyze &&
                 visualizer({
                     open: true,
@@ -44,7 +46,7 @@ export default defineConfig(({ mode }) => {
             devSourcemap: true,
             preprocessorOptions: {
                 scss: {
-                    api: 'modern',
+                    api: 'modern-compiler',
                 },
             },
             modules: {
@@ -68,9 +70,6 @@ export default defineConfig(({ mode }) => {
             sourcemap: false,
             outDir: 'dist',
             cssCodeSplit: true,
-            rollupOptions: {
-                input: 'src/main.tsx',
-            },
         },
     };
 });

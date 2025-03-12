@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './header.scss';
+import styles from './header.module.scss';
 
 import { useAppSelector, useAppDispatch } from 'app/hooks';
 import { toggleTheme, selectAppTheme } from 'features/AppTheme/appThemeSlice';
