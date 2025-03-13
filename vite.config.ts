@@ -6,6 +6,7 @@ import react from '@vitejs/plugin-react';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, loadEnv } from 'vite';
 import { patchCssModules } from 'vite-css-modules';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 // Automatically pick up all directories in the src/ directory and add them as aliases later
@@ -36,6 +37,14 @@ export default defineConfig(({ mode }) => {
                     open: true,
                     filename: 'dist/stats.html',
                 }),
+            viteStaticCopy({
+                targets: [
+                    {
+                        src: 'src/_redirects',
+                        dest: '',
+                    },
+                ],
+            }),
         ],
         define: {
             __BUILD_DATE__: JSON.stringify(

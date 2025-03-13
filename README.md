@@ -11,6 +11,7 @@ An opinionated React + Redux boilerplate for a fully configured quick start.
 - Hot reload with HMR and react-hot-loader
 - TypeScript support, parsed by Babel with @babel/preset-typescript
 - ESLint with @typescript-eslint, without TSLint
+- Deployed to Netlify as a single-page application
 - Great Visual Studio Code support, recommended extensions and workspace settings enabling all features
 - SCSS modules with autocomplete and linting
 
