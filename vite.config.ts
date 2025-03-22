@@ -45,6 +45,10 @@ export default defineConfig(({ mode }) => {
                         src: 'src/_redirects',
                         dest: '',
                     },
+                    {
+                        src: 'src/favicon/*',
+                        dest: 'favicon',
+                    },
                 ],
             }),
         ],
