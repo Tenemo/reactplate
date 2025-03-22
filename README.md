@@ -31,7 +31,7 @@ A Vite-based React + Redux boilerplate for a fully configured quick start.
 ### Styling
 
 - SCSS modules
-- Full typing for SCSS - strict type checking for classes!
+- Full typing for SCSS - strict typechecking for classes!
   <img src="docs/styles_typescript_suggestion.png" alt="TypeScript suggestions example" title="TypeScript suggestions example" width="500" />
 
 - PostCSS processing (autoprefixer, flexbugs-fixes)
@@ -55,6 +55,7 @@ Example usage with Redux and Redux Toolkit included.
   <img src="docs/aliases_example.png" alt="Aliases example" title="Aliases example" width="400" />
 - Environment variables with validation
   <img src="docs/missing_environment_variable.png" alt="Missing environment variable error" title="Missing environment variable error" width="300" />
+- Husky pre-commit hook with linting, typechecking and tests running automatically before each commit.
 
 ### Linting & formatting
 
