@@ -3,7 +3,7 @@
     "version": "2.1.0",
     "author": "Piotr Piech <piotr@piech.dev>",
     "license": "MIT",
-    "description": "A React + modern Redux boilerplate for a fully configured quick start with automatic formatting and linting.",
+    "description": "A React + modern Redux (RTK) boilerplate for a fully configured quick start with automatic formatting and linting with ESLint & Prettier.",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Tenemo/reactplate.git"

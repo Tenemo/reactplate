@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/26fb7e7c-f69d-40fa-b142-92a32d30b80f/deploy-status)](https://app.netlify.com/sites/reactplate-tenemo/deploys)
 
-A React + modern Redux boilerplate for a fully configured quick start with automatic formatting and linting.
+A React + modern Redux (RTK) boilerplate for a fully configured quick start with automatic formatting and linting with ESLint & Prettier.
 
 - Strict ESLint TypeScript linting and automatic formatting with zero additional configuration needed.
 
@@ -49,6 +49,7 @@ A React + modern Redux boilerplate for a fully configured quick start with autom
 - Full typing for SCSS - strict typechecking for classes! <br />
   <img src="docs/styles_typescript_suggestion.png" alt="TypeScript suggestions example" title="TypeScript suggestions example" width="500" />
 
+- Custom font
 - PostCSS processing (autoprefixer, flexbugs-fixes)
 - Normalize.css
 
