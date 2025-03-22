@@ -18,6 +18,8 @@ A React + modern Redux boilerplate for a fully configured quick start with autom
 
 - React 19
 - React Router 7
+- Catch-all 404 page
+- Light/dark themes with a toggle
 
 ### State management
 
@@ -31,6 +33,7 @@ A React + modern Redux boilerplate for a fully configured quick start with autom
 ### Styling
 
 - SCSS modules
+- CSS variables utilized for theming with no dark/light duplication in components
 - Full typing for SCSS - strict typechecking for classes! <br />
   <img src="docs/styles_typescript_suggestion.png" alt="TypeScript suggestions example" title="TypeScript suggestions example" width="500" />
 
