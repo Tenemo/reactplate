@@ -50,10 +50,8 @@ Example usage with Redux and Redux Toolkit included.
 
 ### Build & development
 
-- Vite, extremely fast cold starts & hot reload <br />
+- Vite, extremely fast cold starts & hot 🔥 reload <br />
   <img src="docs/vite_cold_start.png" alt="Vite cold start" title="Vite cold start" width="300" />
-
-- React hot reload 🔥 with Vite
 - Automatic aliases for all src/ subdirectories, no need to manually add new ones <br />
   <img src="docs/aliases_example.png" alt="Aliases example" title="Aliases example" width="400" />
 - Environment variables with validation <br />
