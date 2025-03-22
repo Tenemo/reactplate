@@ -31,7 +31,7 @@ A Vite-based React + Redux boilerplate for a fully configured quick start.
 ### Styling
 
 - SCSS modules
-- Full typing for SCSS - strict typechecking for classes!
+- Full typing for SCSS - strict typechecking for classes! <br />
   <img src="docs/styles_typescript_suggestion.png" alt="TypeScript suggestions example" title="TypeScript suggestions example" width="500" />
 
 - PostCSS processing (autoprefixer, flexbugs-fixes)
@@ -40,21 +40,21 @@ A Vite-based React + Redux boilerplate for a fully configured quick start.
 ### Testing
 
 - Vitest
-- React Testing Library
+- React Testing Library <br />
   <img src="docs/vitest_example.png" alt="Vitest example" title="Vitest example" width="300" />
 
 Example usage with Redux and Redux Toolkit included.
 
 ### Build & development
 
-- Vite, extremely fast cold starts & hot reload
+- Vite, extremely fast cold starts & hot reload <br />
   <img src="docs/vite_cold_start.png" alt="Vite cold start" title="Vite cold start" width="300" />
 
 - React hot reload 🔥 with Vite
-- Automatic aliases for all src/ subdirectories, no need to manually add new ones
+- Automatic aliases for all src/ subdirectories, no need to manually add new ones <br />
   <img src="docs/aliases_example.png" alt="Aliases example" title="Aliases example" width="400" />
-- Environment variables with validation
-  <img src="docs/missing_environment_variable.png" alt="Missing environment variable error" title="Missing environment variable error" width="300" />
+- Environment variables with validation <br />
+  <img  src="docs/missing_environment_variable.png" alt="Missing environment variable error" title="Missing environment variable error" width="300" />
 - Husky pre-commit hook with linting, typechecking and tests running automatically before each commit.
 
 ### Linting & formatting
