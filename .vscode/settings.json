@@ -41,6 +41,7 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "never"
     },
+    "stylelint.validate": ["css", "scss"],
     "workbench.iconTheme": "vscode-icons",
     "cSpell.ignorePaths": ["node_modules", ".git"],
     "cSpell.words": [
