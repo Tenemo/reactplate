@@ -1,0 +1,34 @@
+@use "styles/variables";
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 1rem;
+    path {
+        fill: var(--color-text);
+    }
+    .themeToggle {
+        cursor: pointer;
+        &:hover path {
+            fill: var(--color-link-hover) !important;
+        }
+
+        &:visited path {
+            fill: var(--color-text);
+        }
+    }
+    a.gitHubLink {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        &:hover path {
+            fill: var(--color-link-hover) !important;
+        }
+
+        &:visited path {
+            fill: var(--color-text);
+        }
+    }
+}

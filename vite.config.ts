@@ -31,7 +31,9 @@ export default defineConfig(({ mode }) => {
             ValidateEnv({
                 VITE_SENTRY_DSN: Schema.string(),
             }),
-            patchCssModules(),
+            patchCssModules({
+                generateSourceTypes: true,
+            }),
             analyze &&
                 visualizer({
                     open: true,

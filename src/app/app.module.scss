@@ -1,9 +1,22 @@
+@use "styles/variables";
+
 .app {
     font-family: "Roboto Mono", "Courier New", "Courier", monospace;
-    padding: 10px 15px;
+    padding: 0.8rem 1rem;
     height: 100%;
     display: flex;
     flex-direction: column;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    a {
+        color: var(--color-link);
+        &:visited {
+            color: var(--color-link-visited);
+        }
+        &:hover {
+            color: var(--color-link-hover);
+        }
+    }
     @font-face {
         font-family: "Roboto Mono";
         src:
@@ -11,28 +24,11 @@
             url("../fonts/RobotoMono-Regular.woff") format("woff");
     }
 }
-:global .theme-dark {
-    color: #ddd;
-    background-color: #222;
-    a {
-        color: #aaa;
-        &:visited {
-            color: #777;
-        }
-        &:hover {
-            color: #fff;
-        }
-    }
-}
-:global .theme-light {
-    color: #222;
-    background-color: #eee;
-}
 .error {
-    color: darkred;
-    margin: 10px 20px;
+    color: var(--color-error);
+    margin: 0.8rem 1rem;
 }
 .errorInfo {
-    color: #aaa;
-    margin-top: 20px;
+    color: var(--color-error-info);
+    margin-top: 1rem;
 }
