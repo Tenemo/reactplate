@@ -1,9 +1,9 @@
 {
     "name": "reactplate",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "author": "Piotr Piech <piotr@piech.dev>",
     "license": "MIT",
-    "description": "React, Redux Toolkit, Vite, Vitest & 🔥 reload | TypeScript | Flat ESLint config",
+    "description": "A React + modern Redux boilerplate for a fully configured quick start with automatic formatting and linting.",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Tenemo/reactplate.git"

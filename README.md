@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/26fb7e7c-f69d-40fa-b142-92a32d30b80f/deploy-status)](https://app.netlify.com/sites/reactplate-tenemo/deploys)
 
-A Vite-based React + Redux boilerplate for a fully configured quick start.
+A React + modern Redux boilerplate for a fully configured quick start with automatic formatting and linting.
 
 - Strict ESLint TypeScript linting and automatic formatting with zero additional configuration needed.
 
@@ -12,7 +12,7 @@ A Vite-based React + Redux boilerplate for a fully configured quick start.
 
 - Deployed to [Netlify](https://netlify.com) with an example catch-all redirect to always utilize react-router: [reactplate.com](https://reactplate.com)
 
-## Libraries & frameworks used
+## Features
 
 ### React
 
