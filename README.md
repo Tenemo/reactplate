@@ -30,6 +30,18 @@ A React + modern Redux boilerplate for a fully configured quick start with autom
 - Store setup and usage is fully & properly typed
 - Example integration test using the store
 
+### Linting & formatting
+
+- ESLint v. 9 with ready-to-go, **strict** configuration. Notable plugins:
+    - typescript-eslint for full TypeScript integration and strict typing rules
+    - Prettier plugin to use prettier as formatter
+    - Import & unused imports
+    - React & react-hooks
+    - Vitest
+    - jsx-a11y (accessibility)
+- VS Code settings, including ESLint set up as a formatter with Prettier integration - **formatting & quick fixes in one pass**!
+- Stylelint SCSS linting
+
 ### Styling
 
 - SCSS modules
@@ -50,22 +62,10 @@ Example usage with Redux and Redux Toolkit included.
 
 ### Build & development
 
-- Vite, extremely fast cold starts & hot 🔥 reload <br />
+- Vite, fast cold starts & hot 🔥 reload <br />
   <img src="docs/vite_cold_start.png" alt="Vite cold start" title="Vite cold start" width="300" />
-- Automatic aliases for all src/ subdirectories, no need to manually add new ones <br />
+- Automatic aliases for all src/ subdirectories <br />
   <img src="docs/aliases_example.png" alt="Aliases example" title="Aliases example" width="400" />
 - Environment variables with validation <br />
   <img  src="docs/missing_environment_variable.png" alt="Missing environment variable error" title="Missing environment variable error" width="300" />
 - Husky pre-commit hook with linting, typechecking and tests running automatically before each commit.
-
-### Linting & formatting
-
-- ESLint v.9 with flat config, ready-to-go, **strict** configuration. Notable plugins:
-    - typescript-eslint for full TypeScript integration and strict typing rules
-    - Prettier plugin to use prettier as formatter
-    - Import & unused imports
-    - React & react-hooks
-    - Vitest
-    - jsx-a11y (accessibility)
-- VS Code settings, including ESLint set up as a formatter with Prettier integration - formatting & quick fixes in one pass!
-- Stylelint SCSS linting
