@@ -3,6 +3,7 @@ import path from 'path';
 
 import { Schema, ValidateEnv } from '@julr/vite-plugin-validate-env';
 import react from '@vitejs/plugin-react';
+import browserslistToEsbuild from 'browserslist-to-esbuild';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, loadEnv } from 'vite';
 import { patchCssModules } from 'vite-css-modules';
@@ -96,6 +97,7 @@ export default defineConfig(({ mode }) => {
             sourcemap: false,
             outDir: 'dist',
             cssCodeSplit: true,
+            target: browserslistToEsbuild(),
             rollupOptions: {
                 output: {
                     manualChunks,
