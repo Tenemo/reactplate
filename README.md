@@ -61,6 +61,18 @@ A React + modern Redux (RTK) boilerplate for a fully configured quick start with
 
 Example usage with Redux and Redux Toolkit included.
 
+### Lighthouse
+
+The template follows best practices such as:
+
+- semantic, accessible HTML,
+- pre-connects to the API it uses,
+- displays available system font when loading custom fonts,
+- robot.txt included by default,
+
+and many others. Due to this, it scores perfect 100/100/100/100 score in Chrome Lighthouse <br />
+<img src="docs/lighthouse.png" alt="Vitest example" title="Vitest example" width="500" />
+
 ### Build & development
 
 - Vite, fast cold starts & hot 🔥 reload <br />
