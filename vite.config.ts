@@ -19,6 +19,16 @@ srcRootContent.forEach((directory) => {
     // eslint-disable-next-line security/detect-object-injection
     absolutePathAliases[directory] = path.join(srcPath, directory);
 });
+const manualChunks = (id: string): string | null => {
+    if (id.includes('react-dom')) {
+        return 'react-dom';
+    }
+    if (id.includes('node_modules')) {
+        return 'vendor';
+    }
+
+    return null;
+};
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
@@ -85,6 +95,11 @@ export default defineConfig(({ mode }) => {
             sourcemap: false,
             outDir: 'dist',
             cssCodeSplit: true,
+            rollupOptions: {
+                output: {
+                    manualChunks: manualChunks,
+                },
+            },
         },
     };
 });
