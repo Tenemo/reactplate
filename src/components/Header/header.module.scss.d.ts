@@ -11,13 +11,15 @@ const themeDark: string;
 const header: string;
 const themeToggle: string;
 const gitHubLink: string;
+const headerButtons: string;
 
 export {
 	themeLight,
 	themeDark,
 	header,
 	themeToggle,
-	gitHubLink
+	gitHubLink,
+	headerButtons
 };
 
 export default {
@@ -27,5 +29,6 @@ export default {
 	themeDark,
 	header,
 	themeToggle,
-	gitHubLink
+	gitHubLink,
+	headerButtons
 };

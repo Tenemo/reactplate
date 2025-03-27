@@ -1,5 +1,6 @@
 import { screen, act } from '@testing-library/react';
 import React from 'react';
+import { BrowserRouter } from 'react-router';
 import { describe, it, expect } from 'vitest';
 
 import { makeStore } from 'app/store';
@@ -12,7 +13,12 @@ describe('Header', () => {
             appTheme: { theme: 'dark' },
         });
 
-        const { user } = renderWithProviders(<Header />, { store });
+        const { user } = renderWithProviders(
+            <BrowserRouter>
+                <Header />
+            </BrowserRouter>,
+            { store },
+        );
 
         const button = screen.getByRole('button');
 

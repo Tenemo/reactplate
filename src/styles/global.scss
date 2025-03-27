@@ -19,3 +19,22 @@ body.using-mouse {
         box-shadow: initial;
     }
 }
+main {
+    padding: 1rem;
+}
+h1,
+h2,
+h3 {
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    font-size: 1.6rem;
+}
+h2 {
+    font-size: 1.3rem;
+}
+h3 {
+    font-size: 1.1rem;
+}

@@ -32,7 +32,7 @@ const App = (): React.JSX.Element => {
     return (
         <div className={classNames}>
             <Helmet>
-                <title>Reactplate</title>
+                <title>reactplate</title>
             </Helmet>
             <ErrorBoundary
                 fallback={
