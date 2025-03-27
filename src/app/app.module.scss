@@ -21,6 +21,7 @@
         src:
             url("../fonts/RobotoMono-Regular.woff2") format("woff2"),
             url("../fonts/RobotoMono-Regular.woff") format("woff");
+        font-display: swap;
     }
 }
 .error {
