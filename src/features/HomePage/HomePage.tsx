@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styles from './homePage.module.scss';
+
 import {
     Article,
     useGetExamplePageQuery,
@@ -23,7 +25,7 @@ const HomePage = (): React.JSX.Element => {
                     spaceflightnewsapi.net
                 </a>
             </h2>
-            <ul>
+            <ul className={styles.linksList}>
                 {data.results.map((article: Article) => (
                     <li key={article.id}>
                         <a

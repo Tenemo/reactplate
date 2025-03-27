@@ -41,6 +41,7 @@ const Header = (): React.JSX.Element => {
                 </div>
 
                 <a
+                    aria-label="GitHub repository"
                     className={styles.gitHubLink}
                     href="https://github.com/Tenemo/reactplate"
                     rel="noopener noreferrer"

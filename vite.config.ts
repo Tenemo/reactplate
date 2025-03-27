@@ -53,6 +53,10 @@ export default defineConfig(({ mode }) => {
                         dest: '',
                     },
                     {
+                        src: 'src/robots.txt',
+                        dest: '',
+                    },
+                    {
                         src: 'src/favicon/*',
                         dest: 'favicon',
                     },
@@ -94,7 +98,7 @@ export default defineConfig(({ mode }) => {
             cssCodeSplit: true,
             rollupOptions: {
                 output: {
-                    manualChunks: manualChunks,
+                    manualChunks,
                 },
             },
         },
