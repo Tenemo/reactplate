@@ -12,6 +12,16 @@ A React + modern Redux (RTK) boilerplate for a fully configured quick start with
 
 - Deployed to [Netlify](https://netlify.com) with an example catch-all redirect to always utilize react-router: [reactplate.com](https://reactplate.com)
 
+The template follows best practices such as:
+
+- semantic, accessible HTML,
+- pre-connects to the API it uses,
+- displays available system font when loading custom fonts,
+- robot.txt included by default,
+
+and many others. It scores perfect 100/100/100/100 score in Chrome Lighthouse. <br />
+<img src="docs/lighthouse.png" alt="Vitest example" title="Vitest example" width="500" />
+
 ## Features
 
 ### React
@@ -25,8 +35,6 @@ A React + modern Redux (RTK) boilerplate for a fully configured quick start with
 
 - Modern Redux setup
 - Redux Toolkit (RTK), including a RTK Query live example
-  <img src="docs/RTK_Query_example.png" alt="RTK Query example" title="RTK Query example" width="600" />
-
 - Store setup and usage is fully & properly typed
 - Example integration test using the store
 
@@ -60,18 +68,6 @@ A React + modern Redux (RTK) boilerplate for a fully configured quick start with
   <img src="docs/vitest_example.png" alt="Vitest example" title="Vitest example" width="300" />
 
 Example usage with Redux and Redux Toolkit included.
-
-### Lighthouse
-
-The template follows best practices such as:
-
-- semantic, accessible HTML,
-- pre-connects to the API it uses,
-- displays available system font when loading custom fonts,
-- robot.txt included by default,
-
-and many others. Due to this, it scores perfect 100/100/100/100 score in Chrome Lighthouse <br />
-<img src="docs/lighthouse.png" alt="Vitest example" title="Vitest example" width="500" />
 
 ### Build & development
 
