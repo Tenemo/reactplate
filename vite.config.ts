@@ -20,18 +20,6 @@ srcRootContent.forEach((directory) => {
     absolutePathAliases[directory] = path.join(srcPath, directory);
 });
 const manualChunks = (id: string): string | null => {
-    if (id.includes('react-dom')) {
-        return 'react-dom';
-    }
-    if (id.includes('sentry')) {
-        return 'sentry';
-    }
-    if (id.includes('@mui')) {
-        return 'mui';
-    }
-    if (id.includes('redux')) {
-        return 'redux';
-    }
     if (id.includes('node_modules')) {
         return 'vendor';
     }
