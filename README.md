@@ -46,6 +46,7 @@ and many others. It scores perfect 100/100/100/100 score in Chrome Lighthouse. <
     - jsx-a11y (accessibility)
 - VS Code settings, including ESLint set up as a formatter with Prettier integration - **formatting & quick fixes in one pass**!
 - Stylelint SCSS linting
+- .editorconfig for consistent code style across different editors
 
 ### Styling
 
@@ -76,7 +77,7 @@ Example usage with Redux and Redux Toolkit included.
   <img  src="docs/missing_environment_variable.png" alt="Missing environment variable error" title="Missing environment variable error" width="300" />
 - Husky pre-commit hook with linting, typechecking and tests running automatically before each commit.
 
-## Getting Started
+## Getting started
 
 ### Prerequisites
 
