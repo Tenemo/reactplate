@@ -6,7 +6,7 @@ A React + modern Redux (RTK) boilerplate for a fully configured quick start with
 
 - Strict ESLint TypeScript linting and automatic formatting with zero additional configuration needed.
 - VS Code settings bundled with the boilerplate, including recommended extensions for automatic formatting - via a one-click install.
-- [Sentry.io](https://sentry.io) optional integration, including Redux integration - sends out the store on errors!
+- Optional [Sentry.io](https://sentry.io) integration.
 - Deployed to [Netlify](https://netlify.com) with an example catch-all redirect to always utilize react-router: [reactplate.com](https://reactplate.com)
 
 The template follows best practices such as:
