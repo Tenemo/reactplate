@@ -75,3 +75,74 @@ Example usage with Redux and Redux Toolkit included.
 - Environment variables with validation <br />
   <img  src="docs/missing_environment_variable.png" alt="Missing environment variable error" title="Missing environment variable error" width="300" />
 - Husky pre-commit hook with linting, typechecking and tests running automatically before each commit.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js >=20.11.0
+- NPM (comes with Node.js)
+
+### Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/Tenemo/reactplate.git
+    cd reactplate
+    ```
+
+2. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3. Create environment variables file:
+    ```bash
+    cp .env.sample .env
+    ```
+    Add your Sentry DSN in the .env file if you want error tracking. Otherwise, feel free to add your own environment variables or remove the .env handling altogether.
+
+### Development
+
+1. Start the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+    This will launch the application at http://localhost:3000 with hot reloading enabled.
+
+2. Run tests:
+    ```bash
+    npm test  # Run tests once
+    npm run test:watch # Run tests in watch mode
+    npm run test:coverage # Generate test coverage report
+    ```
+
+### Building for Production
+
+```bash
+npm run build
+```
+
+To build without running linting and tests:
+
+```bash
+npm run build:skip
+```
+
+To analyze your bundle size:
+
+```bash
+npm run build:analyze
+```
+
+### VS Code
+
+For the best development experience in VS Code install recommended VS Code extensions when prompted. All necessary configuration is already present in `.vscode/settings.json`
+
+## License
+
+This project is licensed under the MIT License - a permissive free software license that places almost no restrictions on what you can do with this project.

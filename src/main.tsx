@@ -40,11 +40,15 @@ export const Root = (): React.JSX.Element => {
     );
 };
 
-Sentry.init({
-    dsn: import.meta.env.VITE_SENTRY_DSN,
-    integrations: [browserTracingIntegration()],
-    tracesSampleRate: 1.0,
-});
+const sentryDsn = import.meta.env.VITE_SENTRY_DSN;
+
+if (sentryDsn) {
+    Sentry.init({
+        dsn: import.meta.env.VITE_SENTRY_DSN,
+        integrations: [browserTracingIntegration()],
+        tracesSampleRate: 1.0,
+    });
+}
 
 const container = document.getElementById('root');
 

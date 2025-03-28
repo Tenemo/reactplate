@@ -37,7 +37,7 @@ export default defineConfig(({ mode }) => {
             react(),
             tsconfigPaths(),
             ValidateEnv({
-                VITE_SENTRY_DSN: Schema.string(),
+                VITE_SENTRY_DSN: Schema.string.optional(),
             }),
             patchCssModules({
                 generateSourceTypes: true,
