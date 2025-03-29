@@ -18,6 +18,7 @@ export default defineConfig({
                 'vite.config.ts',
                 'vitest.config.ts',
                 'dist/*',
+                'src/main.tsx',
             ],
         },
     },
