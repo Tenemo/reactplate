@@ -1,8 +1,6 @@
-import {
-    GitHub as GitHubIcon,
-    DarkMode as DarkModeIcon,
-    LightMode as LightModeIcon,
-} from '@mui/icons-material';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import React from 'react';
 import { Link } from 'react-router';
 
