@@ -60,7 +60,9 @@ export default tseslint.config(
                 },
                 project: './tsconfig.json',
                 ecmaVersion: 2021,
-                projectService: true,
+                projectService: {
+                    allowDefaultProject: ['*.js'],
+                },
                 tsconfigRootDir: import.meta.dirname,
             },
             globals: {

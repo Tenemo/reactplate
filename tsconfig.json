@@ -21,13 +21,6 @@
         "noUnusedLocals": true,
         "noErrorTruncation": true
     },
-    "include": [
-        "src/**/*",
-        "temp/**/*",
-        "eslint.config.js",
-        "vite.config.ts",
-        "vitest.config.ts",
-        "postcss.config.js"
-    ],
+    "include": ["src/**/*", "temp/**/*", "vite.config.ts", "vitest.config.ts"],
     "exclude": ["**/*.snap"]
 }
