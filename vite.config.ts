@@ -7,7 +7,6 @@ import browserslistToEsbuild from 'browserslist-to-esbuild';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, loadEnv } from 'vite';
 import { patchCssModules } from 'vite-css-modules';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 // Automatically pick up all directories in the src/ directory and add them as aliases later
@@ -47,22 +46,6 @@ export default defineConfig(({ mode }) => {
                     open: true,
                     filename: 'dist/stats.html',
                 }),
-            viteStaticCopy({
-                targets: [
-                    {
-                        src: 'src/_redirects',
-                        dest: '',
-                    },
-                    {
-                        src: 'src/robots.txt',
-                        dest: '',
-                    },
-                    {
-                        src: 'src/favicon/*',
-                        dest: 'favicon',
-                    },
-                ],
-            }),
         ],
         define: {
             __BUILD_DATE__: JSON.stringify(
