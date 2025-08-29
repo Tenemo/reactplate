@@ -2,7 +2,6 @@ import { readdirSync } from 'fs';
 import path from 'path';
 
 import { Schema, ValidateEnv } from '@julr/vite-plugin-validate-env';
-import react from '@vitejs/plugin-react';
 import browserslistToEsbuild from 'browserslist-to-esbuild';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, loadEnv } from 'vite';
@@ -27,17 +26,26 @@ const manualChunks = (id: string): string | null => {
     return null;
 };
 
+type SchemaString = {
+    optional: () => unknown;
+};
+type SchemaType = {
+    string: SchemaString;
+};
+
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
     const analyze = env.ANALYZE === 'true';
     return {
         base: './',
         plugins: [
-            react(),
             tsconfigPaths(),
-            ValidateEnv({
-                VITE_SENTRY_DSN: Schema.string.optional(),
-            }),
+            (() => {
+                const TypedSchema = Schema as unknown as SchemaType;
+                return ValidateEnv({
+                    VITE_SENTRY_DSN: TypedSchema.string.optional(),
+                });
+            })(),
             patchCssModules({
                 generateSourceTypes: true,
             }),
@@ -55,9 +63,7 @@ export default defineConfig(({ mode }) => {
         css: {
             devSourcemap: true,
             preprocessorOptions: {
-                scss: {
-                    api: 'modern-compiler',
-                },
+                scss: {},
             },
             modules: {
                 localsConvention: 'camelCase',
