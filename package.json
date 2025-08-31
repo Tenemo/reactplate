@@ -31,11 +31,12 @@
     },
     "browserslist": [
         "> 1%",
-        "not IE > 0",
+        "not dead",
+        "not IE 11",
         "not op_mini all"
     ],
     "engines": {
-        "node": ">=20.11.0"
+        "node": ">=22.18.0"
     },
     "private": true,
     "type": "module",

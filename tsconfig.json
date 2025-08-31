@@ -22,5 +22,5 @@
         "noErrorTruncation": true
     },
     "include": ["src/**/*", "temp/**/*", "vite.config.ts", "vitest.config.ts"],
-    "exclude": ["**/*.snap"]
+    "exclude": []
 }
