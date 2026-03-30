@@ -3,9 +3,11 @@ import eslintReact from '@eslint-react/eslint-plugin';
 import vitestPlugin from '@vitest/eslint-plugin';
 import { defineConfig } from 'eslint/config';
 import { flatConfigs as importConfigs } from 'eslint-plugin-import-x';
+import perfectionistPlugin from 'eslint-plugin-perfectionist';
 import prettierPlugin from 'eslint-plugin-prettier';
 import prettierPluginRecommended from 'eslint-plugin-prettier/recommended';
 import securityPlugin from 'eslint-plugin-security';
+import unusedImportsPlugin from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import { configs as tsConfigs } from 'typescript-eslint';
 
@@ -31,8 +33,10 @@ export default defineConfig(
     {
         files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
         plugins: {
+            perfectionist: perfectionistPlugin,
             prettier: prettierPlugin,
             security: securityPlugin,
+            'unused-imports': unusedImportsPlugin,
         },
         settings: {
             'react-x': {
@@ -102,7 +106,9 @@ export default defineConfig(
             '@eslint-react/no-missing-component-display-name': ERROR,
             '@eslint-react/exhaustive-deps': ERROR,
             '@eslint-react/rules-of-hooks': ERROR,
-            '@eslint-react/rsc/function-definition': ERROR,
+
+            // JSX sorting
+            'perfectionist/sort-jsx-props': ERROR,
 
             // eslint-plugin-import
             'import-x/no-extraneous-dependencies': [
@@ -131,7 +137,9 @@ export default defineConfig(
             ],
 
             // eslint-plugin-unused-imports
-            '@typescript-eslint/no-unused-vars': [
+            '@typescript-eslint/no-unused-vars': OFF,
+            'unused-imports/no-unused-imports': ERROR,
+            'unused-imports/no-unused-vars': [
                 ERROR,
                 {
                     vars: 'all',
@@ -145,10 +153,12 @@ export default defineConfig(
     {
         files: ['**/*.js', '**/*.jsx', '**/*.mjs'],
         rules: {
+            '@typescript-eslint/explicit-function-return-type': OFF,
             '@typescript-eslint/no-unsafe-assignment': OFF,
             '@typescript-eslint/no-unsafe-argument': OFF,
             '@typescript-eslint/no-unsafe-member-access': OFF,
             '@typescript-eslint/no-unsafe-call': OFF,
+            '@typescript-eslint/no-unsafe-return': OFF,
         },
     },
     {
