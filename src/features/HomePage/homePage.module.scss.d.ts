@@ -6,12 +6,13 @@
  * https://npmjs.com/vite-css-modules
  */
 
-const linksList: string;
+declare const linksList: string;
 
 export {
 	linksList
 };
 
-export default {
-	linksList
+declare const __default_export__: {
+	linksList: typeof linksList;
 };
+export default __default_export__;

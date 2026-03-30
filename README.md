@@ -37,13 +37,12 @@ and many others. It scores perfect 100/100/100/100 score in Chrome Lighthouse. <
 
 ### Linting & formatting
 
-- ESLint v. 9 with ready-to-go, **strict** configuration. Notable plugins:
+- ESLint v. 10 with ready-to-go, **strict** configuration. Notable plugins:
     - typescript-eslint for full TypeScript integration and strict typing rules
     - Prettier plugin to use prettier as formatter
     - Import & unused imports
     - React & react-hooks
     - Vitest
-    - jsx-a11y (accessibility)
 - VS Code settings, including ESLint set up as a formatter with Prettier integration - **formatting & quick fixes in one pass**!
 - Stylelint SCSS linting
 - .editorconfig for consistent code style across different editors
@@ -69,9 +68,9 @@ Example usage with Redux and Redux Toolkit included.
 
 ### Build & development
 
-- Vite, fast cold starts & hot 🔥 reload <br />
+- Vite, fast cold starts & hot reload <br />
   <img src="docs/vite_cold_start.png" alt="Vite cold start" title="Vite cold start" width="300" />
-- Automatic aliases for all src/ subdirectories <br />
+- Path aliases for `src/` subdirectories <br />
   <img src="docs/aliases_example.png" alt="Aliases example" title="Aliases example" width="400" />
 - Environment variables with validation <br />
   <img  src="docs/missing_environment_variable.png" alt="Missing environment variable error" title="Missing environment variable error" width="300" />
@@ -81,7 +80,7 @@ Example usage with Redux and Redux Toolkit included.
 
 ### Prerequisites
 
-- Node.js >=20.11.0
+- Node.js >=22.18.0
 - NPM (comes with Node.js)
 
 ### Installation

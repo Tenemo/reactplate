@@ -6,26 +6,13 @@
  * https://npmjs.com/vite-css-modules
  */
 
-const themeLight: string;
-const themeDark: string;
-const app: string;
-const error: string;
-const errorInfo: string;
+declare const app: string;
 
 export {
-	themeLight,
-	themeDark,
-	app,
-	error,
-	errorInfo
+	app
 };
 
-export default {
-	"theme-light": themeLight,
-	themeLight,
-	"theme-dark": themeDark,
-	themeDark,
-	app,
-	error,
-	errorInfo
+declare const __default_export__: {
+	app: typeof app;
 };
+export default __default_export__;

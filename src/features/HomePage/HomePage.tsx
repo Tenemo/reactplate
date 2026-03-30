@@ -2,13 +2,11 @@ import React from 'react';
 
 import styles from './homePage.module.scss';
 
-import {
-    Article,
-    useGetExamplePageQuery,
-} from 'features/ExampleRequest/exampleRequestSlice';
+import { useGetExamplePageQuery } from 'features/ExampleRequest/exampleRequestSlice';
 
 const HomePage = (): React.JSX.Element => {
     const { data, error, isLoading } = useGetExamplePageQuery();
+    const articles = data?.results ?? [];
 
     if (error) return <div>An error occurred</div>;
     return (
@@ -26,7 +24,7 @@ const HomePage = (): React.JSX.Element => {
             {isLoading && <div>Loading...</div>}
             {!isLoading && (
                 <ul className={styles.linksList}>
-                    {data?.results.map((article: Article) => (
+                    {articles.map((article) => (
                         <li key={article.id}>
                             <a
                                 href={article.url}

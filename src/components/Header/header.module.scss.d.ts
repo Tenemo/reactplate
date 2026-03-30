@@ -6,29 +6,22 @@
  * https://npmjs.com/vite-css-modules
  */
 
-const themeLight: string;
-const themeDark: string;
-const header: string;
-const themeToggle: string;
-const gitHubLink: string;
-const headerButtons: string;
+declare const header: string;
+declare const themeToggle: string;
+declare const gitHubLink: string;
+declare const headerButtons: string;
 
 export {
-	themeLight,
-	themeDark,
 	header,
 	themeToggle,
 	gitHubLink,
 	headerButtons
 };
 
-export default {
-	"theme-light": themeLight,
-	themeLight,
-	"theme-dark": themeDark,
-	themeDark,
-	header,
-	themeToggle,
-	gitHubLink,
-	headerButtons
+declare const __default_export__: {
+	header: typeof header;
+	themeToggle: typeof themeToggle;
+	gitHubLink: typeof gitHubLink;
+	headerButtons: typeof headerButtons;
 };
+export default __default_export__;

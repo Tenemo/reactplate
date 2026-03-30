@@ -1,5 +1,3 @@
-@use "styles/variables";
-
 .header {
     display: flex;
     justify-content: space-between;
@@ -16,13 +14,16 @@
     border-bottom: 1px solid var(--color-text);
 }
 .themeToggle {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    line-height: 0;
     cursor: pointer;
     &:hover path {
         fill: var(--color-link-hover) !important;
-    }
-
-    &:visited path {
-        fill: var(--color-text);
     }
 }
 .gitHubLink {
@@ -33,15 +34,11 @@
     &:hover path {
         fill: var(--color-link-hover) !important;
     }
-
-    &:visited path {
-        fill: var(--color-text);
-    }
 }
 
 .headerButtons {
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    align-items: flex-start;
+    align-items: center;
 }

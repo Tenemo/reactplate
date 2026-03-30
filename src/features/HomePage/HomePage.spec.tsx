@@ -1,6 +1,5 @@
 import type { Middleware } from '@reduxjs/toolkit';
 import { screen } from '@testing-library/react';
-import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 
 import HomePage from './HomePage';
@@ -10,7 +9,7 @@ import { renderWithProviders } from 'utils/test-utils';
 vi.mock('features/ExampleRequest/exampleRequestSlice', () => {
     const middleware: Middleware = () => (next) => (action) => next(action);
     return {
-        exampleRequestSlice: {
+        exampleRequestApi: {
             reducer: (
                 state = {
                     queries: {},

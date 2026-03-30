@@ -1,5 +1,3 @@
-@use "styles/variables";
-
 .app {
     font-family: "Roboto Mono", "Courier New", "Courier", monospace;
     height: 100%;
@@ -23,12 +21,4 @@
             url("../fonts/RobotoMono-Regular.woff") format("woff");
         font-display: swap;
     }
-}
-.error {
-    color: var(--color-error);
-    margin: 0.8rem 1rem;
-}
-.errorInfo {
-    color: var(--color-error-info);
-    margin-top: 1rem;
 }
