@@ -7,7 +7,7 @@ import 'normalize.css';
 import 'fonts/RobotoMono-Regular.woff2';
 import 'fonts/RobotoMono-Regular.woff';
 
-import styles from './app.scss';
+import * as styles from './app.scss';
 
 import Header from 'components/Header';
 import HomePage from 'components/HomePage';

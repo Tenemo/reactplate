@@ -1,3 +1,5 @@
+import { UnknownAction } from 'redux';
+
 import { UnknownError } from 'typings/errors';
 
 export const APP_TOGGLE_THEME = 'APP_TOGGLE_THEME';
@@ -24,19 +26,19 @@ export interface AppState {
     };
 }
 
-interface ToggleThemeAction {
+interface ToggleThemeAction extends UnknownAction {
     type: typeof APP_TOGGLE_THEME;
 }
-interface ExampleRequestAction {
+interface ExampleRequestAction extends UnknownAction {
     type: typeof APP_EXAMPLE_REQUEST;
 }
-interface ExampleFailureAction {
+interface ExampleFailureAction extends UnknownAction {
     type: typeof APP_EXAMPLE_FAILURE;
     payload: {
         error: UnknownError;
     };
 }
-interface ExampleSuccessAction {
+interface ExampleSuccessAction extends UnknownAction {
     type: typeof APP_EXAMPLE_SUCCESS;
     payload: {
         response: ExampleResponse;

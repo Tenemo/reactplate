@@ -6,20 +6,20 @@ import {
     useSelector as useReduxSelector,
 } from 'react-redux';
 import {
+    type Middleware,
     Store,
     legacy_createStore,
     applyMiddleware,
     compose,
     combineReducers,
-    AnyAction,
 } from 'redux';
 import { createReduxHistoryContext } from 'redux-first-history';
 import { createLogger } from 'redux-logger';
-import thunk, { ThunkDispatch } from 'redux-thunk';
+import { thunk, ThunkDispatch } from 'redux-thunk';
 
 import { BUILD_TYPE } from 'constants/appConstants';
 import { appReducer, initialAppState } from 'store/app/appReducer';
-import { RootState } from 'store/types';
+import { AllActions, RootState } from 'store/types';
 
 export const initialState = { app: initialAppState };
 
@@ -37,7 +37,7 @@ const logger = createLogger({
     collapsed: true,
 });
 const configureStoreDev = (): Store<RootState> => {
-    const middleware = [thunk, logger, routerMiddleware];
+    const middleware: Middleware[] = [thunk, logger, routerMiddleware];
     return legacy_createStore(
         rootReducer,
         initialState,
@@ -45,7 +45,7 @@ const configureStoreDev = (): Store<RootState> => {
     );
 };
 const configureStoreProd = (): Store<RootState> => {
-    const middleware = [thunk, routerMiddleware];
+    const middleware: Middleware[] = [thunk, routerMiddleware];
     return legacy_createStore(
         rootReducer,
         initialState,
@@ -58,6 +58,6 @@ const configureStore =
 export const store = configureStore();
 export const history = createReduxHistory(store);
 
-export type AppDispatch = ThunkDispatch<RootState, unknown, AnyAction>;
+export type AppDispatch = ThunkDispatch<RootState, unknown, AllActions>;
 export const useDispatch: () => AppDispatch = useReduxDispatch;
 export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;

@@ -1,3 +1,5 @@
+import { UnknownAction } from 'redux';
+
 import {
     AppState,
     AppActionTypes,
@@ -17,8 +19,8 @@ export const initialAppState: AppState = {
 };
 
 export const appReducer = (
-    state = initialAppState,
-    action: AppActionTypes,
+    state: AppState = initialAppState,
+    action: AppActionTypes | UnknownAction,
 ): AppState => {
     switch (action.type) {
         case APP_TOGGLE_THEME:
@@ -41,7 +43,12 @@ export const appReducer = (
                 example: {
                     ...state.example,
                     isLoading: false,
-                    error: action.payload.error,
+                    error: (
+                        action as Extract<
+                            AppActionTypes,
+                            { type: typeof APP_EXAMPLE_FAILURE }
+                        >
+                    ).payload.error,
                     response: null,
                 },
             };
@@ -52,7 +59,12 @@ export const appReducer = (
                     ...state.example,
                     isLoading: false,
                     error: null,
-                    response: action.payload.response,
+                    response: (
+                        action as Extract<
+                            AppActionTypes,
+                            { type: typeof APP_EXAMPLE_SUCCESS }
+                        >
+                    ).payload.response,
                 },
             };
         default:

@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import styles from './header.scss';
+import * as styles from './header.scss';
 
 import { useSelector, useDispatch } from 'store';
 import { toggleTheme } from 'store/app/appActions';

@@ -1,9 +1,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Bugged:
-// https://github.com/import-js/eslint-plugin-import/issues/2556
-// eslint-disable-next-line import/namespace
+import { fixupConfigRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import eslintJs from '@eslint/js';
 // When flat config is supported, those should be used instead of strings:
@@ -29,35 +27,37 @@ const compat = new FlatCompat({
 });
 
 export default [
-    ...compat.config({
-        extends: [
-            'plugin:import/errors', // adds eslint-plugin-import
-            'plugin:import/warnings',
-            'plugin:jest/recommended', // adds eslint-plugin-jest
-            'plugin:jsx-a11y/strict', // adds eslint-plugin-jsx-a11y
-            'prettier', // adds eslint-plugin-prettier
-            'plugin:prettier/recommended',
-            'plugin:react/recommended', // adds eslint-plugin-react, supports flat config, but has to be here to avoid plugin declaration conflicts
-        ],
-        parser: '@typescript-eslint/parser',
-        parserOptions: {
+    ...fixupConfigRules(
+        compat.config({
+            extends: [
+                'plugin:import/errors', // adds eslint-plugin-import
+                'plugin:import/warnings',
+                'plugin:jest/recommended', // adds eslint-plugin-jest
+                'plugin:jsx-a11y/strict', // adds eslint-plugin-jsx-a11y
+                'prettier', // adds eslint-plugin-prettier
+                'plugin:prettier/recommended',
+                'plugin:react/recommended', // adds eslint-plugin-react, supports flat config, but has to be here to avoid plugin declaration conflicts
+            ],
             parser: '@typescript-eslint/parser',
-            sourceType: 'module',
-            ecmaFeatures: {
-                jsx: true,
+            parserOptions: {
+                parser: '@typescript-eslint/parser',
+                sourceType: 'module',
+                ecmaFeatures: {
+                    jsx: true,
+                },
+                project: './tsconfig.json',
+                ecmaVersion: 2021,
             },
-            project: './tsconfig.json',
-            ecmaVersion: 2021,
-        },
-        settings: {
-            react: {
-                version: 'detect',
+            settings: {
+                react: {
+                    version: 'detect',
+                },
+                'import/resolver': {
+                    typescript: {}, // eslint-import-resolver-typescript
+                },
             },
-            'import/resolver': {
-                typescript: {}, // eslint-import-resolver-typescript
-            },
-        },
-    }),
+        }),
+    ),
 
     {
         files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.mjs'],
@@ -169,26 +169,33 @@ export default [
             },
         },
     },
-    ...compat.config({
-        extends: [
-            'plugin:@typescript-eslint/recommended-requiring-type-checking', // adds @typescript-eslint plugin
-            'plugin:@typescript-eslint/stylistic-type-checked',
-            'plugin:import/typescript',
-        ],
-        // I didn't find a way to apply an ignore pattern to JUST one compat.config spread,
-        // ignorePatterns: ["**/*.mjs", "**/*.js"] makes it global
-        // so I'm just disabling rules that don't work with .mjs and .js files
-        overrides: [
-            {
-                files: ['**/*.mjs', '**/*.js', '**/*.jsx', 'eslint.config.mjs'],
-                rules: {
-                    '@typescript-eslint/no-unsafe-assignment': OFF,
-                    '@typescript-eslint/no-unsafe-member-access': OFF,
-                    '@typescript-eslint/no-unsafe-call': OFF,
+    ...fixupConfigRules(
+        compat.config({
+            extends: [
+                'plugin:@typescript-eslint/recommended-requiring-type-checking', // adds @typescript-eslint plugin
+                'plugin:@typescript-eslint/stylistic-type-checked',
+                'plugin:import/typescript',
+            ],
+            // I didn't find a way to apply an ignore pattern to JUST one compat.config spread,
+            // ignorePatterns: ["**/*.mjs", "**/*.js"] makes it global
+            // so I'm just disabling rules that don't work with .mjs and .js files
+            overrides: [
+                {
+                    files: [
+                        '**/*.mjs',
+                        '**/*.js',
+                        '**/*.jsx',
+                        'eslint.config.mjs',
+                    ],
+                    rules: {
+                        '@typescript-eslint/no-unsafe-assignment': OFF,
+                        '@typescript-eslint/no-unsafe-member-access': OFF,
+                        '@typescript-eslint/no-unsafe-call': OFF,
+                    },
                 },
-            },
-        ],
-    }),
+            ],
+        }),
+    ),
     /*  ====== Other rules ====== */
     {
         files: ['*Reducer.ts'],
