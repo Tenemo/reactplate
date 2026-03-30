@@ -9,7 +9,7 @@ import { renderWithProviders } from 'utils/test-utils';
 vi.mock('features/ExampleRequest/exampleRequestSlice', () => {
     const middleware: Middleware = () => (next) => (action) => next(action);
     return {
-        exampleRequestSlice: {
+        exampleRequestApi: {
             reducer: (
                 state = {
                     queries: {},

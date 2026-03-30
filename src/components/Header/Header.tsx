@@ -2,7 +2,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import styles from './header.module.scss';
 
@@ -12,6 +12,7 @@ import { toggleTheme, selectAppTheme } from 'features/AppTheme/appThemeSlice';
 const Header = (): React.JSX.Element => {
     const dispatch = useAppDispatch();
     const appTheme = useAppSelector(selectAppTheme);
+    const nextTheme = appTheme === 'dark' ? 'light' : 'dark';
 
     const onToggleThemeClick = (): void => {
         dispatch(toggleTheme());
@@ -23,20 +24,14 @@ const Header = (): React.JSX.Element => {
                 <h1>reactplate</h1>
             </Link>
             <div className={styles.headerButtons}>
-                <div
-                    aria-label={`Switch to ${appTheme === 'dark' ? 'light' : 'dark'} theme`}
+                <button
+                    aria-label={`Switch to ${nextTheme} theme`}
                     className={styles.themeToggle}
                     onClick={onToggleThemeClick}
-                    onKeyDown={({ key }) => {
-                        if (key === 'Enter' || key === ' ') {
-                            onToggleThemeClick();
-                        }
-                    }}
-                    role="button"
-                    tabIndex={0}
+                    type="button"
                 >
                     {appTheme === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
-                </div>
+                </button>
 
                 <a
                     aria-label="GitHub repository"

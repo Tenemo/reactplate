@@ -1,40 +1,26 @@
 // Importing necessary functions from RTK Query
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export type Article = {
+export type ExampleArticle = {
     id: number;
     title: string;
     url: string;
-    imageUrl: string;
-    newsSite: string;
-    summary: string;
-    publishedAt: string;
-    updatedAt: string;
-    featured: boolean;
-    launches: {
-        launch_id: string;
-        provider: string;
-    }[];
-    events: Event[];
 };
 
 type ExampleApiResponse = {
-    count: number;
-    next: string | null;
-    previous: string | null;
-    results: Article[];
+    results: ExampleArticle[];
 };
 
-export const exampleRequestSlice = createApi({
+export const exampleRequestApi = createApi({
     reducerPath: 'exampleRequestApi',
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://api.spaceflightnewsapi.net/v4/',
     }),
     endpoints: (build) => ({
-        getExamplePage: build.query<ExampleApiResponse, number | void>({
+        getExamplePage: build.query<ExampleApiResponse, void>({
             query: () => `articles?limit=10`,
         }),
     }),
 });
 
-export const { useGetExamplePageQuery } = exampleRequestSlice;
+export const { useGetExamplePageQuery } = exampleRequestApi;

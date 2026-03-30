@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+export type AppTheme = 'dark' | 'light';
+
 export type AppThemeState = {
-    theme: string;
+    theme: AppTheme;
 };
 
 const initialState: AppThemeState = {

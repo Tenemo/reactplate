@@ -1,22 +1,9 @@
-import { readdirSync } from 'fs';
-import path from 'path';
-
 import { Schema, ValidateEnv } from '@julr/vite-plugin-validate-env';
 import browserslistToEsbuild from 'browserslist-to-esbuild';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, loadEnv } from 'vite';
 import { patchCssModules } from 'vite-css-modules';
 
-// Automatically pick up all directories in the src/ directory and add them as aliases later
-const absolutePathAliases: Record<string, string> = {};
-const srcPath = path.resolve('./src/');
-const srcRootContent = readdirSync(srcPath, { withFileTypes: true }).map(
-    (direct) => direct.name.replace(/(\.ts){1}(x?)/, ''),
-);
-srcRootContent.forEach((directory) => {
-    // eslint-disable-next-line security/detect-object-injection
-    absolutePathAliases[directory] = path.join(srcPath, directory);
-});
 const manualChunks = (id: string): string | null => {
     if (id.includes('node_modules')) {
         return 'vendor';
@@ -43,11 +30,6 @@ export default defineConfig(({ mode }) => {
                     filename: 'dist/stats.html',
                 }),
         ],
-        define: {
-            __BUILD_DATE__: JSON.stringify(
-                new Date().toISOString().split('T')[0],
-            ),
-        },
         css: {
             devSourcemap: true,
             preprocessorOptions: {
@@ -61,14 +43,10 @@ export default defineConfig(({ mode }) => {
         },
         resolve: {
             tsconfigPaths: true,
-            alias: {
-                ...absolutePathAliases,
-            },
         },
         server: {
             port: 3000,
             strictPort: true,
-            historyApiFallback: true,
             open: true,
         },
         build: {
