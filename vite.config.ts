@@ -6,7 +6,6 @@ import browserslistToEsbuild from 'browserslist-to-esbuild';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, loadEnv } from 'vite';
 import { patchCssModules } from 'vite-css-modules';
-import tsconfigPaths from 'vite-tsconfig-paths';
 
 // Automatically pick up all directories in the src/ directory and add them as aliases later
 const absolutePathAliases: Record<string, string> = {};
@@ -26,26 +25,15 @@ const manualChunks = (id: string): string | null => {
     return null;
 };
 
-type SchemaString = {
-    optional: () => unknown;
-};
-type SchemaType = {
-    string: SchemaString;
-};
-
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
     const analyze = env.ANALYZE === 'true';
     return {
         base: './',
         plugins: [
-            tsconfigPaths(),
-            (() => {
-                const TypedSchema = Schema as unknown as SchemaType;
-                return ValidateEnv({
-                    VITE_SENTRY_DSN: TypedSchema.string.optional(),
-                });
-            })(),
+            ValidateEnv({
+                VITE_SENTRY_DSN: Schema.string.optional(),
+            }),
             patchCssModules({
                 generateSourceTypes: true,
             }),
@@ -72,6 +60,7 @@ export default defineConfig(({ mode }) => {
             },
         },
         resolve: {
+            tsconfigPaths: true,
             alias: {
                 ...absolutePathAliases,
             },

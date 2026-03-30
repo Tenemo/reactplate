@@ -16,15 +16,23 @@ declare const __BUILD_DATE__: string;
 export const Root = (): React.JSX.Element => {
     useEffect(() => {
         // https://stackoverflow.com/questions/31402576/enable-focus-only-on-keyboard-use-or-tab-press
-        document.body.addEventListener('mousedown', () => {
+        const handleMouseDown = (): void => {
             document.body.classList.add('using-mouse');
-        });
-        document.body.addEventListener('keydown', (event) => {
+        };
+        const handleKeyDown = (event: KeyboardEvent): void => {
             if (event.key === 'Tab') {
                 document.body.classList.remove('using-mouse');
             }
-        });
+        };
+
+        document.body.addEventListener('mousedown', handleMouseDown);
+        document.body.addEventListener('keydown', handleKeyDown);
         console.log(`Build date: ${__BUILD_DATE__}`);
+
+        return () => {
+            document.body.removeEventListener('mousedown', handleMouseDown);
+            document.body.removeEventListener('keydown', handleKeyDown);
+        };
     }, []);
 
     return (

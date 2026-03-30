@@ -1,5 +1,4 @@
 import { screen, act } from '@testing-library/react';
-import React from 'react';
 import { BrowserRouter } from 'react-router';
 import { describe, it, expect, beforeEach } from 'vitest';
 

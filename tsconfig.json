@@ -1,10 +1,18 @@
 {
     "compilerOptions": {
-        "baseUrl": "./src/",
-        "jsx": "react",
+        "jsx": "react-jsx",
         "target": "esnext",
         "module": "esnext",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
+        "paths": {
+            "app/*": ["./src/app/*"],
+            "components/*": ["./src/components/*"],
+            "features/*": ["./src/features/*"],
+            "fonts/*": ["./src/fonts/*"],
+            "styles/*": ["./src/styles/*"],
+            "types/*": ["./src/types/*"],
+            "utils/*": ["./src/utils/*"]
+        },
         "removeComments": true,
         "declaration": false,
         "allowSyntheticDefaultImports": true,

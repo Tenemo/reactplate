@@ -1,16 +1,13 @@
 import eslint from '@eslint/js';
+import eslintReact from '@eslint-react/eslint-plugin';
 import vitestPlugin from '@vitest/eslint-plugin';
-import { flatConfigs as importConfigs } from 'eslint-plugin-import';
-import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
-import errorOnlyPlugin from 'eslint-plugin-only-error';
+import { defineConfig } from 'eslint/config';
+import { flatConfigs as importConfigs } from 'eslint-plugin-import-x';
 import prettierPlugin from 'eslint-plugin-prettier';
 import prettierPluginRecommended from 'eslint-plugin-prettier/recommended';
-import reactPlugin from 'eslint-plugin-react';
-import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import securityPlugin from 'eslint-plugin-security';
-import unusedImportsPlugin from 'eslint-plugin-unused-imports';
 import globals from 'globals';
-import tseslint, { configs as tsConfigs } from 'typescript-eslint';
+import { configs as tsConfigs } from 'typescript-eslint';
 
 // To avoid wasting time with html-eslint in the future, it doesn't work with @typescript-eslint/parser
 // https://github.com/yeonjuan/html-eslint/issues/87
@@ -19,7 +16,7 @@ import tseslint, { configs as tsConfigs } from 'typescript-eslint';
 const OFF = 0;
 const ERROR = 2;
 
-export default tseslint.config(
+export default defineConfig(
     eslint.configs.recommended,
     ...tsConfigs.strictTypeChecked,
     ...tsConfigs.stylisticTypeChecked,
@@ -28,28 +25,20 @@ export default tseslint.config(
     importConfigs.react,
     importConfigs.errors,
     importConfigs.warnings,
+    eslintReact.configs['recommended-type-checked'],
     prettierPluginRecommended,
-    reactPlugin.configs.flat.recommended,
-    reactPlugin.configs.flat['jsx-runtime'],
     securityPlugin.configs.recommended,
     {
         files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
-        ...reactHooksPlugin.configs['recommended-latest'],
         plugins: {
-            react: reactPlugin,
-            'react-hooks': reactHooksPlugin,
-            'jsx-a11y': jsxA11yPlugin,
-            'only-error': errorOnlyPlugin,
             prettier: prettierPlugin,
             security: securityPlugin,
-            'unused-imports': unusedImportsPlugin,
         },
         settings: {
-            react: {
+            'react-x': {
                 version: 'detect',
-            },
-            'import/resolver': {
-                typescript: {}, // eslint-import-resolver-typescript
+                importSource: 'react',
+                polymorphicPropName: 'as',
             },
         },
         languageOptions: {
@@ -58,7 +47,6 @@ export default tseslint.config(
                 ecmaFeatures: {
                     jsx: true,
                 },
-                project: './tsconfig.json',
                 ecmaVersion: 2021,
                 projectService: {
                     allowDefaultProject: ['*.js'],
@@ -76,8 +64,6 @@ export default tseslint.config(
             reportUnusedDisableDirectives: true,
         },
         rules: {
-            'react/jsx-uses-react': 'error',
-            'react/jsx-uses-vars': 'error',
             // eslint-plugin-prettier
             'prettier/prettier': [
                 ERROR,
@@ -111,45 +97,21 @@ export default tseslint.config(
             // https://stackoverflow.com/questions/74698932/rtk-query-eslint-gives-errors-typescript-eslint-no-invalid-void-type-if-query
             '@typescript-eslint/no-invalid-void-type': OFF,
 
-            // eslint-plugin-react
-            'react/destructuring-assignment': [ERROR, 'always'],
-            'react/jsx-filename-extension': [
-                ERROR,
-                {
-                    extensions: ['.tsx'],
-                },
-            ],
-            'react/jsx-sort-props': ERROR,
-            'react/static-property-placement': [ERROR, 'static public field'],
-            'react/state-in-constructor': [ERROR, 'never'],
-            'react/display-name': [
-                ERROR,
-                {
-                    ignoreTranspilerName: false,
-                },
-            ],
-            'react/function-component-definition': [
-                ERROR,
-                {
-                    namedComponents: 'arrow-function',
-                    unnamedComponents: 'arrow-function',
-                },
-            ],
-
-            // eslint-plugin-react-hooks
-            'react-hooks/rules-of-hooks': ERROR,
-            'react-hooks/exhaustive-deps': ERROR,
-
-            // eslint-plugin-jsx-a11y
-            'jsx-a11y/label-has-for': [ERROR, { required: { every: ['id'] } }],
+            // eslint-react
+            '@eslint-react/prefer-destructuring-assignment': ERROR,
+            '@eslint-react/no-missing-component-display-name': ERROR,
+            '@eslint-react/exhaustive-deps': ERROR,
+            '@eslint-react/rules-of-hooks': ERROR,
+            '@eslint-react/rsc/function-definition': ERROR,
 
             // eslint-plugin-import
-            'import/no-extraneous-dependencies': [
+            'import-x/no-extraneous-dependencies': [
                 ERROR,
                 { devDependencies: true },
             ],
-            'import/prefer-default-export': OFF,
-            'import/extensions': [
+            'import-x/no-rename-default': OFF,
+            'import-x/prefer-default-export': OFF,
+            'import-x/extensions': [
                 ERROR,
                 'ignorePackages',
                 {
@@ -159,7 +121,7 @@ export default tseslint.config(
                     tsx: 'never',
                 },
             ],
-            'import/order': [
+            'import-x/order': [
                 'error',
                 {
                     'newlines-between': 'always',
@@ -169,9 +131,7 @@ export default tseslint.config(
             ],
 
             // eslint-plugin-unused-imports
-            '@typescript-eslint/no-unused-vars': OFF,
-            'unused-imports/no-unused-imports': ERROR,
-            'unused-imports/no-unused-vars': [
+            '@typescript-eslint/no-unused-vars': [
                 ERROR,
                 {
                     vars: 'all',
@@ -212,6 +172,13 @@ export default tseslint.config(
         rules: {
             ...vitestPlugin.configs.recommended.rules,
             'vitest/max-nested-describe': ['error', { max: 3 }],
+            '@eslint-react/component-hook-factories': OFF,
+        },
+    },
+    {
+        files: ['src/utils/test-utils.tsx'],
+        rules: {
+            '@eslint-react/component-hook-factories': OFF,
         },
     },
     {
