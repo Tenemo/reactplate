@@ -2,7 +2,7 @@ import 'normalize.css';
 
 import React, { useEffect } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router';
 
 import styles from './app.module.scss';
 

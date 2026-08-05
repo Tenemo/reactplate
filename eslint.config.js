@@ -102,7 +102,6 @@ export default defineConfig(
             '@typescript-eslint/no-invalid-void-type': OFF,
 
             // eslint-react
-            '@eslint-react/prefer-destructuring-assignment': ERROR,
             '@eslint-react/no-missing-component-display-name': ERROR,
             '@eslint-react/exhaustive-deps': ERROR,
             '@eslint-react/rules-of-hooks': ERROR,
@@ -182,13 +181,6 @@ export default defineConfig(
         rules: {
             ...vitestPlugin.configs.recommended.rules,
             'vitest/max-nested-describe': ['error', { max: 3 }],
-            '@eslint-react/component-hook-factories': OFF,
-        },
-    },
-    {
-        files: ['src/utils/test-utils.tsx'],
-        rules: {
-            '@eslint-react/component-hook-factories': OFF,
         },
     },
     {

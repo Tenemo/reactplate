@@ -80,7 +80,7 @@ Example usage with Redux and Redux Toolkit included.
 
 ### Prerequisites
 
-- Node.js >=22.18.0
+- Node.js >=22.22.0
 - NPM (comes with Node.js)
 
 ### Installation
